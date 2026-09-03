@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TJDAX — Software Studio</title>
+<meta name="description" content="TJDAX is an independent software studio in Pyeongtaek, South Korea, developing and publishing mobile and web applications.">
+<style>
+  :root{
+    --bg:#070a12;
+    --fg:#e8ecf5;
+    --muted:#8b95ad;
+    --line:rgba(255,255,255,.09);
+    --accent:#5b8cff;
+    --accent-2:#22d3ee;
+    --panel:rgba(255,255,255,.035);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- background layers ---------- */
+  #fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+  .glow{
+    position:fixed;z-index:1;pointer-events:none;
+    width:900px;height:900px;left:0;top:0;margin:-450px 0 0 -450px;
+    background:radial-gradient(circle closest-side,
+      rgba(91,140,255,.16), rgba(34,211,238,.07) 45%, transparent 70%);
+    transform:translate3d(50vw,50vh,0);
+    transition:transform .28s cubic-bezier(.22,.61,.36,1);
+    will-change:transform;
+  }
+  .grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
+    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
+  }
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 0%,transparent 40%,rgba(7,10,18,.85) 100%);
+  }
+
+  /* ---------- content ---------- */
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  .page{position:relative;z-index:2}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{color:var(--accent-2)}
+
+  header{border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{
+    font-weight:700;letter-spacing:.22em;font-size:18px;color:var(--fg);
+    background:linear-gradient(90deg,#fff,#9fc0ff);-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .nav nav a{margin-left:26px;font-size:14px;color:var(--muted)}
+  .nav nav a:hover{color:var(--fg)}
+
+  .hero{padding:120px 0 96px}
+  .kicker{
+    display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent-2);border:1px solid var(--line);border-radius:999px;
+    padding:6px 14px;margin-bottom:26px;background:var(--panel);
+  }
+  .hero h1{
+    margin:0 0 22px;font-size:clamp(30px,5.4vw,48px);line-height:1.18;font-weight:700;
+    letter-spacing:-.02em;
+    background:linear-gradient(180deg,#ffffff 0%,#b9c6e4 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero p{margin:0;font-size:18px;color:var(--muted);max-width:620px}
+
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  h2{margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  section p{margin:0 0 16px;max-width:680px;color:#c3cbdd}
+  section p:last-child{margin-bottom:0}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:26px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;
+    transition:transform .25s ease,border-color .25s ease,background .25s ease;
+  }
+  .card:hover{transform:translateY(-4px);border-color:rgba(91,140,255,.45);background:rgba(91,140,255,.06)}
+  .card h3{margin:0 0 10px;font-size:16px;font-weight:650;color:var(--fg)}
+  .card p{margin:0;font-size:14.5px;color:var(--muted)}
+
+  .contact a{font-size:19px;font-weight:600}
+
+  footer{border-top:1px solid var(--line);padding:36px 0 48px;margin-top:16px}
+  .foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+        font-size:13px;color:var(--muted)}
+
+  @media (max-width:640px){
+    .hero{padding:84px 0 64px}
+    .nav nav a{margin-left:16px}
+    .glow{width:560px;height:560px;margin:-280px 0 0 -280px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .glow{transition:none}
+    .card{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="grid" aria-hidden="true"></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <span class="logo">TJDAX</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="kicker">Independent software studio</span>
+    <h1>Software built with care,<br>shipped by a small team.</h1>
+    <p>TJDAX is an independent software studio. We design, develop and publish mobile and web applications.</p>
+  </div>
+
+  <div class="wrap">
+    <section id="about">
+      <h2>About</h2>
+      <p>TJDAX designs and builds software end to end — from the first sketch through release and long-term maintenance. The studio has been running as a registered business since September 2020.</p>
+      <p>We work in small scope and long cycles: fewer products, built properly, kept alive after launch. Our focus is practical tools for everyday use — applications that respect the user's time, data and attention.</p>
+    </section>
+
+    <section id="services">
+      <h2>What we do</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Application development</h3>
+          <p>Design, development and publishing of mobile and web applications, including release and maintenance on public app stores.</p>
+        </div>
+        <div class="card">
+          <h3>Software services</h3>
+          <p>Custom software and integration work for businesses, from planning through deployment and ongoing operation.</p>
+        </div>
+        <div class="card">
+          <h3>E-commerce &amp; advertising</h3>
+          <p>Online retail operations and advertising services for our own and our clients' digital products.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>For business enquiries, partnership or support:</p>
+      <p><a href="mailto:simtj86@gmail.com">simtj86@gmail.com</a></p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+      </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var canvas = document.getElementById('fx');
+  var glow   = document.getElementById('glow');
+  var ctx    = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var nodes = [], LINK = 140, raf = null;
+  var mouse = { x: -9999, y: -9999, active: false };
+  var target = { x: 0, y: 0 }, eased = { x: 0, y: 0 };
+
+  function resize(){
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width  = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  function build(){
+    var count = Math.min(110, Math.round(w * h / 15000));
+    nodes = [];
+    for (var i = 0; i < count; i++){
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - .5) * .28,
+        vy: (Math.random() - .5) * .28,
+        r: Math.random() * 1.4 + .6
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+
+    // ease the parallax offset toward the cursor
+    eased.x += (target.x - eased.x) * .06;
+    eased.y += (target.y - eased.y) * .06;
+
+    var i, j, a, b, dx, dy, d2, d;
+
+    for (i = 0; i < nodes.length; i++){
+      a = nodes[i];
+      if (!reduce){ a.x += a.vx; a.y += a.vy; }
+
+      if (a.x < -20) a.x = w + 20; else if (a.x > w + 20) a.x = -20;
+      if (a.y < -20) a.y = h + 20; else if (a.y > h + 20) a.y = -20;
+
+      // gentle push away from the pointer
+      if (mouse.active){
+        dx = a.x - mouse.x; dy = a.y - mouse.y; d2 = dx*dx + dy*dy;
+        if (d2 < 16000 && d2 > 1){
+          d = Math.sqrt(d2);
+          a.x += (dx / d) * (1 - d / 126) * 1.6;
+          a.y += (dy / d) * (1 - d / 126) * 1.6;
+        }
+      }
+    }
+
+    // links
+    for (i = 0; i < nodes.length; i++){
+      a = nodes[i];
+      var ax = a.x + eased.x, ay = a.y + eased.y;
+      for (j = i + 1; j < nodes.length; j++){
+        b = nodes[j];
+        dx = a.x - b.x; dy = a.y - b.y; d2 = dx*dx + dy*dy;
+        if (d2 < LINK * LINK){
+          d = Math.sqrt(d2);
+          var o = (1 - d / LINK) * .30;
+          ctx.strokeStyle = 'rgba(120,165,255,' + o.toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(ax, ay);
+          ctx.lineTo(b.x + eased.x, b.y + eased.y);
+          ctx.stroke();
+        }
+      }
+
+      // link to the pointer itself
+      if (mouse.active){
+        dx = a.x - mouse.x; dy = a.y - mouse.y; d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 200){
+          ctx.strokeStyle = 'rgba(34,211,238,' + ((1 - d / 200) * .38).toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(ax, ay);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
+      }
+
+      ctx.fillStyle = 'rgba(190,215,255,.7)';
+      ctx.beginPath();
+      ctx.arc(ax, ay, a.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  function onMove(x, y){
+    mouse.x = x; mouse.y = y; mouse.active = true;
+    target.x = (x / w - .5) * -26;
+    target.y = (y / h - .5) * -26;
+    glow.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', function(e){ onMove(e.clientX, e.clientY); });
+  window.addEventListener('mouseleave', function(){ mouse.active = false; });
+  window.addEventListener('touchmove', function(e){
+    if (e.touches && e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden){ cancelAnimationFrame(raf); raf = null; }
+    else if (!raf){ raf = requestAnimationFrame(draw); }
+  });
+
+  resize();
+  raf = requestAnimationFrame(draw);
+})();
+</script>
+
+</body>
+</html>
