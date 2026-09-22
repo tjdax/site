@@ -13,7 +13,9 @@
 <meta property="og:url" content="https://tjdax.github.io/site/">
 <meta property="og:title" content="AsleepRemote: Bluetooth PC Remote">
 <meta property="og:description" content="Turn your phone into a Bluetooth touchpad, keyboard, and air mouse for your PC. No software to install on the computer.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://tjdax.github.io/site/images/asleepremote/touchpad.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tjdax.github.io/site/images/asleepremote/touchpad.png">
 <meta name="twitter:title" content="AsleepRemote: Bluetooth PC Remote">
 <meta name="twitter:description" content="Turn your phone into a Bluetooth touchpad, keyboard, and air mouse for your PC. No software to install on the computer.">
 <script type="application/ld+json">
@@ -36,6 +38,12 @@
       "url": "https://tjdax.github.io/site/#asleepremote",
       "installUrl": "https://play.google.com/store/apps/details?id=com.tjdax.asleepremote",
       "downloadUrl": "https://play.google.com/store/apps/details?id=com.tjdax.asleepremote",
+      "screenshot": [
+        "https://tjdax.github.io/site/images/asleepremote/touchpad.png",
+        "https://tjdax.github.io/site/images/asleepremote/keyboard.png",
+        "https://tjdax.github.io/site/images/asleepremote/air-mouse.png",
+        "https://tjdax.github.io/site/images/asleepremote/shortcuts.png"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -156,6 +164,10 @@
   section p{margin:0 0 16px;max-width:680px;color:#c3cbdd}
   section p:last-child{margin-bottom:0}
 
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 8px}
+  .shot{margin:0;background:#f7f5fb;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .shot img{display:block;width:100%;height:auto}
+  .shot figcaption{padding:8px 10px 12px;font-size:13px;line-height:1.35;color:#5c6578;text-align:center}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:26px}
   .card{
     background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;
@@ -174,6 +186,7 @@
   @media (max-width:640px){
     .hero{padding:84px 0 64px}
     .nav nav a{margin-left:16px}
+    .shots{grid-template-columns:repeat(2,1fr)}
     .glow{width:560px;height:560px;margin:-280px 0 0 -280px}
   }
   @media (prefers-reduced-motion:reduce){
@@ -215,6 +228,24 @@
     <section id="asleepremote">
       <h2>The app</h2>
       <p>AsleepRemote lets you control your PC from your phone, the way a TV remote controls a television. The phone connects over Bluetooth as a keyboard and mouse, so there is nothing to install on the PC. Pair it in your PC's Bluetooth settings and you can start.</p>
+      <div class="shots">
+        <figure class="shot">
+          <img src="images/asleepremote/touchpad.png" width="1342" height="2670" alt="AsleepRemote touchpad with left, middle, and right click buttons">
+          <figcaption>Touchpad</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/asleepremote/keyboard.png" width="1342" height="2670" alt="AsleepRemote keyboard for typing on a PC" loading="lazy">
+          <figcaption>Keyboard</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/asleepremote/air-mouse.png" width="1342" height="2670" alt="AsleepRemote air mouse controlled by moving the phone" loading="lazy">
+          <figcaption>Air mouse</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/asleepremote/shortcuts.png" width="1342" height="2670" alt="AsleepRemote custom keyboard shortcuts" loading="lazy">
+          <figcaption>Shortcuts</figcaption>
+        </figure>
+      </div>
       <div class="cards">
         <div class="card">
           <h3>Touchpad</h3>
