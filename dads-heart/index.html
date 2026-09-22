@@ -14,9 +14,13 @@
 <meta property="og:url" content="https://tjdax.github.io/site/dads-heart/">
 <meta property="og:title" content="Dad's Heart: Baby Sleep Sounds">
 <meta property="og:description" content="Sleep sounds in dad's own voice. No ads while playing. Works 100% offline.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://tjdax.github.io/site/dads-heart/og.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dad's Heart: Baby Sleep Sounds">
 <meta name="twitter:description" content="Sleep sounds in dad's own voice. No ads while playing. Works 100% offline.">
+<meta name="twitter:image" content="https://tjdax.github.io/site/dads-heart/og.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,6 +35,12 @@
       "url": "https://tjdax.github.io/site/dads-heart/",
       "installUrl": "https://play.google.com/store/apps/details?id=com.tjdax.daddynight",
       "downloadUrl": "https://play.google.com/store/apps/details?id=com.tjdax.daddynight",
+      "screenshot": [
+        "https://tjdax.github.io/site/dads-heart/screenshots/home.png",
+        "https://tjdax.github.io/site/dads-heart/screenshots/mixer.png",
+        "https://tjdax.github.io/site/dads-heart/screenshots/voice.png",
+        "https://tjdax.github.io/site/dads-heart/screenshots/settings.png"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -156,6 +166,11 @@
   .card h3{margin:0 0 10px;font-size:16px;font-weight:650;color:var(--fg)}
   .card p{margin:0;font-size:14.5px;color:var(--muted)}
 
+  .shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:8px}
+  .shots figure{margin:0}
+  .shots img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--line);background:#000}
+  .shots figcaption{margin-top:8px;font-size:13px;line-height:1.4;color:var(--muted);text-align:center}
+
   .contact a{font-size:19px;font-weight:600}
 
   footer{border-top:1px solid var(--line);padding:36px 0 48px;margin-top:16px}
@@ -166,6 +181,8 @@
     .hero{padding:84px 0 64px}
     .nav nav a{margin-left:16px}
     .glow{width:560px;height:560px;margin:-280px 0 0 -280px}
+    .shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px}
+    .shots figure{flex:0 0 72%;scroll-snap-align:center}
   }
   @media (prefers-reduced-motion:reduce){
     .glow{transition:none}
@@ -203,6 +220,28 @@
   </div>
 
   <div class="wrap">
+    <section id="screenshots">
+      <h2>Screenshots</h2>
+      <div class="shots">
+        <figure>
+          <img src="screenshots/home.png" width="1080" height="2400" alt="Dad's Heart home screen with one large play button, a 30 minute sleep timer, and Heartbeat plus Brahms' Lullaby selected.">
+          <figcaption>One tap resumes the last mix</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/mixer.png" width="1080" height="2400" alt="Mixer with white noise and lullaby layers. Stream, campfire, car ride, and vacuum stay locked until the optional ad.">
+          <figcaption>White noise and a lullaby, each with its own volume</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/voice.png" width="1080" height="2400" alt="Record dad's voice screen for a shhh, calm breathing, and soft humming, with the womb filter turned on.">
+          <figcaption>Record dad's voice. It stays on the phone</figcaption>
+        </figure>
+        <figure>
+          <img src="screenshots/settings.png" width="1080" height="2400" alt="Settings with English selected among nine languages, and cry detection available.">
+          <figcaption>Nine languages, and cry detection</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section id="overview">
       <h2>The app</h2>
       <p>Dad's Heart is a baby sleep sound mixer for parents. An app used next to a sleeping baby should stay quiet, so playback is never interrupted by an ad. There is no server, no account, and no internet connection required. Every sound is synthesized on the phone. Nothing is downloaded, and lullabies use public-domain melodies only.</p>
