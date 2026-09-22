@@ -3,197 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AsleepRemote: Bluetooth PC Remote | TJDAX</title>
+<title>TJDAX — Android App Development</title>
 <meta name="google-site-verification" content="NvaYoVgkOAkSx48EUoHMLIoiCxIr2MjkZk0bEOZVJHc" />
-<meta name="description" content="AsleepRemote turns your Android phone into a Bluetooth touchpad, keyboard, and air mouse for your PC. Nothing to install on the computer. By TJDAX.">
+<meta name="description" content="TJDAX is an Android app development company. We design, build, and publish Android apps on Google Play.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://tjdax.github.io/site/">
+<link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TJDAX">
 <meta property="og:url" content="https://tjdax.github.io/site/">
-<meta property="og:title" content="AsleepRemote: Bluetooth PC Remote">
-<meta property="og:description" content="Turn your phone into a Bluetooth touchpad, keyboard, and air mouse for your PC. No software to install on the computer.">
-<meta property="og:image" content="https://tjdax.github.io/site/images/asleepremote/touchpad.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tjdax.github.io/site/images/asleepremote/touchpad.png">
-<meta name="twitter:title" content="AsleepRemote: Bluetooth PC Remote">
-<meta name="twitter:description" content="Turn your phone into a Bluetooth touchpad, keyboard, and air mouse for your PC. No software to install on the computer.">
+<meta property="og:title" content="TJDAX — Android App Development">
+<meta property="og:description" content="TJDAX designs, builds, and publishes Android apps on Google Play.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TJDAX — Android App Development">
+<meta name="twitter:description" content="TJDAX designs, builds, and publishes Android apps on Google Play.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "TJDAX",
-      "url": "https://tjdax.github.io/site/",
-      "email": "tjdaxmail@gmail.com"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "AsleepRemote",
-      "alternateName": "AsleepRemote: PC Remote",
-      "operatingSystem": "Android",
-      "applicationCategory": "UtilitiesApplication",
-      "description": "Bluetooth touchpad, keyboard, and air mouse for controlling a PC from an Android phone. Nothing to install on the computer.",
-      "url": "https://tjdax.github.io/site/#asleepremote",
-      "installUrl": "https://play.google.com/store/apps/details?id=com.tjdax.asleepremote",
-      "downloadUrl": "https://play.google.com/store/apps/details?id=com.tjdax.asleepremote",
-      "screenshot": [
-        "https://tjdax.github.io/site/images/asleepremote/touchpad.png",
-        "https://tjdax.github.io/site/images/asleepremote/keyboard.png",
-        "https://tjdax.github.io/site/images/asleepremote/air-mouse.png",
-        "https://tjdax.github.io/site/images/asleepremote/shortcuts.png"
-      ],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "TJDAX",
-        "url": "https://tjdax.github.io/site/"
-      }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Dad's Heart",
-      "alternateName": "Dad's Heart - Baby Sleep Sounds",
-      "operatingSystem": "Android",
-      "applicationCategory": "LifestyleApplication",
-      "description": "Offline baby sleep sound mixer. Blend white noise, a public-domain lullaby, and a short recording of dad's voice. Volume starts at zero, and playback is never interrupted by an ad.",
-      "url": "https://tjdax.github.io/site/dads-heart/",
-      "installUrl": "https://play.google.com/store/apps/details?id=com.tjdax.daddynight",
-      "downloadUrl": "https://play.google.com/store/apps/details?id=com.tjdax.daddynight",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "TJDAX",
-        "url": "https://tjdax.github.io/site/"
-      }
-    }
-  ]
+  "@type": "Organization",
+  "name": "TJDAX",
+  "url": "https://tjdax.github.io/site/",
+  "email": "tjdaxmail@gmail.com"
 }
 </script>
-<style>
-  :root{
-    --bg:#070a12;
-    --fg:#e8ecf5;
-    --muted:#8b95ad;
-    --line:rgba(255,255,255,.09);
-    --accent:#5b8cff;
-    --accent-2:#22d3ee;
-    --panel:rgba(255,255,255,.035);
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--fg);
-    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-
-  /* ---------- background layers ---------- */
-  #fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
-  .glow{
-    position:fixed;z-index:1;pointer-events:none;
-    width:900px;height:900px;left:0;top:0;margin:-450px 0 0 -450px;
-    background:radial-gradient(circle closest-side,
-      rgba(91,140,255,.16), rgba(34,211,238,.07) 45%, transparent 70%);
-    transform:translate3d(50vw,50vh,0);
-    transition:transform .28s cubic-bezier(.22,.61,.36,1);
-    will-change:transform;
-  }
-  .grid{
-    position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:
-      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
-    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
-  }
-  .vignette{
-    position:fixed;inset:0;z-index:1;pointer-events:none;
-    background:radial-gradient(ellipse at 50% 0%,transparent 40%,rgba(7,10,18,.85) 100%);
-  }
-
-  /* ---------- content ---------- */
-  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
-  .page{position:relative;z-index:2}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{color:var(--accent-2)}
-
-  header{border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-  .logo{
-    font-weight:700;letter-spacing:.22em;font-size:18px;color:var(--fg);
-    background:linear-gradient(90deg,#fff,#9fc0ff);-webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
-  }
-  .nav nav a{margin-left:26px;font-size:14px;color:var(--muted)}
-  .nav nav a:hover{color:var(--fg)}
-
-  .hero{padding:120px 0 96px}
-  .kicker{
-    display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--accent-2);border:1px solid var(--line);border-radius:999px;
-    padding:6px 14px;margin-bottom:26px;background:var(--panel);
-  }
-  .hero h1{
-    margin:0 0 22px;font-size:clamp(30px,5.4vw,48px);line-height:1.18;font-weight:700;
-    letter-spacing:-.02em;
-    background:linear-gradient(180deg,#ffffff 0%,#b9c6e4 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .hero p{margin:0;font-size:18px;color:var(--muted);max-width:620px}
-  .btn{
-    display:inline-block;margin-top:28px;padding:12px 20px;border-radius:999px;
-    background:#5b8cff;color:#071018;font-weight:700;font-size:15px;
-  }
-  .btn:hover{color:#071018;background:#22d3ee}
-  .fine{font-size:14px;color:var(--muted)}
-
-  section{padding:64px 0;border-top:1px solid var(--line)}
-  h2{margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
-  section p{margin:0 0 16px;max-width:680px;color:#c3cbdd}
-  section p:last-child{margin-bottom:0}
-
-  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 8px}
-  .shot{margin:0;background:#f7f5fb;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .shot img{display:block;width:100%;height:auto}
-  .shot figcaption{padding:8px 10px 12px;font-size:13px;line-height:1.35;color:#5c6578;text-align:center}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:26px}
-  .card{
-    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;
-    transition:transform .25s ease,border-color .25s ease,background .25s ease;
-  }
-  .card:hover{transform:translateY(-4px);border-color:rgba(91,140,255,.45);background:rgba(91,140,255,.06)}
-  .card h3{margin:0 0 10px;font-size:16px;font-weight:650;color:var(--fg)}
-  .card p{margin:0;font-size:14.5px;color:var(--muted)}
-
-  .contact a{font-size:19px;font-weight:600}
-
-  footer{border-top:1px solid var(--line);padding:36px 0 48px;margin-top:16px}
-  .foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
-        font-size:13px;color:var(--muted)}
-
-  @media (max-width:640px){
-    .hero{padding:84px 0 64px}
-    .nav nav a{margin-left:16px}
-    .shots{grid-template-columns:repeat(2,1fr)}
-    .glow{width:560px;height:560px;margin:-280px 0 0 -280px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .glow{transition:none}
-    .card{transition:none}
-  }
-</style>
 </head>
 <body>
 
@@ -205,12 +37,10 @@
 <div class="page">
 <header>
   <div class="wrap nav">
-    <span class="logo">TJDAX</span>
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
     <nav>
-      <a href="#asleepremote">AsleepRemote</a>
-      <a href="dads-heart/">Dad's Heart</a>
+      <a href="apps/">Apps</a>
       <a href="#about">About</a>
-      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -218,84 +48,13 @@
 
 <main>
   <div class="wrap hero">
-    <span class="kicker">Android app by TJDAX</span>
-    <h1>AsleepRemote</h1>
-    <p>Turn your phone into a Bluetooth touchpad, keyboard, and air mouse for your PC.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.tjdax.asleepremote">Get it on Google Play</a>
+    <span class="kicker">Android app development</span>
+    <h1>We build Android apps.</h1>
+    <p>TJDAX designs, develops, and publishes Android applications on Google Play.</p>
+    <a class="btn" href="apps/">See our apps</a>
   </div>
 
   <div class="wrap">
-    <section id="asleepremote">
-      <h2>The app</h2>
-      <p>AsleepRemote lets you control your PC from your phone, the way a TV remote controls a television. The phone connects over Bluetooth as a keyboard and mouse, so there is nothing to install on the PC. Pair it in your PC's Bluetooth settings and you can start.</p>
-      <div class="shots">
-        <figure class="shot">
-          <img src="images/asleepremote/touchpad.png" width="1342" height="2670" alt="AsleepRemote touchpad with left, middle, and right click buttons">
-          <figcaption>Touchpad</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/asleepremote/keyboard.png" width="1342" height="2670" alt="AsleepRemote keyboard for typing on a PC" loading="lazy">
-          <figcaption>Keyboard</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/asleepremote/air-mouse.png" width="1342" height="2670" alt="AsleepRemote air mouse controlled by moving the phone" loading="lazy">
-          <figcaption>Air mouse</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/asleepremote/shortcuts.png" width="1342" height="2670" alt="AsleepRemote custom keyboard shortcuts" loading="lazy">
-          <figcaption>Shortcuts</figcaption>
-        </figure>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <h3>Touchpad</h3>
-          <p>Move the cursor, tap to click, scroll with two fingers, and use left, right, and middle buttons.</p>
-        </div>
-        <div class="card">
-          <h3>Air mouse</h3>
-          <p>Point and move the cursor with your phone's motion sensors.</p>
-        </div>
-        <div class="card">
-          <h3>Keyboard</h3>
-          <p>Type on your PC with the keyboard on your phone.</p>
-        </div>
-        <div class="card">
-          <h3>Media remote</h3>
-          <p>Play, pause, skip, go back, mute, and change the volume.</p>
-        </div>
-        <div class="card">
-          <h3>Shortcuts</h3>
-          <p>Build your own Ctrl, Alt, Shift, and Windows key combinations.</p>
-        </div>
-        <div class="card">
-          <h3>Requirements</h3>
-          <p>Android 9 or higher with Bluetooth HID, and a Bluetooth PC. Windows is recommended.</p>
-        </div>
-      </div>
-      <p class="fine">Free to download. Remove ads with a one-time in-app purchase. <a href="https://tjdax.github.io/asleepremote/">Privacy policy</a></p>
-    </section>
-
-    <section id="dads-heart">
-      <h2>Dad's Heart</h2>
-      <p>Dad's Heart is an offline baby sleep sound mixer for parents. Record a few seconds of dad's voice, then blend it with white noise and a lullaby. An ad never interrupts playback. There is no account, and the app works without an internet connection.</p>
-      <div class="cards">
-        <div class="card">
-          <h3>Dad's voice</h3>
-          <p>Record five seconds of a "shhh", calm breathing, or a soft hum. A womb filter softens the high frequencies. The recording stays on the phone.</p>
-        </div>
-        <div class="card">
-          <h3>Three layers</h3>
-          <p>Play white noise, a music-box lullaby, and dad's voice at the same time, each with its own volume.</p>
-        </div>
-        <div class="card">
-          <h3>Quiet by default</h3>
-          <p>Volume always starts at zero, even when the phone media volume is at maximum. A sleep timer fades the mix out before it stops.</p>
-        </div>
-      </div>
-      <a class="btn" href="https://play.google.com/store/apps/details?id=com.tjdax.daddynight">Get Dad's Heart on Google Play</a>
-      <p class="fine">Full overview: <a href="dads-heart/">Dad's Heart baby sleep sounds</a>. <a href="https://tjdax.github.io/daddynight-privacy/">Privacy policy</a></p>
-    </section>
-
     <section id="about">
       <h2>About</h2>
       <p>TJDAX is an Android app development company. We design and build Android apps, release them on Google Play, and maintain them after launch.</p>
@@ -330,137 +89,11 @@
 <footer>
   <div class="wrap foot">
     <span>&copy; 2026 TJDAX</span>
+    <a href="apps/">Apps</a>
   </div>
 </footer>
 </div>
 
-<script>
-(function(){
-  var canvas = document.getElementById('fx');
-  var glow   = document.getElementById('glow');
-  var ctx    = canvas.getContext('2d');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  var nodes = [], LINK = 140, raf = null;
-  var mouse = { x: -9999, y: -9999, active: false };
-  var target = { x: 0, y: 0 }, eased = { x: 0, y: 0 };
-
-  function resize(){
-    w = window.innerWidth; h = window.innerHeight;
-    canvas.width  = Math.floor(w * dpr);
-    canvas.height = Math.floor(h * dpr);
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    build();
-  }
-
-  function build(){
-    var count = Math.min(110, Math.round(w * h / 15000));
-    nodes = [];
-    for (var i = 0; i < count; i++){
-      nodes.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - .5) * .28,
-        vy: (Math.random() - .5) * .28,
-        r: Math.random() * 1.4 + .6
-      });
-    }
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, w, h);
-
-    // ease the parallax offset toward the cursor
-    eased.x += (target.x - eased.x) * .06;
-    eased.y += (target.y - eased.y) * .06;
-
-    var i, j, a, b, dx, dy, d2, d;
-
-    for (i = 0; i < nodes.length; i++){
-      a = nodes[i];
-      if (!reduce){ a.x += a.vx; a.y += a.vy; }
-
-      if (a.x < -20) a.x = w + 20; else if (a.x > w + 20) a.x = -20;
-      if (a.y < -20) a.y = h + 20; else if (a.y > h + 20) a.y = -20;
-
-      // gentle push away from the pointer
-      if (mouse.active){
-        dx = a.x - mouse.x; dy = a.y - mouse.y; d2 = dx*dx + dy*dy;
-        if (d2 < 16000 && d2 > 1){
-          d = Math.sqrt(d2);
-          a.x += (dx / d) * (1 - d / 126) * 1.6;
-          a.y += (dy / d) * (1 - d / 126) * 1.6;
-        }
-      }
-    }
-
-    // links
-    for (i = 0; i < nodes.length; i++){
-      a = nodes[i];
-      var ax = a.x + eased.x, ay = a.y + eased.y;
-      for (j = i + 1; j < nodes.length; j++){
-        b = nodes[j];
-        dx = a.x - b.x; dy = a.y - b.y; d2 = dx*dx + dy*dy;
-        if (d2 < LINK * LINK){
-          d = Math.sqrt(d2);
-          var o = (1 - d / LINK) * .30;
-          ctx.strokeStyle = 'rgba(120,165,255,' + o.toFixed(3) + ')';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(ax, ay);
-          ctx.lineTo(b.x + eased.x, b.y + eased.y);
-          ctx.stroke();
-        }
-      }
-
-      // link to the pointer itself
-      if (mouse.active){
-        dx = a.x - mouse.x; dy = a.y - mouse.y; d = Math.sqrt(dx*dx + dy*dy);
-        if (d < 200){
-          ctx.strokeStyle = 'rgba(34,211,238,' + ((1 - d / 200) * .38).toFixed(3) + ')';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(ax, ay);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.stroke();
-        }
-      }
-
-      ctx.fillStyle = 'rgba(190,215,255,.7)';
-      ctx.beginPath();
-      ctx.arc(ax, ay, a.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    raf = requestAnimationFrame(draw);
-  }
-
-  function onMove(x, y){
-    mouse.x = x; mouse.y = y; mouse.active = true;
-    target.x = (x / w - .5) * -26;
-    target.y = (y / h - .5) * -26;
-    glow.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
-  }
-
-  window.addEventListener('resize', resize);
-  window.addEventListener('mousemove', function(e){ onMove(e.clientX, e.clientY); });
-  window.addEventListener('mouseleave', function(){ mouse.active = false; });
-  window.addEventListener('touchmove', function(e){
-    if (e.touches && e.touches[0]) onMove(e.touches[0].clientX, e.touches[0].clientY);
-  }, { passive: true });
-
-  document.addEventListener('visibilitychange', function(){
-    if (document.hidden){ cancelAnimationFrame(raf); raf = null; }
-    else if (!raf){ raf = requestAnimationFrame(draw); }
-  });
-
-  resize();
-  raf = requestAnimationFrame(draw);
-})();
-</script>
-
+<script src="assets/bg.js"></script>
 </body>
 </html>
