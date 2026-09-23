@@ -85,6 +85,7 @@ header{
   font-family:"Fredoka", "Nunito", sans-serif;font-weight:700;font-size:16px;text-decoration:none;
   transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
 }
+.hero .btn + .btn{margin-left:12px}
 .btn:hover{background:var(--pink);color:var(--ink);transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
 .fine{font-size:14px;color:var(--muted)}
 .crumb{margin:0 0 14px;font-size:15px;font-weight:700;color:var(--ink)}
@@ -212,6 +213,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.9em;
 
 button.btn{cursor:pointer;line-height:1.2}
 .btn.alt{background:#fff}
+.btn.alt:hover{background:var(--pink)}
 .btn:disabled{opacity:.45;cursor:not-allowed;background:#fff;transform:none;box-shadow:var(--shadow)}
 .tool .btn{margin:0;padding:8px 14px;font-size:15px}
 .tool-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
