@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Online Sudoku — Easy, Medium, Hard | TJDAX</title>
+<meta name="description" content="Play free Sudoku in your browser. New puzzles every game with a unique solution, three difficulty levels, notes, hints, undo, and auto-save. No sign-up, no download.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/sudoku/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#fed90f">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/meadow.js" defer></script>
+<script src="sudoku.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/sudoku/">
+<meta property="og:title" content="Free Online Sudoku | TJDAX">
+<meta property="og:description" content="Free Sudoku in your browser with three difficulty levels, notes, hints, and auto-save.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Online Sudoku | TJDAX">
+<meta name="twitter:description" content="Free Sudoku in your browser with three difficulty levels, notes, hints, and auto-save.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Sudoku",
+  "url": "https://tjdax.github.io/site/webapps/sudoku/",
+  "description": "Free Sudoku puzzles in your browser with three difficulty levels, notes, hints, undo, and auto-save.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Games</p>
+    <h1>Sudoku</h1>
+    <p>Fill every row, column, and 3&times;3 box with the digits 1 to 9. Every puzzle has exactly one solution.</p>
+  </div>
+
+  <div class="wrap">
+    <section class="tool">
+      <div class="sudoku-layout">
+        <div>
+          <div class="sudoku-bar">
+            <span id="sd-level">Medium</span>
+            <span>Mistakes: <b id="sd-mistakes">0</b></span>
+            <span id="sd-time" aria-label="Time">00:00</span>
+          </div>
+          <div class="sudoku" id="sd-board" role="group" aria-label="Sudoku board"></div>
+        </div>
+        <div class="sudoku-side">
+          <div class="numpad" id="sd-pad" aria-label="Numbers"></div>
+          <div class="tool-actions">
+            <button class="btn alt" type="button" id="sd-undo">Undo</button>
+            <button class="btn alt" type="button" id="sd-erase">Erase</button>
+            <button class="btn alt" type="button" id="sd-notes" aria-pressed="false">Notes: off</button>
+            <button class="btn alt" type="button" id="sd-hint">Hint</button>
+          </div>
+          <div class="tool-row">
+            <label class="field">Difficulty
+              <select id="sd-diff">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </label>
+            <button class="btn" type="button" id="sd-new">New game</button>
+            <button class="btn alt" type="button" id="sd-restart">Restart</button>
+          </div>
+          <label class="check"><input type="checkbox" id="sd-show" checked> Highlight mistakes</label>
+          <p class="alert ok" id="sd-msg" role="status" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How to play</h2>
+      <p>Pick a cell, then tap a number. Given numbers can't be changed. A red number doesn't match the solution. The small number on each key shows how many of that digit are still missing.</p>
+      <p>Turn on <b>Notes</b> to pencil in candidates. When you place a correct number, matching notes in the same row, column, and box are cleared for you. Your game is saved in this browser, so you can close the tab and come back later.</p>
+      <p class="fine">Keyboard: arrow keys to move, 1&ndash;9 to fill, Backspace or 0 to erase, N for notes, Ctrl+Z to undo.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>

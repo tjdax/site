@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSON Formatter &amp; Beautifier — Validate and Pretty Print JSON | TJDAX</title>
+<meta name="description" content="Free online JSON formatter. Paste JSON to beautify, validate, minify, or sort keys. Errors show the exact line and column. Runs entirely in your browser; nothing is uploaded.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/json-formatter/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#fed90f">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/meadow.js" defer></script>
+<script src="json.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/json-formatter/">
+<meta property="og:title" content="JSON Formatter &amp; Beautifier | TJDAX">
+<meta property="og:description" content="Beautify, validate, and minify JSON in your browser. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSON Formatter &amp; Beautifier | TJDAX">
+<meta name="twitter:description" content="Beautify, validate, and minify JSON in your browser. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "JSON Formatter & Beautifier",
+  "url": "https://tjdax.github.io/site/webapps/json-formatter/",
+  "description": "Beautify, validate, minify, and sort JSON in the browser, with line and column error messages.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Developer tools</p>
+    <h1>JSON Formatter</h1>
+    <p>Paste JSON to make it readable. Validate it, minify it, or sort its keys. Your data never leaves this page.</p>
+  </div>
+
+  <div class="wrap">
+    <section class="tool">
+      <label class="field" for="js-in">Your JSON</label>
+      <textarea class="code" id="js-in" spellcheck="false" autocomplete="off" placeholder='Paste JSON here, for example {"name":"TJDAX","free":true}'></textarea>
+      <div class="tool-row">
+        <label class="field">Indent
+          <select id="js-indent">
+            <option value="2">2 spaces</option>
+            <option value="4">4 spaces</option>
+            <option value="tab">Tab</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="js-sort"> Sort keys A&ndash;Z</label>
+      </div>
+      <div class="tool-actions">
+        <button class="btn" type="button" id="js-format">Beautify</button>
+        <button class="btn alt" type="button" id="js-minify">Minify</button>
+        <button class="btn alt" type="button" id="js-sample">Try a sample</button>
+        <button class="btn alt" type="button" id="js-clear">Clear</button>
+      </div>
+      <p class="alert" id="js-status" role="status" hidden></p>
+      <div class="out-head">
+        <span class="field">Result</span>
+        <div class="tool-actions">
+          <button class="btn alt" type="button" id="js-copy" disabled>Copy</button>
+          <button class="btn alt" type="button" id="js-download" disabled>Download</button>
+        </div>
+      </div>
+      <pre class="code-out" id="js-out" tabindex="0" aria-label="Formatted JSON"></pre>
+    </section>
+
+    <section>
+      <h2>About this formatter</h2>
+      <p>Pasting formats your JSON right away. Press <b>Ctrl+Enter</b> in the input to format again. If the JSON is broken, you get the line and column of the problem and the cursor jumps to it.</p>
+      <p>Numbers are kept exactly as written, so large IDs like <code>12345678901234567890</code> don't get rounded. Key order is kept unless you choose to sort keys.</p>
+      <p class="fine">Everything runs in your browser with JavaScript. No data is sent to a server.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>

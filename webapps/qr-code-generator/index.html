@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free QR Code Generator — Text, URL, Wi-Fi, Email | TJDAX</title>
+<meta name="description" content="Make a QR code for free from text, a link, Wi-Fi login, email, or phone number. Pick colors and size, then download PNG or SVG. Generated in your browser; nothing is uploaded.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/qr-code-generator/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#fed90f">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/meadow.js" defer></script>
+<script src="qrcode.js" defer></script>
+<script src="qr.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/qr-code-generator/">
+<meta property="og:title" content="Free QR Code Generator | TJDAX">
+<meta property="og:description" content="QR codes for text, links, Wi-Fi, email, and phone numbers. Download PNG or SVG. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free QR Code Generator | TJDAX">
+<meta name="twitter:description" content="QR codes for text, links, Wi-Fi, email, and phone numbers. Download PNG or SVG. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR Code Generator",
+  "url": "https://tjdax.github.io/site/webapps/qr-code-generator/",
+  "description": "Create QR codes from text, links, Wi-Fi details, email, or phone numbers, and download them as PNG or SVG.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Utilities</p>
+    <h1>QR Code Generator</h1>
+    <p>Type your data and the QR code appears instantly. Download it as PNG or SVG. It's made on your device and never uploaded.</p>
+  </div>
+
+  <div class="wrap">
+    <section class="tool">
+      <div class="qr-layout">
+        <div class="qr-form">
+          <label class="field">What's in the code?
+            <select id="qr-type">
+              <option value="text">Text</option>
+              <option value="url">Website link</option>
+              <option value="wifi">Wi-Fi network</option>
+              <option value="email">Email</option>
+              <option value="phone">Phone number</option>
+            </select>
+          </label>
+
+          <div data-type="text">
+            <label class="field">Text
+              <textarea id="qr-text" rows="4" placeholder="Type anything">https://tjdax.github.io/site/</textarea>
+            </label>
+          </div>
+          <div data-type="url" hidden>
+            <label class="field">Link
+              <input id="qr-url" type="url" inputmode="url" placeholder="example.com">
+            </label>
+          </div>
+          <div data-type="wifi" hidden>
+            <label class="field">Network name (SSID)
+              <input id="qr-ssid" type="text" autocomplete="off">
+            </label>
+            <label class="field">Security
+              <select id="qr-sec">
+                <option value="WPA">WPA / WPA2 / WPA3</option>
+                <option value="WEP">WEP</option>
+                <option value="nopass">None (open network)</option>
+              </select>
+            </label>
+            <label class="field" id="qr-pass-wrap">Password
+              <input id="qr-pass" type="text" autocomplete="off">
+            </label>
+            <label class="check"><input type="checkbox" id="qr-hidden"> Hidden network</label>
+          </div>
+          <div data-type="email" hidden>
+            <label class="field">To
+              <input id="qr-to" type="email" placeholder="name@example.com">
+            </label>
+            <label class="field">Subject
+              <input id="qr-subject" type="text">
+            </label>
+            <label class="field">Message
+              <textarea id="qr-body" rows="3"></textarea>
+            </label>
+          </div>
+          <div data-type="phone" hidden>
+            <label class="field">Phone number
+              <input id="qr-phone" type="tel" placeholder="+1 555 123 4567">
+            </label>
+          </div>
+
+          <div class="tool-row">
+            <label class="field">Code color <input id="qr-fg" type="color" value="#1b1b1b"></label>
+            <label class="field">Background <input id="qr-bg" type="color" value="#ffffff"></label>
+            <label class="field">Error correction
+              <select id="qr-ec">
+                <option value="L">Low (7%)</option>
+                <option value="M" selected>Medium (15%)</option>
+                <option value="Q">Quartile (25%)</option>
+                <option value="H">High (30%)</option>
+              </select>
+            </label>
+          </div>
+          <div class="tool-row">
+            <label class="field grow">Size <span id="qr-size-out" class="fine">512 px</span>
+              <input id="qr-size" type="range" min="128" max="2048" step="32" value="512">
+            </label>
+            <label class="field">Quiet zone
+              <select id="qr-margin">
+                <option value="0">None</option>
+                <option value="2">2 modules</option>
+                <option value="4" selected>4 modules</option>
+                <option value="6">6 modules</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="qr-preview">
+          <div class="qr-frame">
+            <canvas id="qr-canvas" role="img" aria-label="QR code"></canvas>
+            <p id="qr-empty" class="fine" hidden>Your QR code will appear here.</p>
+          </div>
+          <p id="qr-info" class="fine"></p>
+          <div class="tool-actions">
+            <button class="btn" type="button" id="qr-png" disabled>Download PNG</button>
+            <button class="btn alt" type="button" id="qr-svg" disabled>Download SVG</button>
+            <button class="btn alt" type="button" id="qr-copy" hidden disabled>Copy image</button>
+          </div>
+          <p class="alert" id="qr-status" role="status" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tips for a code that scans</h2>
+      <p>Keep a dark code on a light background, and leave the quiet zone at 4 modules. Higher error correction lets the code survive scratches or a logo on top, but the code gets denser. For printing, download the SVG; it stays sharp at any size.</p>
+      <p>Wi-Fi codes let a phone join your network without typing the password. Email and phone codes open a new message or call.</p>
+      <p class="fine">QR codes are generated in your browser with the open-source <a href="https://github.com/kazuhikoarase/qrcode-generator">qrcode-generator</a> library (MIT). QR Code is a registered trademark of DENSO WAVE INCORPORATED.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>
