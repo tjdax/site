@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TJDAX — Android App Development</title>
+<title>TJDAX — Android App Developer | AsleepRemote, Dad's Heart</title>
 <meta name="google-site-verification" content="NvaYoVgkOAkSx48EUoHMLIoiCxIr2MjkZk0bEOZVJHc" />
-<meta name="description" content="TJDAX is an Android app development company. We design, build, and publish Android apps on Google Play.">
+<meta name="description" content="TJDAX is an Android app developer on Google Play. Apps include AsleepRemote, a Bluetooth touchpad and keyboard for your PC, and Dad's Heart, offline baby sleep sounds.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://tjdax.github.io/site/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#fed90f">
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TJDAX">
@@ -23,10 +24,21 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "TJDAX",
-  "url": "https://tjdax.github.io/site/",
-  "email": "tjdaxmail@gmail.com"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tjdax.github.io/site/#org",
+      "name": "TJDAX",
+      "url": "https://tjdax.github.io/site/",
+      "email": "tjdaxmail@gmail.com"
+    },
+    {
+      "@type": "WebSite",
+      "name": "TJDAX",
+      "url": "https://tjdax.github.io/site/",
+      "publisher": { "@id": "https://tjdax.github.io/site/#org" }
+    }
+  ]
 }
 </script>
 </head>
@@ -56,6 +68,20 @@
     <section id="about">
       <h2>About</h2>
       <p>TJDAX is an Android app development company. We design and build Android apps, release them on Google Play, and maintain them after launch.</p>
+    </section>
+
+    <section id="apps">
+      <h2>Our apps</h2>
+      <div class="cards">
+        <div class="card">
+          <h3><a href="apps/asleepremote/">AsleepRemote</a></h3>
+          <p>A Bluetooth touchpad, keyboard, and air mouse for your PC. Nothing to install on the computer.</p>
+        </div>
+        <div class="card">
+          <h3><a href="apps/dads-heart/">Dad's Heart</a></h3>
+          <p>Baby sleep sounds in dad's own voice. Works offline, and playback is never interrupted by an ad.</p>
+        </div>
+      </div>
     </section>
 
     <section id="services">
