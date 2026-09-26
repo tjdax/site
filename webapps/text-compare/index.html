@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text Compare — See What Changed | TJDAX</title>
+<meta name="description" content="Compare two texts and see added and removed lines. Runs in your browser. Nothing is uploaded.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/text-compare/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<script src="diff.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/text-compare/">
+<meta property="og:title" content="Text Compare | TJDAX">
+<meta property="og:description" content="See which lines were added or removed. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Text Compare | TJDAX">
+<meta name="twitter:description" content="See which lines were added or removed. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text Compare",
+  "url": "https://tjdax.github.io/site/webapps/text-compare/",
+  "description": "Compare two texts line by line and highlight additions and removals in the browser.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Developer tools</p>
+    <h1>Text Compare</h1>
+    <p>Paste two versions and see which lines were added or removed. The text never leaves this page.</p>
+  </div>
+  <div class="wrap">
+    <section class="tool">
+      <div class="compare-grid">
+        <label class="field">Original
+          <textarea class="code" id="df-a" spellcheck="false" autocomplete="off" placeholder="First version"></textarea>
+        </label>
+        <label class="field">Changed
+          <textarea class="code" id="df-b" spellcheck="false" autocomplete="off" placeholder="Second version"></textarea>
+        </label>
+      </div>
+      <div class="tool-actions">
+        <button class="btn" type="button" id="df-go">Compare</button>
+        <button class="btn alt" type="button" id="df-sample">Try a sample</button>
+        <label class="check"><input type="checkbox" id="df-trim"> Ignore spaces at the end of a line</label>
+      </div>
+      <p class="fine" id="df-summary"></p>
+      <p class="alert" id="df-status" role="status" hidden></p>
+      <div class="diff" id="df-out" aria-live="polite"></div>
+    </section>
+    <section>
+      <h2>How to read it</h2>
+      <p>A green line was added in the changed text. A red line was removed from the original. Lines that match stay plain. Comparison is by whole line, and it updates as you type.</p>
+      <p class="fine">Nothing is sent to a server. Very long texts are compared using the first 800 lines of each side.</p>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>

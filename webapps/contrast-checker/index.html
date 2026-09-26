@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrast Checker — WCAG Text Contrast | TJDAX</title>
+<meta name="description" content="Check the contrast ratio of two colors and see if normal and large text pass WCAG AA and AAA. Runs in your browser.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/contrast-checker/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<script src="contrast.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/contrast-checker/">
+<meta property="og:title" content="Contrast Checker | TJDAX">
+<meta property="og:description" content="WCAG contrast for normal and large text. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contrast Checker | TJDAX">
+<meta name="twitter:description" content="WCAG contrast for normal and large text. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Contrast Checker",
+  "url": "https://tjdax.github.io/site/webapps/contrast-checker/",
+  "description": "Check WCAG contrast ratios for a text color on a background color, with a live preview.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Utilities</p>
+    <h1>Contrast Checker</h1>
+    <p>Pick a text color and a background color. The ratio updates as you change them, along with a preview of the words.</p>
+  </div>
+  <div class="wrap">
+    <section class="tool">
+      <div class="tool-row">
+        <label class="field">Text
+          <input type="color" id="ct-fg" value="#1d1d1f">
+        </label>
+        <label class="field">Text hex
+          <input type="text" id="ct-fghex" value="#1d1d1f" spellcheck="false" autocomplete="off">
+        </label>
+        <label class="field">Background
+          <input type="color" id="ct-bg" value="#ffffff">
+        </label>
+        <label class="field">Background hex
+          <input type="text" id="ct-bghex" value="#ffffff" spellcheck="false" autocomplete="off">
+        </label>
+      </div>
+      <div class="tool-actions ct-presets">
+        <button class="btn alt" type="button" id="ct-swap">Swap colors</button>
+        <button class="btn alt" type="button" data-fg="#000000" data-bg="#ffffff">Black on white</button>
+        <button class="btn alt" type="button" data-fg="#ffffff" data-bg="#000000">White on black</button>
+        <button class="btn alt" type="button" data-fg="#767676" data-bg="#ffffff">Gray on white</button>
+      </div>
+      <p class="timer-face contrast-ratio" id="ct-ratio">21.00 : 1</p>
+      <div class="contrast-preview" id="ct-preview">
+        <p>The quick brown fox jumps over the lazy dog.</p>
+        <p class="lg">Large text stays easy to read.</p>
+      </div>
+      <div class="grades">
+        <div class="grade" id="ct-aa"><b>AA normal</b><span></span><small>4.5 : 1</small></div>
+        <div class="grade" id="ct-aal"><b>AA large</b><span></span><small>3 : 1</small></div>
+        <div class="grade" id="ct-aaa"><b>AAA normal</b><span></span><small>7 : 1</small></div>
+        <div class="grade" id="ct-aaal"><b>AAA large</b><span></span><small>4.5 : 1</small></div>
+      </div>
+    </section>
+    <section>
+      <h2>The levels</h2>
+      <p>WCAG 2 uses these minimum ratios. Normal text is about 16px. Large text here is 24px and bold, which matches the large-text rule. AA is the usual target for body text. AAA is stricter.</p>
+      <p class="fine">The math uses the WCAG relative luminance formula. Nothing is uploaded.</p>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>

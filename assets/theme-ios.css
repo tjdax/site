@@ -199,6 +199,16 @@
 :root:not(.theme-cartoon) .tool-icon.i3{background:linear-gradient(160deg,#ff7a95,#ff2d55)}
 :root:not(.theme-cartoon) .tool-icon.i4{background:linear-gradient(160deg,#6ee39a,#28b24b)}
 :root:not(.theme-cartoon) .tool-icon.i5{background:linear-gradient(160deg,#d2b4ff,#7d4bdb)}
+:root:not(.theme-cartoon) .tool-icon.i6{background:linear-gradient(160deg,#ffb340,#ff7a00)}
+:root:not(.theme-cartoon) .tool-icon.i7{background:linear-gradient(160deg,#63e6be,#0ca678)}
+:root:not(.theme-cartoon) .tool-icon.i8{background:linear-gradient(160deg,#e599f7,#9c36b5)}
+:root:not(.theme-cartoon) .tool-icon.i9{background:linear-gradient(160deg,#91a7ff,#3b5bdb)}
+:root:not(.theme-cartoon) .tool-icon.i10{background:linear-gradient(160deg,#ffd43b,#f08c00)}
+:root:not(.theme-cartoon) .timer-face{font-family:var(--ios-font);font-weight:700;letter-spacing:-.04em}
+:root:not(.theme-cartoon) .pick .btn[aria-pressed="true"]{background:var(--ios-blue);color:#fff;box-shadow:none}
+:root:not(.theme-cartoon) .diff,:root:not(.theme-cartoon) .grade,:root:not(.theme-cartoon) .contrast-preview,:root:not(.theme-cartoon) #md-preview{border:0;border-radius:14px;box-shadow:inset 0 0 0 1px var(--ios-hair)}
+:root:not(.theme-cartoon) .diff-add,:root:not(.theme-cartoon) .grade.pass{background:rgba(52,199,89,.16)}
+:root:not(.theme-cartoon) .diff-del,:root:not(.theme-cartoon) .grade.fail{background:rgba(255,59,48,.12)}
 :root:not(.theme-cartoon) .tool h3{font-family:var(--ios-font);font-weight:600;letter-spacing:-.01em}
 :root:not(.theme-cartoon) .ie-stage{border:0;border-radius:18px;background:#ececf0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
 :root:not(.theme-cartoon) .ie-stage.over{outline-color:var(--ios-blue)}

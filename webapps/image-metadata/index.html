@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Metadata Remover — Strip EXIF and Location | TJDAX</title>
+<meta name="description" content="See the camera, date, and location stored in a JPEG or PNG, then download a copy with that metadata removed. The picture stays in your browser.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/image-metadata/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<script src="meta.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/image-metadata/">
+<meta property="og:title" content="Image Metadata Remover | TJDAX">
+<meta property="og:description" content="Remove EXIF, location, and comments from a JPEG or PNG. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image Metadata Remover | TJDAX">
+<meta name="twitter:description" content="Remove EXIF, location, and comments from a JPEG or PNG. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image Metadata Remover",
+  "url": "https://tjdax.github.io/site/webapps/image-metadata/",
+  "description": "Show and remove EXIF, GPS location, XMP, and comments from JPEG and PNG images in the browser.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Utilities</p>
+    <h1>Image Metadata</h1>
+    <p>Open a JPEG or PNG to see the camera, date, and location stored inside it, then save a copy with that information removed.</p>
+  </div>
+  <div class="wrap">
+    <section class="tool" id="md-app">
+      <div class="tool-actions">
+        <button class="btn" type="button" id="md-open">Open image</button>
+        <button class="btn alt" type="button" id="md-download" disabled>Download clean copy</button>
+      </div>
+      <input type="file" id="md-file" accept="image/jpeg,image/png,image/*" hidden>
+      <p class="fine" id="md-summary">Drop an image here, or use Open image. It stays on this device.</p>
+      <img id="md-preview" alt="" hidden>
+      <div class="meta-rows" id="md-rows"></div>
+      <p class="alert" id="md-status" role="status" hidden></p>
+    </section>
+    <section>
+      <h2>What gets removed</h2>
+      <p>JPEG files lose EXIF (camera, date, GPS), XMP, IPTC, and comments. PNG files lose text notes, EXIF, and the stored modification time. The compressed picture itself is kept, so the pixels are not recompressed.</p>
+      <p class="fine">Other formats are left unchanged. Nothing is uploaded.</p>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encode &amp; Hash — Base64, URL, SHA-256, UUID | TJDAX</title>
+<meta name="description" content="Encode and decode Base64 and URL text, make a SHA-256 hash, or generate a UUID. Runs in your browser. Nothing is uploaded.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/encode/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<script src="encode.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/encode/">
+<meta property="og:title" content="Encode &amp; Hash | TJDAX">
+<meta property="og:description" content="Base64, URL encode, SHA-256, and UUID. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Encode &amp; Hash | TJDAX">
+<meta name="twitter:description" content="Base64, URL encode, SHA-256, and UUID. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Encode & Hash",
+  "url": "https://tjdax.github.io/site/webapps/encode/",
+  "description": "Encode and decode Base64 and URL text, compute SHA-256, and generate UUIDs in the browser.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Developer tools</p>
+    <h1>Encode &amp; Hash</h1>
+    <p>Base64, URL encoding, SHA-256, and UUIDs. Your text stays in this browser.</p>
+  </div>
+  <div class="wrap">
+    <section class="tool">
+      <label class="field" for="en-in">Text</label>
+      <textarea class="code" id="en-in" spellcheck="false" autocomplete="off" placeholder="Type or paste text"></textarea>
+      <div class="tool-actions">
+        <button class="btn" type="button" id="en-b64e">Base64 encode</button>
+        <button class="btn alt" type="button" id="en-b64d">Base64 decode</button>
+        <button class="btn alt" type="button" id="en-urle">URL encode</button>
+        <button class="btn alt" type="button" id="en-urld">URL decode</button>
+        <button class="btn alt" type="button" id="en-sha">SHA-256</button>
+        <button class="btn alt" type="button" id="en-uuid">New UUID</button>
+        <button class="btn alt" type="button" id="en-sample">Try a sample</button>
+      </div>
+      <p class="alert" id="en-status" role="status" hidden></p>
+      <div class="out-head">
+        <span class="field">Result</span>
+        <div class="tool-actions">
+          <button class="btn alt" type="button" id="en-copy" disabled>Copy</button>
+        </div>
+      </div>
+      <pre class="code-out" id="en-out" tabindex="0" aria-label="Result"></pre>
+    </section>
+    <section>
+      <h2>What each one does</h2>
+      <p>Base64 turns any text, including letters outside English, into a safe ASCII string and back. URL encode escapes spaces and punctuation so they can sit inside a link. SHA-256 is a one-way fingerprint: the same text always gives the same hash, and the hash cannot be turned back into the text. New UUID makes a random id in the form <code>8-4-4-4-12</code>.</p>
+      <p class="fine">Nothing is sent to a server.</p>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>
