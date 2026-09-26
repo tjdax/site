@@ -160,6 +160,7 @@ footer{
   display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
   font-size:15px;font-weight:700;color:var(--ink);
 }
+.foot-links{display:flex;gap:16px}
 .foot a{color:var(--ink);text-decoration:none}
 .foot a:hover{color:var(--ink);text-decoration:underline}
 .theme-switch{display:inline-flex;align-items:center;gap:8px;margin-left:auto}
@@ -218,6 +219,7 @@ footer.has-meadow{margin-top:180px;padding-top:34px}
 .shelf-art .s2{left:58px;top:6px;background:#d6f0ff;transform:rotate(6deg)}
 .shelf-art .s3{left:108px;top:58px;background:#ffe0ec;transform:rotate(-4deg)}
 .shelf-art .s4{left:46px;top:84px;width:56px;height:56px;border-radius:16px;font-size:28px;background:#e3f6da;transform:rotate(12deg)}
+.shelf-art .s-code{font-size:18px}
 
 [hidden]{display:none!important}
 code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.9em;background:#fff3a6;padding:1px 5px;border-radius:6px}
@@ -336,6 +338,9 @@ a.tool-card > span:last-child > span{display:block;font-size:15px;color:var(--mu
 .tool-icon.i8{background:#f8d6ff}
 .tool-icon.i9{background:#d6e4ff}
 .tool-icon.i10{background:#ffe7c2}
+.tool-icon.i11{background:#d0f4f7}
+.tool-icon.i12{background:#ffd3d3}
+.tool-icon.sm{font-size:16px;letter-spacing:-.03em}
 
 .mt-keys{margin-top:14px}
 .mt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-top:16px}
