@@ -324,6 +324,43 @@ a.tool-card > span:last-child > span{display:block;font-size:15px;color:var(--mu
 .tool-icon.i1{background:var(--yellow)}
 .tool-icon.i2{background:#d6f0ff}
 .tool-icon.i3{background:#ffe0ec}
+.tool-icon.i4{background:#e3f6da}
+
+.mt-keys{margin-top:14px}
+.mt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-top:16px}
+.mt-swatch{
+  display:grid;align-content:start;gap:6px;padding:8px 8px 12px;
+  border:3px solid var(--ink);border-radius:14px;background:#fff;color:var(--ink);box-shadow:var(--shadow);
+  font:inherit;text-align:left;cursor:pointer;transition:transform .12s ease, box-shadow .12s ease;
+}
+.mt-swatch:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+.mt-swatch:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.mt-swatch i{display:block;aspect-ratio:16/10;margin-bottom:4px;border:3px solid var(--ink);border-radius:8px}
+.mt-swatch b{padding:0 4px;font-family:"Fredoka", "Nunito", sans-serif;font-size:16px;line-height:1.2}
+.mt-swatch span{padding:0 4px;font-size:13px;line-height:1.35;color:var(--muted)}
+body.mt-lock{overflow:hidden}
+.mt-screen{position:fixed;inset:0;z-index:100;background:#000;cursor:pointer;outline:0;-webkit-tap-highlight-color:transparent}
+.mt-screen.idle{cursor:none}
+.mt-fill{position:absolute;inset:0}
+.mt-steps{display:flex;height:100%}
+.mt-steps > div{flex:1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:18vh;font:600 13px/1 system-ui, sans-serif}
+.mt-hint{
+  position:absolute;left:50%;bottom:24px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:6px;max-width:calc(100vw - 24px);padding:6px 6px 6px 16px;
+  border-radius:999px;background:rgba(28,28,30,.72);color:#fff;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  font:500 14px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  transition:opacity .25s ease;cursor:default;
+}
+.mt-screen.idle .mt-hint{opacity:0;pointer-events:none}
+.mt-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:pre}
+.mt-hint button{
+  flex:none;width:34px;height:34px;padding:0;border:0;border-radius:50%;
+  background:rgba(255,255,255,.16);color:#fff;font:inherit;font-size:20px;line-height:1;cursor:pointer;
+}
+.mt-hint button:hover{background:rgba(255,255,255,.28)}
+.mt-hint button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.mt-hint .mt-exit{width:auto;padding:0 14px;border-radius:999px;font-size:14px}
 
 @media (max-width:760px){
   .sudoku-layout,.qr-layout{grid-template-columns:1fr}
@@ -350,7 +387,7 @@ a.tool-card > span:last-child > span{display:block;font-size:15px;color:var(--mu
   .shelf-art{order:-1;margin:0 auto;transform:scale(.85)}
 }
 @media (prefers-reduced-motion:reduce){
-  .btn,a.app,a.tool-card{transition:none}
-  .btn:hover,a.app:hover,a.tool-card:hover{transform:none}
+  .btn,a.app,a.tool-card,.mt-swatch{transition:none}
+  .btn:hover,a.app:hover,a.tool-card:hover,.mt-swatch:hover{transform:none}
   .sheep.running svg,.sheep.running .leg{animation:none}
 }

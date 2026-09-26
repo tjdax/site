@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monitor Color Test — Dead Pixel, Backlight Bleed &amp; Banding Test | TJDAX</title>
+<meta name="description" content="Free full-screen monitor test. Show solid colors, gradients, and black and white level steps to find dead pixels, stuck pixels, backlight bleed, and color banding. Runs in your browser.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/monitor-test/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<script src="monitor.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/monitor-test/">
+<meta property="og:title" content="Monitor Color Test | TJDAX">
+<meta property="og:description" content="Full-screen colors and gradients to check dead pixels, backlight bleed, and banding.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Monitor Color Test | TJDAX">
+<meta name="twitter:description" content="Full-screen colors and gradients to check dead pixels, backlight bleed, and banding.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Monitor Color Test",
+  "url": "https://tjdax.github.io/site/webapps/monitor-test/",
+  "description": "Full-screen solid colors, gradients, and black and white level steps for finding dead pixels, stuck pixels, backlight bleed, and color banding.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Utilities</p>
+    <h1>Monitor Color Test</h1>
+    <p>Fill your screen with solid colors, gradients, and gray steps to find dead pixels, stuck pixels, backlight bleed, and color banding.</p>
+  </div>
+
+  <div class="wrap">
+    <section class="tool">
+      <div class="tool-row">
+        <button class="btn" type="button" id="mt-start">Start full-screen test</button>
+        <label class="field">Custom color
+          <input type="color" id="mt-custom" value="#ff8800">
+        </label>
+      </div>
+      <p class="fine mt-keys">Or start from any pattern below. Use <b>&larr;</b> <b>&rarr;</b> or <b>Space</b> to switch and <b>Esc</b> to exit. On a touch screen, tap the right side to go on and the left side to go back.</p>
+      <div class="mt-grid" id="mt-grid"></div>
+    </section>
+
+    <section>
+      <h2>What to look for</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Dead pixels</h3>
+          <p>On white, look for tiny dots that stay black.</p>
+        </div>
+        <div class="card">
+          <h3>Stuck pixels</h3>
+          <p>On black, red, green, and blue, look for dots that stay lit in one color.</p>
+        </div>
+        <div class="card">
+          <h3>Backlight bleed</h3>
+          <p>On black in a dark room, look for bright patches along the edges and corners.</p>
+        </div>
+        <div class="card">
+          <h3>Uniformity</h3>
+          <p>On white and 50% gray, look for darker areas, tinted patches, or a smudged look.</p>
+        </div>
+        <div class="card">
+          <h3>Banding</h3>
+          <p>On the gradients, look for visible stripes instead of one smooth blend.</p>
+        </div>
+        <div class="card">
+          <h3>Black and white levels</h3>
+          <p>On the steps, most boxes should look different. If the darkest or brightest ones merge, adjust brightness and contrast.</p>
+        </div>
+      </div>
+      <p class="fine">Clean the screen first so dust isn't mistaken for a pixel. Everything runs in your browser; nothing is uploaded.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+
+<div class="mt-screen" id="mt-screen" tabindex="-1" role="dialog" aria-label="Full-screen color test" hidden>
+  <div class="mt-fill" id="mt-fill"></div>
+  <div class="mt-hint">
+    <span class="mt-label" id="mt-label" aria-live="polite"></span>
+    <button type="button" id="mt-prev" aria-label="Previous pattern">&lsaquo;</button>
+    <button type="button" id="mt-next" aria-label="Next pattern">&rsaquo;</button>
+    <button type="button" class="mt-exit" id="mt-exit">Exit</button>
+  </div>
+</div>
+
+</body>
+</html>

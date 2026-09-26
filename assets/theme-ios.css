@@ -197,6 +197,16 @@
 :root:not(.theme-cartoon) .tool-icon.i1{background:linear-gradient(160deg,#ffd426,#ff9500)}
 :root:not(.theme-cartoon) .tool-icon.i2{background:linear-gradient(160deg,#64d2ff,#007aff)}
 :root:not(.theme-cartoon) .tool-icon.i3{background:linear-gradient(160deg,#ff7a95,#ff2d55)}
+:root:not(.theme-cartoon) .tool-icon.i4{background:linear-gradient(160deg,#6ee39a,#28b24b)}
+
+:root:not(.theme-cartoon) .mt-grid{gap:12px}
+:root:not(.theme-cartoon) .mt-swatch{
+  padding:10px 10px 14px;border:0;border-radius:18px;background:var(--ios-fill);box-shadow:none;transition:background .15s ease;
+}
+:root:not(.theme-cartoon) .mt-swatch:hover{background:var(--ios-fill-hover);transform:none;box-shadow:none}
+:root:not(.theme-cartoon) .mt-swatch i{border:0;border-radius:12px;box-shadow:0 0 0 1px var(--ios-hair)}
+:root:not(.theme-cartoon) .mt-swatch b{font-family:var(--ios-font);font-size:15px;font-weight:600;letter-spacing:-.01em}
+:root:not(.theme-cartoon) .mt-swatch span{color:var(--muted)}
 
 @media (max-width:640px){
   :root:not(.theme-cartoon) .hero{padding:64px 20px 44px}
@@ -207,5 +217,5 @@
   :root:not(.theme-cartoon) .foot{justify-content:flex-start}
 }
 @media (prefers-reduced-motion:reduce){
-  :root:not(.theme-cartoon) :is(.btn,a.app,a.tool-card,.theme-switch button){transition:none}
+  :root:not(.theme-cartoon) :is(.btn,a.app,a.tool-card,.theme-switch button,.mt-swatch){transition:none}
 }
