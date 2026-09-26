@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Image Editor — Crop to Exact Pixels, Resize, Save | TJDAX</title>
-<meta name="description" content="Free browser image editor. Type a pixel size and a crop box of that exact size appears. Resize the resolution, set JPEG or WebP quality, and download. Nothing is uploaded.">
+<meta name="description" content="Free browser image editor. Crop to an exact pixel size, draw, add text, and save. Nothing is uploaded.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://tjdax.github.io/site/webapps/image-editor/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,17 +20,17 @@
 <meta property="og:site_name" content="TJDAX">
 <meta property="og:url" content="https://tjdax.github.io/site/webapps/image-editor/">
 <meta property="og:title" content="Image Editor — Crop, Resize, Save | TJDAX">
-<meta property="og:description" content="Crop to an exact pixel size, change the resolution, and save. Nothing is uploaded.">
+<meta property="og:description" content="Crop to an exact pixel size, draw, add text, and save. Nothing is uploaded.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Image Editor — Crop, Resize, Save | TJDAX">
-<meta name="twitter:description" content="Crop to an exact pixel size, change the resolution, and save. Nothing is uploaded.">
+<meta name="twitter:description" content="Crop to an exact pixel size, draw, add text, and save. Nothing is uploaded.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Image Editor",
   "url": "https://tjdax.github.io/site/webapps/image-editor/",
-  "description": "Crop an image to an exact pixel size, resize it, rotate or flip it, and save PNG, JPEG, or WebP in the browser.",
+  "description": "Crop an image to an exact pixel size, draw, add text, and save PNG, JPEG, or WebP in the browser.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "browserRequirements": "Requires JavaScript",
@@ -58,7 +58,7 @@
   <div class="wrap hero hero-tool">
     <p class="crumb"><a href="../">Web apps</a> / Utilities</p>
     <h1>Image Editor</h1>
-    <p>Crop to an exact pixel size, change the resolution, and save. The picture never leaves this browser.</p>
+    <p>Crop to an exact pixel size, draw, add text, and save. The picture never leaves this browser.</p>
   </div>
 
   <div class="wrap">
@@ -74,8 +74,9 @@
         <div>
           <div class="ie-stage" id="ie-stage">
             <p class="ie-empty" id="ie-empty">Drop an image here, or use Open image. Pasting works too.</p>
-            <div class="ie-frame" id="ie-frame" hidden>
+            <div class="ie-frame" id="ie-frame" data-tool="crop" hidden>
               <canvas id="ie-view"></canvas>
+              <canvas id="ie-overlay" class="ie-overlay" aria-hidden="true"></canvas>
               <div class="ie-crop" id="ie-crop" aria-label="Crop box">
                 <span id="ie-croplabel"></span>
                 <i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i>
@@ -92,8 +93,46 @@
         </div>
 
         <div class="ie-side">
-          <h3>Crop</h3>
-          <p class="fine">Type a width and height in pixels. A box of that exact size appears. Drag it, or set X and Y, to choose the area.</p>
+          <h3>Draw</h3>
+          <div class="tool-actions ie-tools" role="group" aria-label="Tools">
+            <button class="btn alt" type="button" data-tool="crop" aria-pressed="true" disabled>Crop</button>
+            <button class="btn alt" type="button" data-tool="brush" aria-pressed="false" disabled>Brush</button>
+            <button class="btn alt" type="button" data-tool="eraser" aria-pressed="false" disabled>Eraser</button>
+            <button class="btn alt" type="button" data-tool="line" aria-pressed="false" disabled>Line</button>
+            <button class="btn alt" type="button" data-tool="rect" aria-pressed="false" disabled>Rectangle</button>
+            <button class="btn alt" type="button" data-tool="ellipse" aria-pressed="false" disabled>Ellipse</button>
+            <button class="btn alt" type="button" data-tool="fill" aria-pressed="false" disabled>Fill</button>
+            <button class="btn alt" type="button" data-tool="text" aria-pressed="false" disabled>Text</button>
+          </div>
+          <div class="tool-row">
+            <label class="field">Color
+              <input type="color" id="ie-color" value="#1d1d1f" disabled>
+            </label>
+            <label class="field grow"><span id="ie-sizelabel">Size</span> <span id="ie-brushval">16</span>
+              <input type="range" id="ie-brush" min="1" max="160" value="16" disabled>
+            </label>
+          </div>
+          <div class="ie-swatches" id="ie-swatches" role="group" aria-label="Colors">
+            <button type="button" data-color="#1d1d1f" style="background:#1d1d1f" aria-label="Black" aria-pressed="true"></button>
+            <button type="button" data-color="#ffffff" style="background:#ffffff" aria-label="White" aria-pressed="false"></button>
+            <button type="button" data-color="#e03131" style="background:#e03131" aria-label="Red" aria-pressed="false"></button>
+            <button type="button" data-color="#f76707" style="background:#f76707" aria-label="Orange" aria-pressed="false"></button>
+            <button type="button" data-color="#fab005" style="background:#fab005" aria-label="Yellow" aria-pressed="false"></button>
+            <button type="button" data-color="#2f9e44" style="background:#2f9e44" aria-label="Green" aria-pressed="false"></button>
+            <button type="button" data-color="#1971c2" style="background:#1971c2" aria-label="Blue" aria-pressed="false"></button>
+            <button type="button" data-color="#9c36b5" style="background:#9c36b5" aria-label="Purple" aria-pressed="false"></button>
+          </div>
+          <label class="check" id="ie-fillshape" hidden><input type="checkbox" id="ie-filled"> Fill shape</label>
+          <label class="field" id="ie-textwrap" hidden>Text
+            <textarea id="ie-text" rows="2" placeholder="Type, then click the picture" disabled></textarea>
+          </label>
+          <div class="tool-actions">
+            <button class="btn alt" type="button" id="ie-undo" disabled>Undo</button>
+          </div>
+          <p class="fine" id="ie-hint" hidden></p>
+
+          <h3 class="sp">Crop</h3>
+          <p class="fine">Type a width and height in pixels. A box of that exact size appears. Drag anywhere on the picture to move it, or set X and Y.</p>
           <div class="tool-row">
             <label class="field">Width
               <input type="number" id="ie-w" min="1" step="1" inputmode="numeric" disabled>
@@ -129,7 +168,7 @@
 
     <section class="tool" id="ie-save">
       <h2>Save</h2>
-      <p>Download saves the selected box. Width and height are the file's resolution, and they start equal to the box, so an 800 &times; 600 box saved at 800 &times; 600 is exactly those pixels. Choose JPEG or WebP to use quality. PNG is lossless.</p>
+      <p>Download saves the selected box, including anything you drew or typed. Width and height are the file's resolution, and they start equal to the box, so an 800 &times; 600 box saved at 800 &times; 600 is exactly those pixels. Choose JPEG or WebP to use quality. PNG is lossless.</p>
       <div class="tool-row">
         <label class="field">Width
           <input type="number" id="ie-ow" min="1" step="1" inputmode="numeric" disabled>
@@ -164,7 +203,8 @@
 
     <section>
       <h2>How cropping works</h2>
-      <p>The box is measured in the image's own pixels, not screen pixels. Arrow keys nudge it by 1 pixel, and Shift plus an arrow key nudges by 10. Apply crop cuts the picture down so you can crop again. Reset brings the original back.</p>
+      <p>The box is measured in the image's own pixels, not screen pixels. Click the picture to place the box, or drag it. Arrow keys nudge it by 1 pixel, and Shift plus an arrow key nudges by 10. Apply crop cuts the picture down so you can crop again. Reset brings the original back.</p>
+      <p>Brush, line, rectangle, ellipse, fill, and text paint on the picture. Pick a color and a size. Text size uses the same size control. Eraser clears pixels to transparent. Undo steps back, and Ctrl+Z does the same.</p>
       <p>Quality is the JPEG or WebP compression. A lower number makes a smaller file. JPEG has no transparency, so empty pixels are filled with the background color. Rotate and flip apply to the whole image, and the box keeps covering the same pixels.</p>
       <p class="fine">Everything runs in your browser. Nothing is uploaded.</p>
     </section>

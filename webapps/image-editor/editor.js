@@ -8,6 +8,7 @@
   var empty = $("ie-empty");
   var frame = $("ie-frame");
   var view = $("ie-view");
+  var overlay = $("ie-overlay");
   var cropEl = $("ie-crop");
   var cropLabel = $("ie-croplabel");
   var info = $("ie-info");
@@ -29,17 +30,26 @@
   var elQVal = $("ie-qval");
   var elMatte = $("ie-matte");
   var matteField = $("ie-matte-field");
+  var elColor = $("ie-color");
+  var elBrush = $("ie-brush");
+  var elBrushVal = $("ie-brushval");
+  var elText = $("ie-text");
+  var elFilled = $("ie-filled");
+  var toolButtons = Array.prototype.slice.call(document.querySelectorAll(".ie-tools [data-tool]"));
 
   var toggles = [
     $("ie-reset"), elW, elH, elX, elY, elRatio, $("ie-apply"),
     $("ie-ccw"), $("ie-cw"), $("ie-fliph"), $("ie-flipv"),
     elOw, elOh, elOLock, $("ie-match"), elFormat, elQ, elMatte, $("ie-download"),
-    $("ie-fit"), $("ie-z1"), $("ie-z2")
-  ];
+    $("ie-fit"), $("ie-z1"), $("ie-z2"),
+    elColor, elBrush, elText, elFilled
+  ].concat(toolButtons);
   var zoomButtons = [$("ie-fit"), $("ie-z1"), $("ie-z2")];
 
-  var state = { w: 0, h: 0, crop: { x: 0, y: 0, w: 0, h: 0 }, ratio: 1, name: "image", zoom: "fit" };
+  var state = { w: 0, h: 0, crop: { x: 0, y: 0, w: 0, h: 0 }, ratio: 1, name: "image", zoom: "fit", tool: "crop" };
   var original = null;
+  var history = [];
+  var drag = null;
   var outputCustom = false;
   var syncing = false;
   var estTimer = 0;
@@ -96,9 +106,97 @@
     note.textContent = text || "";
   }
 
+  function setHint(text) {
+    var hint = $("ie-hint");
+    hint.hidden = !text;
+    hint.textContent = text || "";
+  }
+
   function enable(on) {
     for (var i = 0; i < toggles.length; i++) toggles[i].disabled = !on;
+    if (!on) $("ie-undo").disabled = true;
+    else syncUndo();
     syncFormat();
+  }
+
+  function syncUndo() {
+    $("ie-undo").disabled = !history.length;
+  }
+
+  function historyCap() {
+    var pixels = state.w * state.h;
+    if (pixels > 6000000) return 3;
+    if (pixels > 2000000) return 5;
+    return 8;
+  }
+
+  function snapshot() {
+    if (!state.w) return;
+    try {
+      history.push({
+        data: view.getContext("2d").getImageData(0, 0, state.w, state.h),
+        crop: { x: state.crop.x, y: state.crop.y, w: state.crop.w, h: state.crop.h }
+      });
+      var cap = historyCap();
+      while (history.length > cap) history.shift();
+      syncUndo();
+    } catch (e) {}
+  }
+
+  function undo() {
+    var item = history.pop();
+    syncUndo();
+    if (!item) return;
+    view.width = item.data.width;
+    view.height = item.data.height;
+    view.getContext("2d").putImageData(item.data, 0, 0);
+    state.w = item.data.width;
+    state.h = item.data.height;
+    setCrop(item.crop.x, item.crop.y, item.crop.w, item.crop.h);
+    syncOverlay();
+    layout();
+    refreshSelection(true);
+    showStatus("", "");
+  }
+
+  function syncOverlay() {
+    if (!state.w) return;
+    if (overlay.width !== state.w) overlay.width = state.w;
+    if (overlay.height !== state.h) overlay.height = state.h;
+  }
+
+  function brushSize() {
+    return clamp(intOrNull(elBrush.value) || 1, 1, 160);
+  }
+
+  function syncSwatches() {
+    var cur = String(elColor.value || "").toLowerCase();
+    var buttons = document.querySelectorAll("#ie-swatches button");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("aria-pressed", String(buttons[i].getAttribute("data-color").toLowerCase() === cur));
+    }
+  }
+
+  function setTool(name) {
+    state.tool = name;
+    for (var i = 0; i < toolButtons.length; i++) {
+      toolButtons[i].setAttribute("aria-pressed", String(toolButtons[i].getAttribute("data-tool") === name));
+    }
+    frame.setAttribute("data-tool", name);
+    cropEl.classList.toggle("idle", name !== "crop");
+    $("ie-textwrap").hidden = name !== "text";
+    $("ie-fillshape").hidden = name !== "rect" && name !== "ellipse";
+    $("ie-sizelabel").textContent = name === "text" ? "Text size" : "Size";
+    if (name === "text" && brushSize() < 18) {
+      elBrush.value = 32;
+      elBrushVal.textContent = "32";
+    }
+    if (!state.w) return;
+    if (name === "crop") setHint("Drag anywhere on the picture to move the box. Drag a handle to resize it.");
+    else if (name === "text") setHint("Type the words, then click the picture to place them.");
+    else if (name === "fill") setHint("Click a color to replace that area.");
+    else if (name === "eraser") setHint("Drag to erase to transparent.");
+    else setHint("Drag on the picture to draw.");
   }
 
   function syncFormat() {
@@ -194,6 +292,7 @@
     syncCropInputs();
     if (!outputCustom) syncOutput();
     layout();
+    syncOverlay();
     placeCrop();
     updateInfo();
     syncFormat();
@@ -306,12 +405,14 @@
       state.name = stemOf(file.name);
       outputCustom = false;
       state.zoom = "fit";
+      history = [];
+      syncUndo();
       stage.classList.add("has-image");
       empty.hidden = true;
       frame.hidden = false;
       enable(true);
       paint(original, null);
-      setNote("");
+      setHint("Drag anywhere on the picture to move the box. Drag a handle to resize it.");
       showStatus(made.note ? "warn" : "", made.note);
     }, function () {
       showStatus("bad", "This image could not be opened.");
@@ -373,6 +474,7 @@
       setNote("The selection is already the whole image.");
       return;
     }
+    snapshot();
     var next = document.createElement("canvas");
     next.width = c.w;
     next.height = c.h;
@@ -385,6 +487,7 @@
   }
 
   function transform(kind) {
+    snapshot();
     var w = state.w;
     var h = state.h;
     var c = state.crop;
@@ -449,37 +552,238 @@
     setCrop(x, y, w, h);
   }
 
-  cropEl.addEventListener("pointerdown", function (e) {
-    if (e.button !== 0 || !state.w) return;
+  function paintStyle(ctx, eraser) {
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.lineWidth = brushSize();
+    if (eraser) {
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.strokeStyle = "#000";
+      ctx.fillStyle = "#000";
+    } else {
+      ctx.strokeStyle = elColor.value;
+      ctx.fillStyle = elColor.value;
+    }
+  }
+
+  function drawDot(x, y, eraser) {
+    var ctx = view.getContext("2d");
+    ctx.save();
+    paintStyle(ctx, eraser);
+    ctx.beginPath();
+    ctx.arc(x, y, Math.max(0.5, brushSize() / 2), 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function strokeSegment(a, b, eraser) {
+    var ctx = view.getContext("2d");
+    ctx.save();
+    paintStyle(ctx, eraser);
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawShape(ctx, kind, x0, y0, x1, y1, filled) {
+    ctx.save();
+    paintStyle(ctx, false);
+    if (kind === "line") {
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.stroke();
+    } else if (kind === "rect") {
+      var x = Math.min(x0, x1);
+      var y = Math.min(y0, y1);
+      var w = Math.abs(x1 - x0);
+      var h = Math.abs(y1 - y0);
+      if (filled) ctx.fillRect(x, y, Math.max(1, w), Math.max(1, h));
+      else ctx.strokeRect(x, y, Math.max(1, w), Math.max(1, h));
+    } else {
+      var ex = Math.min(x0, x1);
+      var ey = Math.min(y0, y1);
+      var ew = Math.abs(x1 - x0);
+      var eh = Math.abs(y1 - y0);
+      ctx.beginPath();
+      ctx.ellipse(ex + ew / 2, ey + eh / 2, Math.max(0.5, ew / 2), Math.max(0.5, eh / 2), 0, 0, Math.PI * 2);
+      if (filled) ctx.fill();
+      else ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function clearOverlay() {
+    overlay.getContext("2d").clearRect(0, 0, overlay.width, overlay.height);
+  }
+
+  function stampText(x, y) {
+    var text = elText.value;
+    if (!String(text).trim()) {
+      setHint("Type the words, then click the picture to place them.");
+      return;
+    }
+    snapshot();
+    var ctx = view.getContext("2d");
+    var size = brushSize();
+    var lines = String(text).split(/\r?\n/);
+    ctx.save();
+    ctx.fillStyle = elColor.value;
+    ctx.font = "600 " + size + "px Inter, Nunito, \"Malgun Gothic\", \"Apple SD Gothic Neo\", sans-serif";
+    ctx.textBaseline = "top";
+    for (var i = 0; i < lines.length; i++) ctx.fillText(lines[i], x, y + i * size * 1.25);
+    ctx.restore();
+    scheduleEstimate();
+  }
+
+  function floodFill(ix, iy) {
+    var x = Math.floor(ix);
+    var y = Math.floor(iy);
+    if (x < 0 || y < 0 || x >= state.w || y >= state.h) return;
+    var ctx = view.getContext("2d");
+    var img = ctx.getImageData(0, 0, state.w, state.h);
+    var data = img.data;
+    var w = state.w;
+    var h = state.h;
+    var start = (y * w + x) * 4;
+    var sr = data[start];
+    var sg = data[start + 1];
+    var sb = data[start + 2];
+    var sa = data[start + 3];
+    var hex = String(elColor.value || "#000000").replace("#", "");
+    if (hex.length === 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    var n = parseInt(hex, 16);
+    if (!isFinite(n)) return;
+    var tr = (n >> 16) & 255;
+    var tg = (n >> 8) & 255;
+    var tb = n & 255;
+    var tol = 28;
+    if (Math.abs(sr - tr) <= tol && Math.abs(sg - tg) <= tol && Math.abs(sb - tb) <= tol && Math.abs(sa - 255) <= tol) return;
+    snapshot();
+    var stack = [x, y];
+    var seen = new Uint8Array(w * h);
+    seen[y * w + x] = 1;
+    function tryPush(nx, ny) {
+      if (nx < 0 || ny < 0 || nx >= w || ny >= h) return;
+      var p = ny * w + nx;
+      if (seen[p]) return;
+      var i = p * 4;
+      if (Math.abs(data[i] - sr) > tol || Math.abs(data[i + 1] - sg) > tol || Math.abs(data[i + 2] - sb) > tol || Math.abs(data[i + 3] - sa) > tol) return;
+      seen[p] = 1;
+      stack.push(nx, ny);
+    }
+    var guard = 0;
+    while (stack.length && guard < w * h) {
+      var py = stack.pop();
+      var px = stack.pop();
+      var i = (py * w + px) * 4;
+      data[i] = tr;
+      data[i + 1] = tg;
+      data[i + 2] = tb;
+      data[i + 3] = 255;
+      tryPush(px - 1, py);
+      tryPush(px + 1, py);
+      tryPush(px, py - 1);
+      tryPush(px, py + 1);
+      guard++;
+    }
+    ctx.putImageData(img, 0, 0);
+    scheduleEstimate();
+  }
+
+  function onPointerDown(e) {
+    if (e.button !== 0 || !state.w || drag) return;
+    var p = clientToImage(e.clientX, e.clientY);
+    if (state.tool === "crop") {
+      e.preventDefault();
+      var handle = (e.target.getAttribute && e.target.getAttribute("data-h")) || "";
+      var start = { x: state.crop.x, y: state.crop.y, w: state.crop.w, h: state.crop.h };
+      if (!handle) {
+        var inside = p.x >= start.x && p.x <= start.x + start.w && p.y >= start.y && p.y <= start.y + start.h;
+        if (!inside) {
+          setCrop(p.x - start.w / 2, p.y - start.h / 2, start.w, start.h);
+          start = { x: state.crop.x, y: state.crop.y, w: state.crop.w, h: state.crop.h };
+          syncCropInputs();
+          if (!outputCustom) syncOutput();
+          placeCrop();
+          updateInfo();
+        }
+      }
+      drag = { kind: "crop", handle: handle, origin: p, start: start, ratio: elRatio.checked, id: e.pointerId };
+      try { frame.setPointerCapture(e.pointerId); } catch (err) {}
+      return;
+    }
+    if (state.tool === "text") {
+      e.preventDefault();
+      stampText(p.x, p.y);
+      return;
+    }
+    if (state.tool === "fill") {
+      e.preventDefault();
+      floodFill(p.x, p.y);
+      return;
+    }
     e.preventDefault();
-    var handle = e.target.getAttribute("data-h") || "";
-    var origin = clientToImage(e.clientX, e.clientY);
-    var start = { x: state.crop.x, y: state.crop.y, w: state.crop.w, h: state.crop.h };
-    var ratioOn = elRatio.checked;
-    function move(ev) {
-      var p = clientToImage(ev.clientX, ev.clientY);
-      if (!handle) setCrop(start.x + p.x - origin.x, start.y + p.y - origin.y, start.w, start.h);
-      else resizeFrom(start, p.x - origin.x, p.y - origin.y, handle, ratioOn);
+    var before = history.length;
+    snapshot();
+    drag = { kind: state.tool, x0: p.x, y0: p.y, x1: p.x, y1: p.y, prev: { x: p.x, y: p.y }, moved: false, id: e.pointerId, snapped: history.length > before };
+    try { frame.setPointerCapture(e.pointerId); } catch (err) {}
+    if (state.tool === "brush" || state.tool === "eraser") drawDot(p.x, p.y, state.tool === "eraser");
+  }
+
+  function onPointerMove(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var p = clientToImage(e.clientX, e.clientY);
+    if (drag.kind === "crop") {
+      if (!drag.handle) setCrop(drag.start.x + p.x - drag.origin.x, drag.start.y + p.y - drag.origin.y, drag.start.w, drag.start.h);
+      else resizeFrom(drag.start, p.x - drag.origin.x, p.y - drag.origin.y, drag.handle, drag.ratio);
       syncCropInputs();
-      if (handle && !outputCustom) syncOutput();
+      if (drag.handle && !outputCustom) syncOutput();
       placeCrop();
       updateInfo();
+      return;
     }
-    function end() {
-      window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerup", end);
-      window.removeEventListener("pointercancel", end);
-      scheduleEstimate();
+    drag.x1 = p.x;
+    drag.y1 = p.y;
+    drag.moved = true;
+    if (drag.kind === "brush" || drag.kind === "eraser") {
+      strokeSegment(drag.prev, p, drag.kind === "eraser");
+      drag.prev = { x: p.x, y: p.y };
+    } else {
+      clearOverlay();
+      drawShape(overlay.getContext("2d"), drag.kind, drag.x0, drag.y0, p.x, p.y, elFilled.checked);
     }
-    window.addEventListener("pointermove", move);
-    window.addEventListener("pointerup", end);
-    window.addEventListener("pointercancel", end);
-  });
+  }
+
+  function onPointerUp(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    if (drag.kind === "line" || drag.kind === "rect" || drag.kind === "ellipse") {
+      clearOverlay();
+      if (drag.moved) drawShape(view.getContext("2d"), drag.kind, drag.x0, drag.y0, drag.x1, drag.y1, elFilled.checked);
+      else if (drag.snapped) history.pop();
+      syncUndo();
+    }
+    drag = null;
+    scheduleEstimate();
+  }
+
+  frame.addEventListener("pointerdown", onPointerDown);
+  frame.addEventListener("pointermove", onPointerMove);
+  frame.addEventListener("pointerup", onPointerUp);
+  frame.addEventListener("pointercancel", onPointerUp);
 
   document.addEventListener("keydown", function (e) {
     if (!state.w) return;
     var tag = e.target && e.target.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "BUTTON") return;
+    if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z") && !e.shiftKey) {
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      e.preventDefault();
+      undo();
+      return;
+    }
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
     var step = e.shiftKey ? 10 : 1;
     var c = state.crop;
     var x = c.x;
@@ -507,6 +811,21 @@
   elFormat.addEventListener("change", function () { syncFormat(); scheduleEstimate(); });
   elQ.addEventListener("input", function () { elQVal.textContent = elQ.value; scheduleEstimate(); });
   elMatte.addEventListener("input", scheduleEstimate);
+  elBrush.addEventListener("input", function () { elBrushVal.textContent = elBrush.value; });
+  elColor.addEventListener("input", syncSwatches);
+  $("ie-swatches").addEventListener("click", function (e) {
+    var button = e.target.closest("button");
+    if (!button) return;
+    elColor.value = button.getAttribute("data-color");
+    syncSwatches();
+    if (state.w && elFormat.value === "image/jpeg") scheduleEstimate();
+  });
+  document.querySelector(".ie-tools").addEventListener("click", function (e) {
+    var button = e.target.closest("button");
+    if (!button || button.disabled) return;
+    setTool(button.getAttribute("data-tool"));
+  });
+  $("ie-undo").addEventListener("click", undo);
 
   $("ie-open").addEventListener("click", function () { fileInput.click(); });
   fileInput.addEventListener("change", function () {
@@ -516,6 +835,7 @@
   });
   $("ie-reset").addEventListener("click", function () {
     if (!original) return;
+    snapshot();
     outputCustom = false;
     state.zoom = "fit";
     paint(original, null);
