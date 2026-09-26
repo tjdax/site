@@ -1,0 +1,211 @@
+/* Modern theme (default). site.css holds the cartoon theme, which shows when <html> has .theme-cartoon. */
+:root:not(.theme-cartoon){
+  --ios-bg:#f5f5f7;
+  --ios-card:#ffffff;
+  --ios-fill:#f5f5f7;
+  --ios-fill-hover:#ebebf0;
+  --ios-text2:#424245;
+  --ios-hair:rgba(0,0,0,.08);
+  --ios-blue:#0071e3;
+  --ios-blue-hover:#0077ed;
+  --ios-link:#0066cc;
+  --ios-font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",Inter,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --ios-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 30px rgba(0,0,0,.07);
+  --ink:#1d1d1f;
+  --fg:#1d1d1f;
+  --muted:#6e6e73;
+  --paper:#ffffff;
+  --blue:#0066cc;
+  --line:#d2d2d7;
+  --shadow:var(--ios-shadow);
+}
+:root:not(.theme-cartoon) body{
+  color:var(--ink);
+  font:17px/1.5 var(--ios-font);
+  letter-spacing:-.01em;
+  background:var(--ios-bg);
+  -webkit-font-smoothing:antialiased;
+}
+:root:not(.theme-cartoon) :is(.logo,.nav nav a,.kicker,.hero h1,.btn,h2,.card h3,a.app .more,.shelf-art span,.field,.sudoku-bar,.cell,.pad-key,.pad-key small,.notes i,a.tool-card b,.tool-icon,.tool input,.tool select,.tool textarea:not(.code)){
+  font-family:var(--ios-font);
+}
+
+:root:not(.theme-cartoon) a{color:var(--ios-link);text-decoration:none}
+:root:not(.theme-cartoon) a:hover{color:var(--ios-link);text-decoration:underline}
+:root:not(.theme-cartoon) :is(a,.btn,button,.sheep):focus-visible{outline:2px solid var(--ios-blue);outline-offset:3px}
+
+:root:not(.theme-cartoon) header{
+  background:rgba(251,251,253,.8);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--ios-hair);
+}
+:root:not(.theme-cartoon) .nav{height:52px}
+:root:not(.theme-cartoon) .logo{font-weight:600;font-size:20px;letter-spacing:-.01em;color:var(--ink)}
+:root:not(.theme-cartoon) .logo:hover{text-decoration:none}
+:root:not(.theme-cartoon) .nav nav{gap:4px 28px}
+:root:not(.theme-cartoon) .nav nav a{
+  font-size:14px;font-weight:400;color:var(--ink);opacity:.8;border-bottom:0;transition:opacity .15s ease;
+}
+:root:not(.theme-cartoon) .nav nav a:hover,
+:root:not(.theme-cartoon) .nav nav a[aria-current="page"]{color:var(--ink);opacity:1;text-decoration:none}
+
+:root:not(.theme-cartoon) .hero{padding:96px 20px 64px;text-align:center}
+:root:not(.theme-cartoon) .kicker{
+  margin:0 0 18px;padding:5px 14px;border:0;border-radius:999px;
+  background:rgba(0,113,227,.08);color:var(--ios-blue);font-size:14px;font-weight:500;
+}
+:root:not(.theme-cartoon) .hero h1{
+  margin:0 0 18px;font-weight:700;font-size:clamp(40px,7vw,72px);line-height:1.05;
+  letter-spacing:-.03em;color:var(--ink);text-shadow:none;
+}
+:root:not(.theme-cartoon) .hero p{
+  margin:0 auto;max-width:34em;font-size:clamp(19px,2.4vw,23px);line-height:1.4;
+  font-weight:400;color:var(--muted);
+}
+:root:not(.theme-cartoon) .hero-tool{padding:56px 20px 32px;text-align:left}
+:root:not(.theme-cartoon) .hero-tool h1{font-size:clamp(34px,5vw,48px)}
+:root:not(.theme-cartoon) .hero-tool p{margin:0;font-size:19px}
+:root:not(.theme-cartoon) .crumb,
+:root:not(.theme-cartoon) .hero .crumb{margin:0 0 16px;font-size:15px;font-weight:400;color:var(--muted)}
+:root:not(.theme-cartoon) .hero:not(.hero-tool) .crumb{margin:0 auto 16px}
+:root:not(.theme-cartoon) .crumb a{color:var(--ios-link)}
+
+:root:not(.theme-cartoon) .btn{
+  margin-top:32px;padding:12px 24px;border:0;border-radius:999px;
+  background:var(--ios-blue);color:#fff;box-shadow:none;
+  font-size:17px;font-weight:500;line-height:1.2;letter-spacing:-.01em;
+  transition:background .15s ease, color .15s ease, box-shadow .15s ease;
+}
+:root:not(.theme-cartoon) .btn:hover{background:var(--ios-blue-hover);color:#fff;transform:none;box-shadow:none;text-decoration:none}
+:root:not(.theme-cartoon) .btn.alt{background:transparent;color:var(--ios-blue);box-shadow:inset 0 0 0 1px var(--ios-blue)}
+:root:not(.theme-cartoon) .btn.alt:hover{background:var(--ios-blue);color:#fff}
+:root:not(.theme-cartoon) .btn:disabled{opacity:.35;background:var(--ios-blue);transform:none;box-shadow:none}
+:root:not(.theme-cartoon) .btn.alt:disabled{background:transparent;color:var(--ios-blue);box-shadow:inset 0 0 0 1px var(--ios-blue)}
+:root:not(.theme-cartoon) .hero .btn + .btn{margin-left:14px}
+:root:not(.theme-cartoon) .shelf .btn{margin-top:22px}
+:root:not(.theme-cartoon) .tool .btn{margin:0;padding:8px 16px;font-size:15px}
+:root:not(.theme-cartoon) .fine{font-size:13px;color:var(--muted)}
+
+:root:not(.theme-cartoon) section{
+  margin:0 0 24px;padding:40px;background:var(--ios-card);
+  border:0;border-radius:24px;box-shadow:0 1px 3px rgba(0,0,0,.04);
+}
+:root:not(.theme-cartoon) h2{
+  display:block;margin:0 0 12px;border-bottom:0;
+  font-size:clamp(26px,3.4vw,32px);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--ink);
+}
+:root:not(.theme-cartoon) section p{color:var(--ios-text2)}
+:root:not(.theme-cartoon) .cards + p{margin-top:20px}
+
+:root:not(.theme-cartoon) .cards{gap:14px;margin-top:24px}
+:root:not(.theme-cartoon) .card{background:var(--ios-fill);border:0;border-radius:18px;padding:24px 22px}
+:root:not(.theme-cartoon) .card h3{margin:0 0 6px;font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+:root:not(.theme-cartoon) .card p{color:var(--muted);font-size:15px}
+
+:root:not(.theme-cartoon) .shots{gap:20px;margin-top:20px}
+:root:not(.theme-cartoon) .shots img{border:0;border-radius:20px;box-shadow:0 0 0 1px var(--ios-hair),0 10px 30px rgba(0,0,0,.08)}
+:root:not(.theme-cartoon) .shots figcaption{margin-top:12px;font-weight:500;color:var(--muted);text-align:center}
+
+:root:not(.theme-cartoon) .catalog{gap:12px;margin-top:20px}
+:root:not(.theme-cartoon) a.app{
+  gap:20px;padding:14px;border:0;border-radius:20px;background:var(--ios-fill);color:var(--ink);box-shadow:none;
+  transition:background .15s ease;
+}
+:root:not(.theme-cartoon) a.app:hover{background:var(--ios-fill-hover);color:var(--ink);transform:none;box-shadow:none;text-decoration:none}
+:root:not(.theme-cartoon) a.app img{border:0;border-radius:14px;box-shadow:0 0 0 1px var(--ios-hair)}
+:root:not(.theme-cartoon) a.app h2{margin:0 0 4px;font-size:22px}
+:root:not(.theme-cartoon) a.app p{color:var(--muted)}
+:root:not(.theme-cartoon) a.app .more{color:var(--ios-link);font-size:15px;font-weight:500}
+:root:not(.theme-cartoon) .contact a{font-size:21px;font-weight:500}
+
+:root:not(.theme-cartoon) .shelf{gap:32px}
+:root:not(.theme-cartoon) .shelf-art{
+  display:grid;grid-template-columns:repeat(2,76px);gap:20px 22px;place-content:center;width:180px;height:180px;
+}
+:root:not(.theme-cartoon) .shelf-art span{
+  position:static;width:76px;height:76px;border:0;border-radius:22px;transform:none;
+  color:#fff;font-size:30px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+:root:not(.theme-cartoon) .shelf-art .s1{background:linear-gradient(160deg,#ffd426,#ff9500)}
+:root:not(.theme-cartoon) .shelf-art .s2{background:linear-gradient(160deg,#64d2ff,#007aff)}
+:root:not(.theme-cartoon) .shelf-art .s3{background:linear-gradient(160deg,#ff7a95,#ff2d55)}
+:root:not(.theme-cartoon) .shelf-art .s4{background:linear-gradient(160deg,#6ee39a,#28b24b)}
+
+:root:not(.theme-cartoon) footer,
+:root:not(.theme-cartoon) footer.has-meadow{
+  margin-top:40px;padding:22px 0 32px;background:var(--ios-bg);border-top:1px solid var(--line);
+}
+:root:not(.theme-cartoon) .meadow{display:none}
+:root:not(.theme-cartoon) .foot{gap:12px 22px;font-size:13px;font-weight:400;color:var(--muted)}
+:root:not(.theme-cartoon) .foot a{color:var(--ink)}
+:root:not(.theme-cartoon) .foot a:hover{color:var(--ink);text-decoration:underline}
+
+:root:not(.theme-cartoon) .theme-switch{gap:8px}
+:root:not(.theme-cartoon) .theme-label{font-weight:400}
+:root:not(.theme-cartoon) .theme-switch .seg{gap:0;padding:2px;border:0;border-radius:9px;background:rgba(118,118,128,.12)}
+:root:not(.theme-cartoon) .theme-switch button{
+  padding:4px 14px;border:0;border-radius:7px;background:transparent;color:var(--ink);
+  font:500 13px/1.3 var(--ios-font);transition:background .15s ease, box-shadow .15s ease;
+}
+:root:not(.theme-cartoon) .theme-switch button[aria-pressed="true"]{background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.12),0 3px 1px rgba(0,0,0,.04)}
+
+:root:not(.theme-cartoon) code{background:var(--ios-fill);border-radius:6px}
+:root:not(.theme-cartoon) .field{font-size:14px;font-weight:500;color:var(--ink)}
+:root:not(.theme-cartoon) .tool :is(input[type=text],input[type=url],input[type=email],input[type=tel],select,textarea){
+  padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);
+}
+:root:not(.theme-cartoon) .tool input[type=color]{border:1px solid var(--line);border-radius:10px}
+:root:not(.theme-cartoon) .tool :is(input,select,textarea):focus-visible,
+:root:not(.theme-cartoon) .code-out:focus-visible{outline:0;border-color:var(--ios-blue);box-shadow:0 0 0 4px rgba(0,113,227,.2)}
+:root:not(.theme-cartoon) .tool input[type=range],
+:root:not(.theme-cartoon) .check input{accent-color:var(--ios-blue)}
+:root:not(.theme-cartoon) .check{font-weight:400}
+:root:not(.theme-cartoon) .alert{border:0;border-radius:12px;font-weight:500}
+:root:not(.theme-cartoon) .alert.ok{background:rgba(52,199,89,.12);color:#1b7a3a}
+:root:not(.theme-cartoon) .alert.bad{background:rgba(255,59,48,.1);color:#c4271c}
+:root:not(.theme-cartoon) .alert.warn{background:rgba(255,149,0,.13);color:#9a5700}
+:root:not(.theme-cartoon) .code-out{border:1px solid transparent;border-radius:14px;background:#1d1d1f}
+
+:root:not(.theme-cartoon) .sudoku-bar{font-weight:600}
+:root:not(.theme-cartoon) .sudoku{border:2px solid var(--ink);border-radius:14px;box-shadow:var(--ios-shadow)}
+:root:not(.theme-cartoon) .cell{font-weight:400}
+:root:not(.theme-cartoon) .cell.c3{border-right-width:2px}
+:root:not(.theme-cartoon) .cell.r3{border-bottom-width:2px}
+:root:not(.theme-cartoon) .cell.given{font-weight:600}
+:root:not(.theme-cartoon) .cell.user{color:var(--ios-blue)}
+:root:not(.theme-cartoon) .cell.peer{background:#f1f5fb}
+:root:not(.theme-cartoon) .cell.same{background:#dce8f9}
+:root:not(.theme-cartoon) .cell.wrong{color:#ff3b30;background:#ffe9e7}
+:root:not(.theme-cartoon) .cell.sel{background:#c6dcf7}
+:root:not(.theme-cartoon) .cell:focus-visible{outline:2px solid var(--ios-blue);outline-offset:-2px}
+:root:not(.theme-cartoon) .pad-key{border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:none;font-weight:500}
+:root:not(.theme-cartoon) .pad-key:hover{background:var(--ios-fill)}
+:root:not(.theme-cartoon) .pad-key:active{transform:none;box-shadow:none;background:var(--ios-fill-hover)}
+:root:not(.theme-cartoon) .pad-key:disabled{background:#fff}
+:root:not(.theme-cartoon) #sd-notes[aria-pressed="true"]{background:var(--ios-blue);border-color:var(--ios-blue);color:#fff;box-shadow:none}
+
+:root:not(.theme-cartoon) .qr-frame{border:0;border-radius:18px;box-shadow:0 0 0 1px var(--ios-hair),var(--ios-shadow)}
+
+:root:not(.theme-cartoon) .tools{gap:12px}
+:root:not(.theme-cartoon) a.tool-card{
+  gap:18px;padding:14px;border:0;border-radius:20px;background:var(--ios-fill);box-shadow:none;transition:background .15s ease;
+}
+:root:not(.theme-cartoon) a.tool-card:hover{background:var(--ios-fill-hover);color:var(--ink);transform:none;box-shadow:none;text-decoration:none}
+:root:not(.theme-cartoon) a.tool-card b{font-size:19px;font-weight:600;letter-spacing:-.01em}
+:root:not(.theme-cartoon) .tool-icon{border:0;border-radius:15px;color:#fff;font-weight:600;font-size:24px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+:root:not(.theme-cartoon) .tool-icon.i1{background:linear-gradient(160deg,#ffd426,#ff9500)}
+:root:not(.theme-cartoon) .tool-icon.i2{background:linear-gradient(160deg,#64d2ff,#007aff)}
+:root:not(.theme-cartoon) .tool-icon.i3{background:linear-gradient(160deg,#ff7a95,#ff2d55)}
+
+@media (max-width:640px){
+  :root:not(.theme-cartoon) .hero{padding:64px 20px 44px}
+  :root:not(.theme-cartoon) .hero-tool{padding:40px 20px 24px}
+  :root:not(.theme-cartoon) .hero .btn + .btn{margin-left:8px}
+  :root:not(.theme-cartoon) .nav nav{gap:4px 16px}
+  :root:not(.theme-cartoon) section{padding:28px 22px;border-radius:20px}
+  :root:not(.theme-cartoon) .foot{justify-content:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  :root:not(.theme-cartoon) :is(.btn,a.app,a.tool-card,.theme-switch button){transition:none}
+}

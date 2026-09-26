@@ -157,6 +157,14 @@ footer{
 }
 .foot a{color:var(--ink);text-decoration:none}
 .foot a:hover{color:var(--ink);text-decoration:underline}
+.theme-switch{display:inline-flex;align-items:center;gap:8px;margin-left:auto}
+.theme-switch .seg{display:inline-flex;gap:6px}
+.theme-switch button{
+  padding:3px 12px;border:3px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);
+  font:700 14px/1.3 "Fredoka", "Nunito", sans-serif;cursor:pointer;
+}
+.theme-switch button[aria-pressed="true"]{background:var(--yellow)}
+.theme-switch button:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 
 footer{position:relative}
 footer.has-meadow{margin-top:180px;padding-top:34px}

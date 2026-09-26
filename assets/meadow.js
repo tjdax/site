@@ -109,6 +109,12 @@
   place(start.min + (start.max - start.min) * 0.45);
   face(-1);
 
+  document.addEventListener("tjdax:theme", function () {
+    var b = bounds();
+    sheep.style.transitionDuration = "0ms";
+    place(b.min + (b.max - b.min) * 0.45);
+  });
+
   window.addEventListener("resize", function () {
     var b = bounds();
     if (x > b.max) place(b.max);
