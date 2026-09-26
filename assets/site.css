@@ -87,6 +87,8 @@ header{
   transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
 }
 .hero .btn + .btn{margin-left:12px}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:24px}
+.hero-actions .btn,.hero-actions .btn + .btn{margin:0}
 .btn:hover{background:var(--pink);color:var(--ink);transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
 .fine{font-size:14px;color:var(--muted)}
 .crumb{margin:0 0 14px;font-size:15px;font-weight:700;color:var(--ink)}
