@@ -41,10 +41,12 @@
     $("ie-reset"), elW, elH, elX, elY, elRatio, $("ie-apply"),
     $("ie-ccw"), $("ie-cw"), $("ie-fliph"), $("ie-flipv"),
     elOw, elOh, elOLock, $("ie-match"), elFormat, elQ, elMatte, $("ie-download"),
-    $("ie-fit"), $("ie-z1"), $("ie-z2"),
+    $("ie-fit"), $("ie-z1"), $("ie-z2"), $("ie-zoom"),
     elColor, elBrush, elText, elFilled
   ].concat(toolButtons);
   var zoomButtons = [$("ie-fit"), $("ie-z1"), $("ie-z2")];
+  var elZoom = $("ie-zoom");
+  var elZoomVal = $("ie-zoomval");
 
   var state = { w: 0, h: 0, crop: { x: 0, y: 0, w: 0, h: 0 }, ratio: 1, name: "image", zoom: "fit", tool: "crop" };
   var original = null;
@@ -240,14 +242,26 @@
     info.textContent = state.name + " · image " + state.w + " × " + state.h + " px · selection " + c.w + " × " + c.h + " px";
   }
 
+  function fitScale() {
+    var maxW = Math.max(1, stage.clientWidth - 2);
+    var maxH = Math.max(1, stage.clientHeight - 2);
+    var scale = Math.min(maxW / state.w, maxH / state.h);
+    if (!isFinite(scale) || scale <= 0) return 1;
+    return scale;
+  }
+
+  function currentScale() {
+    if (state.zoom === "fit") return fitScale();
+    var n = Number(state.zoom);
+    return isFinite(n) && n > 0 ? n : 1;
+  }
+
   function layout() {
     if (!state.w) return;
-    var maxW = Math.max(1, stage.clientWidth);
-    var maxH = Math.max(160, Math.round(Math.min(window.innerHeight * 0.62, 640)));
-    var scale = state.zoom === "2" ? 2 : state.zoom === "1" ? 1 : Math.min(maxW / state.w, maxH / state.h);
-    if (!isFinite(scale) || scale <= 0) scale = 1;
+    var scale = currentScale();
     frame.style.width = Math.max(1, Math.round(state.w * scale)) + "px";
     frame.style.height = Math.max(1, Math.round(state.h * scale)) + "px";
+    markZoom();
   }
 
   function placeCrop() {
@@ -263,8 +277,16 @@
   }
 
   function markZoom() {
+    var fitPct = Math.max(10, Math.round(fitScale() * 100));
+    var max = Math.max(400, Math.min(1600, fitPct * 2));
+    elZoom.max = String(max);
+    var pct = Math.max(1, Math.round(currentScale() * 100));
+    if (document.activeElement !== elZoom) elZoom.value = String(clamp(pct, 10, max));
+    elZoomVal.textContent = pct + "%";
     for (var i = 0; i < zoomButtons.length; i++) {
-      zoomButtons[i].setAttribute("aria-pressed", String(zoomButtons[i].getAttribute("data-zoom") === state.zoom));
+      var z = zoomButtons[i].getAttribute("data-zoom");
+      var on = z === "fit" ? state.zoom === "fit" : state.zoom !== "fit" && Math.abs(Number(state.zoom) - Number(z)) < 0.001;
+      zoomButtons[i].setAttribute("aria-pressed", String(on));
     }
   }
 
@@ -855,11 +877,16 @@
 
   zoomButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-      state.zoom = button.getAttribute("data-zoom");
-      markZoom();
+      var z = button.getAttribute("data-zoom");
+      state.zoom = z === "fit" ? "fit" : Number(z);
       layout();
       placeCrop();
     });
+  });
+  elZoom.addEventListener("input", function () {
+    state.zoom = Number(elZoom.value) / 100;
+    layout();
+    placeCrop();
   });
 
   $("ie-download").addEventListener("click", function () {

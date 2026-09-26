@@ -32,6 +32,7 @@ body{
   background-repeat:no-repeat;
 }
 .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+.wrap.wide{max-width:min(1480px,100%)}
 .page{position:relative;min-height:100vh;display:flex;flex-direction:column}
 main{flex:1}
 a{color:var(--blue);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
@@ -373,14 +374,15 @@ body.mt-lock{overflow:hidden}
 .ie-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:22px;align-items:start;margin-top:16px}
 .ie-layout > div{min-width:0}
 .ie-stage{
-  overflow:auto;max-height:72vh;min-height:200px;overscroll-behavior:contain;
+  overflow:auto;height:min(74vh,900px);min-height:420px;overscroll-behavior:contain;
   border:3px solid var(--ink);border-radius:14px;background:#1b1b1b;
+  display:flex;align-items:safe center;justify-content:safe center;
 }
-.ie-stage.has-image{min-height:0}
+.ie-stage.has-image{min-height:420px}
 .ie-stage.over{outline:3px dashed var(--yellow);outline-offset:-8px}
 .ie-empty{margin:0;padding:48px 16px;text-align:center;color:#fff;font-weight:700}
 .ie-frame{
-  position:relative;display:inline-block;vertical-align:top;overflow:hidden;line-height:0;
+  position:relative;display:block;flex:0 0 auto;vertical-align:top;overflow:hidden;line-height:0;
   background-color:#fff;
   background-image:
     linear-gradient(45deg,#d0d0d0 25%,transparent 25%),
@@ -428,7 +430,11 @@ body.mt-lock{overflow:hidden}
 .ie-crop.idle{box-shadow:none;opacity:.5;pointer-events:none}
 .ie-side .check{margin-top:12px}
 .ie-side .fine{margin-top:8px}
+.ie-zoom{align-items:center}
+.ie-zoom-slider{flex:1 1 200px;min-width:180px;margin:0}
 .ie-zoom .btn[aria-pressed="true"],.ie-tools .btn[aria-pressed="true"]{background:var(--pink)}
+body.editor-page .hero-tool{padding:28px 20px 8px}
+body.editor-page .hero-tool h1{margin-bottom:8px;font-size:clamp(32px,4vw,44px)}
 .pick .btn[aria-pressed="true"]{background:var(--pink)}
 
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -456,6 +462,7 @@ p.contrast-ratio{font-size:clamp(36px,6vw,56px)}
 @media (max-width:760px){
   .sudoku-layout,.qr-layout,.ie-layout,.compare-grid{grid-template-columns:1fr}
   .ie-layout{grid-template-columns:minmax(0,1fr)}
+  .ie-stage,.ie-stage.has-image{height:62vh;min-height:260px}
   .sudoku-layout > div:first-child{max-width:468px;width:100%;margin:0 auto}
   .qr-preview{order:-1;max-width:320px;width:100%;margin:0 auto}
   .numpad{grid-template-columns:repeat(9,1fr);gap:5px}

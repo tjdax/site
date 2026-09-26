@@ -39,7 +39,7 @@
 }
 </script>
 </head>
-<body>
+<body class="editor-page">
 
 <div class="page">
 <header>
@@ -55,13 +55,13 @@
 </header>
 
 <main>
-  <div class="wrap hero hero-tool">
+  <div class="wrap wide hero hero-tool">
     <p class="crumb"><a href="../">Web apps</a> / Utilities</p>
     <h1>Image Editor</h1>
     <p>Crop to an exact pixel size, draw, add text, and save. The picture never leaves this browser.</p>
   </div>
 
-  <div class="wrap">
+  <div class="wrap wide">
     <section class="tool" id="ie-app">
       <div class="tool-actions">
         <button class="btn" type="button" id="ie-open">Open image</button>
@@ -89,6 +89,9 @@
             <button class="btn alt" type="button" id="ie-fit" data-zoom="fit" aria-pressed="true" disabled>Fit</button>
             <button class="btn alt" type="button" id="ie-z1" data-zoom="1" aria-pressed="false" disabled>100%</button>
             <button class="btn alt" type="button" id="ie-z2" data-zoom="2" aria-pressed="false" disabled>200%</button>
+            <label class="field grow ie-zoom-slider">Zoom <span id="ie-zoomval">100%</span>
+              <input type="range" id="ie-zoom" min="10" max="400" value="100" disabled>
+            </label>
           </div>
         </div>
 
