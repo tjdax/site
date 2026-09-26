@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Editor — Crop to Exact Pixels, Resize, Save | TJDAX</title>
+<meta name="description" content="Free browser image editor. Type a pixel size and a crop box of that exact size appears. Resize the resolution, set JPEG or WebP quality, and download. Nothing is uploaded.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/image-editor/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<script src="editor.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/image-editor/">
+<meta property="og:title" content="Image Editor — Crop, Resize, Save | TJDAX">
+<meta property="og:description" content="Crop to an exact pixel size, change the resolution, and save. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image Editor — Crop, Resize, Save | TJDAX">
+<meta name="twitter:description" content="Crop to an exact pixel size, change the resolution, and save. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image Editor",
+  "url": "https://tjdax.github.io/site/webapps/image-editor/",
+  "description": "Crop an image to an exact pixel size, resize it, rotate or flip it, and save PNG, JPEG, or WebP in the browser.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Utilities</p>
+    <h1>Image Editor</h1>
+    <p>Crop to an exact pixel size, change the resolution, and save. The picture never leaves this browser.</p>
+  </div>
+
+  <div class="wrap">
+    <section class="tool" id="ie-app">
+      <div class="tool-actions">
+        <button class="btn" type="button" id="ie-open">Open image</button>
+        <button class="btn alt" type="button" id="ie-reset" disabled>Reset</button>
+        <span class="fine" id="ie-info">No image yet. It stays on this device.</span>
+      </div>
+      <input type="file" id="ie-file" accept="image/*" hidden>
+
+      <div class="ie-layout">
+        <div>
+          <div class="ie-stage" id="ie-stage">
+            <p class="ie-empty" id="ie-empty">Drop an image here, or use Open image. Pasting works too.</p>
+            <div class="ie-frame" id="ie-frame" hidden>
+              <canvas id="ie-view"></canvas>
+              <div class="ie-crop" id="ie-crop" aria-label="Crop box">
+                <span id="ie-croplabel"></span>
+                <i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i>
+                <i data-h="e"></i><i data-h="se"></i><i data-h="s"></i>
+                <i data-h="sw"></i><i data-h="w"></i>
+              </div>
+            </div>
+          </div>
+          <div class="tool-actions ie-zoom" role="group" aria-label="Zoom">
+            <button class="btn alt" type="button" id="ie-fit" data-zoom="fit" aria-pressed="true" disabled>Fit</button>
+            <button class="btn alt" type="button" id="ie-z1" data-zoom="1" aria-pressed="false" disabled>100%</button>
+            <button class="btn alt" type="button" id="ie-z2" data-zoom="2" aria-pressed="false" disabled>200%</button>
+          </div>
+        </div>
+
+        <div class="ie-side">
+          <h3>Crop</h3>
+          <p class="fine">Type a width and height in pixels. A box of that exact size appears. Drag it, or set X and Y, to choose the area.</p>
+          <div class="tool-row">
+            <label class="field">Width
+              <input type="number" id="ie-w" min="1" step="1" inputmode="numeric" disabled>
+            </label>
+            <label class="field">Height
+              <input type="number" id="ie-h" min="1" step="1" inputmode="numeric" disabled>
+            </label>
+          </div>
+          <div class="tool-row">
+            <label class="field">X
+              <input type="number" id="ie-x" min="0" step="1" inputmode="numeric" disabled>
+            </label>
+            <label class="field">Y
+              <input type="number" id="ie-y" min="0" step="1" inputmode="numeric" disabled>
+            </label>
+          </div>
+          <label class="check"><input type="checkbox" id="ie-ratio" disabled> Lock proportions</label>
+          <p class="fine" id="ie-note" hidden></p>
+          <div class="tool-actions">
+            <button class="btn alt" type="button" id="ie-apply" disabled>Apply crop</button>
+          </div>
+
+          <h3 class="sp">Rotate and flip</h3>
+          <div class="tool-actions">
+            <button class="btn alt" type="button" id="ie-ccw" disabled>Rotate left</button>
+            <button class="btn alt" type="button" id="ie-cw" disabled>Rotate right</button>
+            <button class="btn alt" type="button" id="ie-fliph" disabled>Flip horizontal</button>
+            <button class="btn alt" type="button" id="ie-flipv" disabled>Flip vertical</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool" id="ie-save">
+      <h2>Save</h2>
+      <p>Download saves the selected box. Width and height are the file's resolution, and they start equal to the box, so an 800 &times; 600 box saved at 800 &times; 600 is exactly those pixels. Choose JPEG or WebP to use quality. PNG is lossless.</p>
+      <div class="tool-row">
+        <label class="field">Width
+          <input type="number" id="ie-ow" min="1" step="1" inputmode="numeric" disabled>
+        </label>
+        <label class="field">Height
+          <input type="number" id="ie-oh" min="1" step="1" inputmode="numeric" disabled>
+        </label>
+        <label class="check"><input type="checkbox" id="ie-olock" checked disabled> Lock proportions</label>
+        <button class="btn alt" type="button" id="ie-match" disabled>Match selection</button>
+      </div>
+      <div class="tool-row">
+        <label class="field">Format
+          <select id="ie-format" disabled>
+            <option value="image/png" selected>PNG</option>
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/webp">WebP</option>
+          </select>
+        </label>
+        <label class="field grow">Quality <span id="ie-qval">92</span>
+          <input type="range" id="ie-q" min="1" max="100" value="92" disabled>
+        </label>
+        <label class="field" id="ie-matte-field" hidden>Background
+          <input type="color" id="ie-matte" value="#ffffff" disabled>
+        </label>
+      </div>
+      <div class="tool-actions">
+        <button class="btn" type="button" id="ie-download" disabled>Download</button>
+        <span class="fine" id="ie-size"></span>
+      </div>
+      <p class="alert" id="ie-status" role="status" hidden></p>
+    </section>
+
+    <section>
+      <h2>How cropping works</h2>
+      <p>The box is measured in the image's own pixels, not screen pixels. Arrow keys nudge it by 1 pixel, and Shift plus an arrow key nudges by 10. Apply crop cuts the picture down so you can crop again. Reset brings the original back.</p>
+      <p>Quality is the JPEG or WebP compression. A lower number makes a smaller file. JPEG has no transparency, so empty pixels are filled with the background color. Rotate and flip apply to the whole image, and the box keeps covering the same pixels.</p>
+      <p class="fine">Everything runs in your browser. Nothing is uploaded.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>
