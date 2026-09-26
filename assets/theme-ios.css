@@ -103,6 +103,8 @@
 :root:not(.theme-cartoon) .card{background:var(--ios-fill);border:0;border-radius:18px;padding:24px 22px}
 :root:not(.theme-cartoon) .card h3{margin:0 0 6px;font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 :root:not(.theme-cartoon) .card p{color:var(--muted);font-size:15px}
+:root:not(.theme-cartoon) a.card:hover{background:var(--ios-fill-hover);color:inherit;transform:none;box-shadow:none;text-decoration:none}
+:root:not(.theme-cartoon) a.card .more{color:var(--ios-link);font-weight:500}
 
 :root:not(.theme-cartoon) .shots{gap:20px;margin-top:20px}
 :root:not(.theme-cartoon) .shots img{border:0;border-radius:20px;box-shadow:0 0 0 1px var(--ios-hair),0 10px 30px rgba(0,0,0,.08)}
@@ -238,5 +240,5 @@
   :root:not(.theme-cartoon) .foot{justify-content:flex-start}
 }
 @media (prefers-reduced-motion:reduce){
-  :root:not(.theme-cartoon) :is(.btn,a.app,a.tool-card,.theme-switch button,.mt-swatch){transition:none}
+  :root:not(.theme-cartoon) :is(.btn,a.app,a.card,a.tool-card,.theme-switch button,.mt-swatch){transition:none}
 }

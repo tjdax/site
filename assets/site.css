@@ -37,7 +37,7 @@ body{
 main{flex:1}
 a{color:var(--blue);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 a:hover{color:var(--orange)}
-a:focus-visible,.btn:focus-visible,a.app:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+a:focus-visible,.btn:focus-visible,a.app:focus-visible,a.card:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
 
 header{
   position:sticky;top:0;z-index:2;
@@ -120,6 +120,9 @@ section p:last-child{margin-bottom:0}
   font-family:"Fredoka", "Nunito", sans-serif;font-size:18px;font-weight:700;color:var(--ink);
 }
 .card p{margin:0;font-size:15px;color:var(--fg)}
+a.card{display:block;color:inherit;text-decoration:none}
+a.card:hover{background:#fff3a6;color:inherit;transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+a.card .more{display:inline-block;margin-top:12px;font-family:"Fredoka","Nunito",sans-serif;font-weight:700;font-size:14px;color:var(--orange)}
 
 .shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:8px}
 .shots figure{margin:0}
@@ -488,7 +491,7 @@ p.contrast-ratio{font-size:clamp(36px,6vw,56px)}
   .meta-rows div{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .btn,a.app,a.tool-card,.mt-swatch{transition:none}
-  .btn:hover,a.app:hover,a.tool-card:hover,.mt-swatch:hover{transform:none}
+  .btn,a.app,a.card,a.tool-card,.mt-swatch{transition:none}
+  .btn:hover,a.app:hover,a.card:hover,a.tool-card:hover,.mt-swatch:hover{transform:none}
   .sheep.running svg,.sheep.running .leg{animation:none}
 }
