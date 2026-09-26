@@ -340,6 +340,9 @@ a.tool-card > span:last-child > span{display:block;font-size:15px;color:var(--mu
 .tool-icon.i10{background:#ffe7c2}
 .tool-icon.i11{background:#d0f4f7}
 .tool-icon.i12{background:#ffd3d3}
+.tool-icon.i13{background:#dbe4ff}
+.tool-icon.i14{background:#c3fae8}
+.tool-icon.i15{background:#f3d9fa}
 .tool-icon.sm{font-size:16px;letter-spacing:-.03em}
 
 .mt-keys{margin-top:14px}
@@ -465,6 +468,18 @@ body.editor-page .hero-tool h1{margin-bottom:8px;font-size:clamp(32px,4vw,44px)}
 .meta-rows{display:grid;gap:8px;margin-top:14px}
 .meta-rows div{display:grid;grid-template-columns:9.5em 1fr;gap:10px;align-items:baseline}
 #md-preview{display:block;max-width:220px;max-height:180px;width:auto;height:auto;margin-top:14px;border:3px solid var(--ink);border-radius:12px;background:#fff}
+.rx-view,.md-view{margin-top:12px;padding:14px 16px;border:3px solid var(--ink);border-radius:12px;background:#fff;min-height:88px}
+.rx-view{white-space:pre-wrap;word-break:break-word;font:14px/1.5 ui-monospace,Consolas,monospace}
+.rx-hit{background:#ffe08a;border-radius:2px}
+.rx-list{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.rx-list li{padding:8px 10px;border:3px solid var(--ink);border-radius:10px;background:#fff;font:13px/1.45 ui-monospace,Consolas,monospace;word-break:break-all}
+.color-chip{height:72px;border:3px solid var(--ink);border-radius:14px}
+.md-view :is(h1,h2,h3,h4){margin:0.7em 0 0.3em;font-family:"Fredoka","Nunito",sans-serif}
+.md-view p,.md-view ul,.md-view ol,.md-view blockquote{margin:0 0 0.75em;max-width:none}
+.md-view ul,.md-view ol{padding-left:1.3em}
+.md-view pre{margin:0 0 0.75em;padding:12px;border-radius:10px;background:#1b1b1b;color:#fff;overflow:auto}
+.md-view pre code{background:transparent;color:inherit;padding:0}
+.md-view blockquote{padding-left:12px;border-left:4px solid var(--ink)}
 .timer-face{margin:4px 0 8px;font-family:"Fredoka","Nunito",sans-serif;font-weight:700;font-size:clamp(64px,12vw,104px);line-height:1;letter-spacing:-.03em}
 p.contrast-ratio{font-size:clamp(36px,6vw,56px)}
 

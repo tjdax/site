@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regex Tester — Test a Pattern in the Browser | TJDAX | TJDAX</title>
+<meta name="description" content="Test a regular expression against text in your browser. See each match and its groups. Nothing is uploaded.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/webapps/regex/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<script src="regex.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/webapps/regex/">
+<meta property="og:title" content="Regex Tester | TJDAX">
+<meta property="og:description" content="Test a regular expression against text in your browser. See each match and its groups. Nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Regex Tester | TJDAX">
+<meta name="twitter:description" content="Test a regular expression against text in your browser. See each match and its groups. Nothing is uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Regex Tester",
+  "url": "https://tjdax.github.io/site/webapps/regex/",
+  "description": "Test a regular expression against text in your browser. See each match and its groups. Nothing is uploaded.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" }
+}
+</script>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/" aria-current="page">Web apps</a>
+      <a href="https://tjdax.github.io/site/solutions/">Solutions</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="../">Web apps</a> / Developer tools</p>
+    <h1>Regex Tester</h1>
+    <p>Type a pattern and some text. Matches and groups update as you type.</p>
+  </div>
+  <div class="wrap">
+    <section class="tool">
+      <label class="field" for="rx-pat">Pattern</label>
+      <input type="text" id="rx-pat" spellcheck="false" autocomplete="off" placeholder="(\w+)@(\w+\.\w+)">
+      <div class="tool-actions">
+        <label class="check"><input type="checkbox" id="rx-i"> Ignore case</label>
+        <label class="check"><input type="checkbox" id="rx-m"> Multiline</label>
+        <button class="btn alt" type="button" id="rx-sample">Try a sample</button>
+      </div>
+      <label class="field" for="rx-text">Text</label>
+      <textarea class="code" id="rx-text" spellcheck="false" autocomplete="off" placeholder="Text to search"></textarea>
+      <p class="alert" id="rx-status" role="status" hidden></p>
+      <p class="fine" id="rx-summary"></p>
+      <div class="rx-view" id="rx-view" aria-live="polite"></div>
+      <ul class="rx-list" id="rx-list"></ul>
+    </section>
+    <section>
+      <h2>How to use it</h2>
+      <p>The pattern is a JavaScript regular expression. Ignore case adds <code>i</code>. Multiline makes <code>^</code> and <code>$</code> match each line. Groups in parentheses are listed under the highlighted text.</p>
+      <p>A pattern that matches an empty string is skipped forward so the page does not hang. Very long text is cut at 20,000 characters.</p>
+      <p class="fine">Nothing is sent to a server.</p>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <a href="../">All web apps</a>
+  </div>
+</footer>
+</div>
+</body>
+</html>
