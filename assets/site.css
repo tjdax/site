@@ -227,6 +227,10 @@ footer.has-meadow{margin-top:180px;padding-top:34px}
 .shelf-art .s3{left:108px;top:58px;background:#ffe0ec;transform:rotate(-4deg)}
 .shelf-art .s4{left:46px;top:84px;width:56px;height:56px;border-radius:16px;font-size:28px;background:#e3f6da;transform:rotate(12deg)}
 .shelf-art .s-code{font-size:18px}
+.shelf-logo{
+  width:150px;height:150px;object-fit:contain;display:block;
+  border:3px solid var(--ink);border-radius:28px;background:#fff;box-shadow:var(--shadow);
+}
 
 [hidden]{display:none!important}
 code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.9em;background:#fff3a6;padding:1px 5px;border-radius:6px}
@@ -515,6 +519,7 @@ p.contrast-ratio{font-size:clamp(36px,6vw,56px)}
   .sheep{width:76px}
   .shelf{grid-template-columns:1fr}
   .shelf-art{order:-1;margin:0 auto;transform:scale(.85)}
+  .shelf-logo{order:-1;margin:0 auto}
   .meta-rows div{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
