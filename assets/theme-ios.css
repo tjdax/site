@@ -42,6 +42,7 @@
 }
 :root:not(.theme-cartoon) .nav{height:52px}
 :root:not(.theme-cartoon) .logo{font-weight:600;font-size:20px;letter-spacing:-.01em;color:var(--ink)}
+:root:not(.theme-cartoon) .logo::before{width:28px;height:28px}
 :root:not(.theme-cartoon) .logo:hover{text-decoration:none}
 :root:not(.theme-cartoon) .nav nav{gap:4px 28px}
 :root:not(.theme-cartoon) .nav nav a{

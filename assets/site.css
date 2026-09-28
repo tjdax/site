@@ -46,9 +46,14 @@ header{
 }
 .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
 .logo{
+  display:inline-flex;align-items:center;gap:8px;
   font-family:"Fredoka", "Nunito", sans-serif;
   font-weight:700;font-size:24px;letter-spacing:.03em;
   color:var(--ink);text-decoration:none;
+}
+.logo::before{
+  content:"";flex:none;width:36px;height:36px;
+  background:url("logo-mark.png") center/contain no-repeat;
 }
 .logo:hover{color:var(--ink)}
 .nav nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px 20px}
