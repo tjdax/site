@@ -216,6 +216,7 @@
 :root:not(.theme-cartoon) .tool-icon.i13{background:linear-gradient(160deg,#91a7ff,#364fc7)}
 :root:not(.theme-cartoon) .tool-icon.i14{background:linear-gradient(160deg,#63e6be,#0ca678)}
 :root:not(.theme-cartoon) .tool-icon.i15{background:linear-gradient(160deg,#e599f7,#9c36b5)}
+:root:not(.theme-cartoon) .tool-icon.i16{background:linear-gradient(160deg,#74c0fc,#1864ab)}
 :root:not(.theme-cartoon) .timer-face{font-family:var(--ios-font);font-weight:700;letter-spacing:-.04em}
 :root:not(.theme-cartoon) .pick .btn[aria-pressed="true"]{background:var(--ios-blue);color:#fff;box-shadow:none}
 :root:not(.theme-cartoon) .diff,:root:not(.theme-cartoon) .grade,:root:not(.theme-cartoon) .contrast-preview,:root:not(.theme-cartoon) #md-preview,:root:not(.theme-cartoon) .rx-view,:root:not(.theme-cartoon) .md-view,:root:not(.theme-cartoon) .color-chip,:root:not(.theme-cartoon) .rx-list li{border:0;border-radius:14px;box-shadow:inset 0 0 0 1px var(--ios-hair)}
