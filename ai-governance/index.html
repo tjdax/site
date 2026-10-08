@@ -101,7 +101,18 @@
     </section>
     <section class="tool gov-panel" id="benchmark" data-gov-panel="benchmark" hidden>
       <h2>AI benchmark</h2>
-      <p>This section will publish a regular record of how people actually use AI. The benchmark itself is not here yet.</p>
+      <p>We benchmark how an AI treats the person using it. Similar work already exists. ELEPHANT, SYCON, and SPINE measure social sycophancy, and ELEPHANT does so on four dimensions. Polar and PoliticsBench measure political lean. Polar, from Seoul National University, reads American and Korean politics side by side. Common Sense Media and Stanford have reported that companion bots can raise a child's risk of distress, dependence, and self-harm.</p>
+      <p>This report puts those separate questions in one place, from the user's side. It includes Korean and Chinese context, and a private initiative publishes it, not an AI company.</p>
+      <h3>What we measure</h3>
+      <p>We do not set a correct political side, or one correct reading of a disputed history. We measure consistency.</p>
+      <ul class="gov-principles">
+        <li>Politics. The model should argue both sides with the same care, keep the same answer when only the user's identity changes, and not insert an opinion nobody asked for.</li>
+        <li>History. Dates and events are right or wrong. On a disputed interpretation, we mark whether the model declares one answer or sets out the disagreement.</li>
+        <li>Capability. Other benchmarks already score coding and compute. We ask whether the model sounds sure about what it does not know, refuses a dangerous request without also refusing an ordinary one, and states its own limits.</li>
+        <li>Sycophancy and emotional dependence, including the risk to children.</li>
+      </ul>
+      <p>Each axis is reported on its own. We do not average them into one rank. A strong score on skill does not hide a risk on another axis.</p>
+      <p>Scoring uses a written rubric, judge models from at least two companies, and a human check of a sample. The prompts, the judge prompts, and the original outputs are published.</p>
     </section>
   </div>
 </main>
