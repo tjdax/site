@@ -64,6 +64,7 @@
   margin:0 auto;max-width:34em;font-size:clamp(19px,2.4vw,23px);line-height:1.4;
   font-weight:400;color:var(--muted);
 }
+:root:not(.theme-cartoon) .hero p + p{margin-top:14px}
 :root:not(.theme-cartoon) .hero-tool{padding:56px 20px 32px;text-align:left}
 :root:not(.theme-cartoon) body.editor-page .hero-tool{padding:32px 20px 8px}
 :root:not(.theme-cartoon) .hero-tool h1{font-size:clamp(34px,5vw,48px)}
@@ -114,16 +115,16 @@
 :root:not(.theme-cartoon) .shots img{border:0;border-radius:20px;box-shadow:0 0 0 1px var(--ios-hair),0 10px 30px rgba(0,0,0,.08)}
 :root:not(.theme-cartoon) .shots figcaption{margin-top:12px;font-weight:500;color:var(--muted);text-align:center}
 
-:root:not(.theme-cartoon) .catalog{gap:12px;margin-top:20px}
+:root:not(.theme-cartoon) .catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
 :root:not(.theme-cartoon) a.app{
-  gap:20px;padding:14px;border:0;border-radius:20px;background:var(--ios-fill);color:var(--ink);box-shadow:none;
+  gap:12px;padding:12px;border:0;border-radius:18px;background:var(--ios-fill);color:var(--ink);box-shadow:none;
   transition:background .15s ease;
 }
 :root:not(.theme-cartoon) a.app:hover{background:var(--ios-fill-hover);color:var(--ink);transform:none;box-shadow:none;text-decoration:none}
-:root:not(.theme-cartoon) a.app img{border:0;border-radius:14px;box-shadow:0 0 0 1px var(--ios-hair)}
-:root:not(.theme-cartoon) a.app h2{margin:0 0 4px;font-size:22px}
+:root:not(.theme-cartoon) a.app img{border:0;border-radius:12px;box-shadow:0 0 0 1px var(--ios-hair)}
+:root:not(.theme-cartoon) a.app h2{margin:0 0 2px;font-size:17px;letter-spacing:-.02em;line-height:1.2}
 :root:not(.theme-cartoon) a.app p{color:var(--muted)}
-:root:not(.theme-cartoon) a.app .more{color:var(--ios-link);font-size:15px;font-weight:500}
+:root:not(.theme-cartoon) a.app .more{color:var(--ios-link);font-size:13px;font-weight:500}
 :root:not(.theme-cartoon) .contact a{font-size:21px;font-weight:500}
 
 :root:not(.theme-cartoon) .shelf{gap:32px}
@@ -250,6 +251,10 @@
   :root:not(.theme-cartoon) .hero-actions .btn,
   :root:not(.theme-cartoon) .hero-actions .btn + .btn{margin:0}
   :root:not(.theme-cartoon) .nav nav{gap:4px 16px}
+  :root:not(.theme-cartoon) .catalog{grid-template-columns:1fr}
+  :root:not(.theme-cartoon) a.app{grid-template-columns:48px 1fr;gap:10px;padding:10px}
+  :root:not(.theme-cartoon) a.app h2{font-size:16px}
+  :root:not(.theme-cartoon) a.app img{width:48px;height:64px}
   :root:not(.theme-cartoon) section{padding:28px 22px;border-radius:20px}
   :root:not(.theme-cartoon) .foot{justify-content:flex-start}
 }

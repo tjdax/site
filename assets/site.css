@@ -84,6 +84,7 @@ header{
     7px 7px 0 var(--ink);
 }
 .hero p{margin:0;max-width:36em;font-size:19px;font-weight:700;color:var(--ink)}
+.hero p + p{margin-top:12px}
 .btn{
   display:inline-block;margin-top:24px;padding:11px 20px;
   border:3px solid var(--ink);border-radius:12px;
@@ -139,23 +140,27 @@ a.card .more{display:inline-block;margin-top:12px;font-family:"Fredoka","Nunito"
 }
 .shots figcaption{margin-top:8px;font-size:13px;line-height:1.4;font-weight:700;color:var(--muted);text-align:left}
 
-.catalog{display:grid;gap:16px;margin-top:4px}
+.catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px}
 a.app{
-  display:grid;grid-template-columns:84px 1fr;gap:16px;align-items:center;
-  padding:12px;border-radius:14px;border:3px solid var(--ink);
+  display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;
+  padding:10px;border-radius:14px;border:3px solid var(--ink);
   background:var(--cloud);color:var(--ink);text-decoration:none;box-shadow:var(--shadow);
   transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
 }
 a.app:hover{background:#fff3a6;transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink);color:var(--ink)}
 a.app img{
-  width:84px;height:140px;object-fit:cover;object-position:top;
+  width:52px;height:68px;object-fit:cover;object-position:top;
   border-radius:10px;background:#fff;display:block;border:3px solid var(--ink);
 }
-a.app h2{margin:0 0 4px;font-size:22px}
-a.app p{margin:0;max-width:none;color:var(--muted);font-size:15px}
+a.app h2{margin:0 0 2px;font-size:17px;border-bottom:0;line-height:1.2}
+a.app > div{min-width:0}
+a.app p{
+  margin:0;max-width:none;color:var(--muted);font-size:13px;line-height:1.35;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;
+}
 a.app .more{
-  display:inline-block;margin-top:8px;
-  font-family:"Fredoka", "Nunito", sans-serif;font-weight:700;font-size:14px;color:var(--orange);
+  display:inline-block;margin-top:4px;
+  font-family:"Fredoka", "Nunito", sans-serif;font-weight:700;font-size:13px;color:var(--orange);
 }
 .contact a{font-size:18px;font-weight:700}
 
@@ -509,6 +514,10 @@ p.contrast-ratio{font-size:clamp(36px,6vw,56px)}
 @media (max-width:640px){
   .hero{padding:44px 20px 28px}
   .nav nav{gap:4px 14px}
+  .catalog{grid-template-columns:1fr;gap:8px}
+  a.app{grid-template-columns:48px 1fr;gap:10px;padding:10px}
+  a.app img{width:48px;height:64px}
+  a.app h2{font-size:16px}
   section{padding:22px 18px}
   .shots{display:flex;overflow-x:auto;gap:12px;padding-bottom:6px}
   .shots figure{flex:0 0 70%}
