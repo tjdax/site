@@ -17,6 +17,8 @@
   var UI = {
     en: {
       title: "AI Use Check",
+      org: "AI governance",
+      orgLead: "TJDAX runs this as a private institution. The work is to prevent the abuse and misuse of AI, and to protect human dignity. The check below is part of that work.",
       lead: "Twenty questions on AI addiction, blind trust, and what AI can and cannot do. This is a self-check, not a diagnosis. Answers stay in this browser.",
       progress: "Answered",
       submit: "See my score",
@@ -38,6 +40,8 @@
     },
     ko: {
       title: "AI 활용 점검",
+      org: "AI 거버넌스",
+      orgLead: "TJDAX가 운영하는 민영기관입니다. AI의 남용과 오용을 막고 인간의 존엄을 지킵니다. 아래 점검은 그 활동의 일부입니다.",
       lead: "AI 중독, 맹신, AI가 할 수 있는 일과 없는 일을 묻는 20문항입니다. 진단이 아니라 자기 점검이며, 답은 이 브라우저 안에만 있습니다.",
       progress: "응답",
       submit: "점수 보기",
@@ -59,6 +63,8 @@
     },
     ja: {
       title: "AI利用チェック",
+      org: "AIガバナンス",
+      orgLead: "TJDAXが運営する民間機関です。AIの乱用と誤用を防ぎ、人間の尊厳を守ります。下のチェックはその活動の一部です。",
       lead: "AI依存、盲信、AIにできることとできないことを問う20問です。診断ではなく自己チェックで、回答はこのブラウザだけに残ります。",
       progress: "回答",
       submit: "スコアを見る",
@@ -80,6 +86,8 @@
     },
     zh: {
       title: "AI 使用检查",
+      org: "AI 治理",
+      orgLead: "这是 TJDAX 运营的民办机构。工作是防止滥用和误用 AI，并保护人的尊严。下面的检查是这项工作的一部分。",
       lead: "共 20 题，关于 AI 沉迷、盲信，以及 AI 能做和不能做的事。这是自我检查，不是诊断。答案只留在这个浏览器里。",
       progress: "已答",
       submit: "查看分数",
@@ -229,6 +237,8 @@
 
   var titleEl = document.getElementById("quiz-title");
   var leadEl = document.getElementById("quiz-lead");
+  var orgEl = document.getElementById("org-title");
+  var orgLeadEl = document.getElementById("org-lead");
   var langEl = document.getElementById("quiz-lang");
   var form = document.getElementById("quiz-form");
   var qsEl = document.getElementById("quiz-qs");
@@ -276,6 +286,10 @@
 
   function render() {
     document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+    if (orgEl) orgEl.textContent = text().org;
+    if (orgLeadEl) orgLeadEl.textContent = text().orgLead;
+    var crumbEl = document.getElementById("org-crumb");
+    if (crumbEl) crumbEl.textContent = text().org;
     titleEl.textContent = text().title;
     leadEl.textContent = text().lead;
     goBtn.textContent = text().submit;
