@@ -386,7 +386,7 @@
   });
 
   function showGov() {
-    var runs = { benchmark: true, "2026-10": true, v2: true };
+    var runs = { benchmark: true, "2026-10": true, v2: true, v3: true };
     var name = (location.hash || "#about").replace("#", "");
     if (name !== "about" && name !== "check" && !runs[name]) name = "about";
     document.querySelectorAll("[data-gov-panel]").forEach(function (panel) {
