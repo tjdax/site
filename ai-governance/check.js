@@ -386,13 +386,22 @@
   });
 
   function showGov() {
+    var runs = { benchmark: true, "2026-10": true };
     var name = (location.hash || "#about").replace("#", "");
-    if (name !== "about" && name !== "check" && name !== "benchmark") name = "about";
+    if (name !== "about" && name !== "check" && !runs[name]) name = "about";
     document.querySelectorAll("[data-gov-panel]").forEach(function (panel) {
       panel.hidden = panel.getAttribute("data-gov-panel") !== name;
     });
     document.querySelectorAll("[data-gov-link]").forEach(function (link) {
-      if (link.getAttribute("data-gov-link") === name) link.setAttribute("aria-current", "page");
+      var id = link.getAttribute("data-gov-link");
+      var on = id === name || (id === "benchmark" && !!runs[name]);
+      if (on) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+    var runNav = document.getElementById("bench-runs");
+    if (runNav) runNav.hidden = !runs[name];
+    document.querySelectorAll("[data-run-link]").forEach(function (link) {
+      if (link.getAttribute("data-run-link") === name) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
   }
