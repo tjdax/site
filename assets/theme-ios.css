@@ -253,6 +253,7 @@
   :root:not(.theme-cartoon) .hero-actions{gap:10px;margin-top:24px}
   :root:not(.theme-cartoon) .hero-actions .btn,
   :root:not(.theme-cartoon) .hero-actions .btn + .btn{margin:0}
+  :root:not(.theme-cartoon) .nav{height:auto;min-height:52px;padding:8px 0}
   :root:not(.theme-cartoon) .nav nav{gap:4px 16px}
   :root:not(.theme-cartoon) .catalog{grid-template-columns:1fr}
   :root:not(.theme-cartoon) a.app{grid-template-columns:48px 1fr;gap:10px;padding:10px}

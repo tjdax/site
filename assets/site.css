@@ -528,6 +528,7 @@ p.contrast-ratio{font-size:clamp(36px,6vw,56px)}
 }
 @media (max-width:640px){
   .hero{padding:44px 20px 28px}
+  .nav{height:auto;min-height:66px;padding:8px 0}
   .nav nav{gap:4px 14px}
   .catalog{grid-template-columns:1fr;gap:8px}
   a.app{grid-template-columns:48px 1fr;gap:10px;padding:10px}
