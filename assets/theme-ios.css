@@ -221,7 +221,7 @@
 :root:not(.theme-cartoon) .tool-icon.i17{background:linear-gradient(160deg,#b197fc,#5f3dc4)}
 :root:not(.theme-cartoon) .timer-face{font-family:var(--ios-font);font-weight:700;letter-spacing:-.04em}
 :root:not(.theme-cartoon) .pick .btn[aria-pressed="true"]{background:var(--ios-blue);color:#fff;box-shadow:none}
-:root:not(.theme-cartoon) .diff,:root:not(.theme-cartoon) .grade,:root:not(.theme-cartoon) .contrast-preview,:root:not(.theme-cartoon) #md-preview,:root:not(.theme-cartoon) .rx-view,:root:not(.theme-cartoon) .md-view,:root:not(.theme-cartoon) .color-chip,:root:not(.theme-cartoon) .rx-list li{border:0;border-radius:14px;box-shadow:inset 0 0 0 1px var(--ios-hair)}
+:root:not(.theme-cartoon) .diff,:root:not(.theme-cartoon) .grade,:root:not(.theme-cartoon) .contrast-preview,:root:not(.theme-cartoon) #md-preview,:root:not(.theme-cartoon) .rx-view,:root:not(.theme-cartoon) .md-view,:root:not(.theme-cartoon) .color-chip,:root:not(.theme-cartoon) .rx-list li,:root:not(.theme-cartoon) .quiz-q{border:0;border-radius:14px;box-shadow:inset 0 0 0 1px var(--ios-hair)}
 :root:not(.theme-cartoon) .diff-add,:root:not(.theme-cartoon) .grade.pass{background:rgba(52,199,89,.16)}
 :root:not(.theme-cartoon) .diff-del,:root:not(.theme-cartoon) .grade.fail{background:rgba(255,59,48,.12)}
 :root:not(.theme-cartoon) .tool h3{font-family:var(--ios-font);font-weight:600;letter-spacing:-.01em}
