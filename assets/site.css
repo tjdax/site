@@ -263,6 +263,32 @@ button.btn{cursor:pointer;line-height:1.2}
 .gov-panel h3{margin:18px 0 8px;font-family:"Fredoka","Nunito",sans-serif;font-size:18px;font-weight:700;color:var(--ink)}
 .gov-principles{margin:0;padding-left:1.2em;max-width:42em}
 .gov-principles li{margin:0 0 10px}
+.bench-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px;font-size:14px;font-weight:700}
+.bench-legend span{display:inline-flex;align-items:center;gap:6px}
+.bench-legend span::before{content:"";width:12px;height:12px;border-radius:3px;border:2px solid var(--ink)}
+.bench-legend .c-opus::before{background:#4c6ef5}
+.bench-legend .c-gemini::before{background:#12b886}
+.bench-legend .c-muse::before{background:#f08c00}
+.bench-legend .c-grok::before{background:#9c36b5}
+.bench-fig{margin:0 0 16px;max-width:42em}
+.bench-fig figcaption{margin:0 0 6px;font-size:14px;color:var(--muted)}
+.bench-radar,.bench-bars{width:100%;height:auto;display:block;background:#fff;border:3px solid var(--ink);border-radius:14px}
+.bench-radar{max-width:440px;margin:0 auto}
+.bench-radar .grid{fill:none;stroke:#bdbdbd;stroke-width:1.25}
+.bench-radar .axis,.bench-bars .axis{stroke:var(--ink);stroke-width:1.5}
+.bench-radar text,.bench-bars text{fill:var(--ink);font-size:13px;font-family:"Nunito",sans-serif;font-weight:700}
+.bench-radar .series{fill-opacity:.18;stroke-width:2.5}
+.bench-radar .opus,.bench-bars .opus{stroke:#4c6ef5;fill:#4c6ef5}
+.bench-radar .gemini,.bench-bars .gemini{stroke:#0ca678;fill:#12b886}
+.bench-radar .muse,.bench-bars .muse{stroke:#e67700;fill:#f08c00}
+.bench-radar .grok,.bench-bars .grok{stroke:#862e9c;fill:#9c36b5}
+.bench-bars rect{stroke:none}
+.bench-table-wrap{overflow-x:auto;margin:0 0 14px;max-width:42em}
+.bench-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:3px solid var(--ink);border-radius:12px}
+.bench-table caption{caption-side:bottom;padding-top:6px;text-align:left;color:var(--muted);font-size:13px}
+.bench-table th,.bench-table td{padding:8px 10px;border-bottom:1px solid #e6e6e6;text-align:right}
+.bench-table th[scope="row"],.bench-table thead th:first-child{text-align:left}
+.bench-table thead th{font-family:"Fredoka","Nunito",sans-serif}
 .tool-row{display:flex;flex-wrap:wrap;gap:14px;align-items:end;margin-top:14px}
 .tool-row .field.grow{flex:1 1 220px}
 .field{display:grid;gap:6px;font-family:"Fredoka", "Nunito", sans-serif;font-weight:500;font-size:15px;color:var(--ink)}
