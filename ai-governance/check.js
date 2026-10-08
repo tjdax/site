@@ -18,7 +18,7 @@
     en: {
       title: "AI Use Check",
       org: "AI governance",
-      orgLead: "TJDAX runs this as a private institution. The work is to prevent the abuse and misuse of AI, and to protect human dignity. The check below is part of that work.",
+      orgLead: "A private initiative that stands with the people who use AI, not the people who build it. With human dignity as the measure, it explains the sound use of AI, records what is actually happening, and offers proposals to society.",
       lead: "Twenty questions on AI addiction, blind trust, and what AI can and cannot do. This is a self-check, not a diagnosis. Answers stay in this browser.",
       progress: "Answered",
       submit: "See my score",
@@ -41,7 +41,7 @@
     ko: {
       title: "AI 활용 점검",
       org: "AI 거버넌스",
-      orgLead: "TJDAX가 운영하는 민영기관입니다. AI의 남용과 오용을 막고 인간의 존엄을 지킵니다. 아래 점검은 그 활동의 일부입니다.",
+      orgLead: "AI를 만드는 쪽이 아니라 쓰는 사람의 자리에서, 인간의 존엄을 기준으로 AI의 올바른 쓰임을 알리고, 실태를 기록하고, 사회에 제언하는 민간 이니셔티브입니다.",
       lead: "AI 중독, 맹신, AI가 할 수 있는 일과 없는 일을 묻는 20문항입니다. 진단이 아니라 자기 점검이며, 답은 이 브라우저 안에만 있습니다.",
       progress: "응답",
       submit: "점수 보기",
@@ -64,7 +64,7 @@
     ja: {
       title: "AI利用チェック",
       org: "AIガバナンス",
-      orgLead: "TJDAXが運営する民間機関です。AIの乱用と誤用を防ぎ、人間の尊厳を守ります。下のチェックはその活動の一部です。",
+      orgLead: "AIを作る側ではなく、使う人の側に立つ民間イニシアチブです。人間の尊厳を基準に、正しい使い方を伝え、実態を記録し、社会へ提言します。",
       lead: "AI依存、盲信、AIにできることとできないことを問う20問です。診断ではなく自己チェックで、回答はこのブラウザだけに残ります。",
       progress: "回答",
       submit: "スコアを見る",
@@ -87,7 +87,7 @@
     zh: {
       title: "AI 使用检查",
       org: "AI 治理",
-      orgLead: "这是 TJDAX 运营的民办机构。工作是防止滥用和误用 AI，并保护人的尊严。下面的检查是这项工作的一部分。",
+      orgLead: "这是站在使用 AI 的人一边、而不是制造 AI 的人一边的民间倡议。以人的尊严为尺度，说明正确用法，记录实际情况，并向社会提出建议。",
       lead: "共 20 题，关于 AI 沉迷、盲信，以及 AI 能做和不能做的事。这是自我检查，不是诊断。答案只留在这个浏览器里。",
       progress: "已答",
       submit: "查看分数",
@@ -385,6 +385,20 @@
     titleEl.scrollIntoView({ block: "nearest" });
   });
 
+  function showGov() {
+    var name = (location.hash || "#about").replace("#", "");
+    if (name !== "about" && name !== "check" && name !== "benchmark") name = "about";
+    document.querySelectorAll("[data-gov-panel]").forEach(function (panel) {
+      panel.hidden = panel.getAttribute("data-gov-panel") !== name;
+    });
+    document.querySelectorAll("[data-gov-link]").forEach(function (link) {
+      if (link.getAttribute("data-gov-link") === name) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }
+
+  window.addEventListener("hashchange", showGov);
   lang = preferred();
   render();
+  showGov();
 })();

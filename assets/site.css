@@ -257,6 +257,12 @@ button.btn{cursor:pointer;line-height:1.2}
 .quiz-score{margin:0 0 8px;font-family:"Fredoka","Nunito",sans-serif;font-weight:700;font-size:clamp(36px,6vw,52px);line-height:1}
 .quiz-tips{margin:8px 0 0;padding-left:1.2em}
 .quiz-tips li{margin:0 0 8px}
+.gov-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.gov-nav .btn{margin:0}
+.gov-nav .btn[aria-current="page"]{background:var(--ink);color:#fff}
+.gov-panel h3{margin:18px 0 8px;font-family:"Fredoka","Nunito",sans-serif;font-size:18px;font-weight:700;color:var(--ink)}
+.gov-principles{margin:0;padding-left:1.2em;max-width:42em}
+.gov-principles li{margin:0 0 10px}
 .tool-row{display:flex;flex-wrap:wrap;gap:14px;align-items:end;margin-top:14px}
 .tool-row .field.grow{flex:1 1 220px}
 .field{display:grid;gap:6px;font-family:"Fredoka", "Nunito", sans-serif;font-weight:500;font-size:15px;color:var(--ink)}
