@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>apple — closed falling-block model | TJDAX</title>
+<meta name="description" content="apple is the first falling-block value network trained by tjdax. Development closed on 10 October 2026 at generation 10211. Elo 970.4 versus a heuristic at 1000.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tjdax.github.io/site/ai-lab/apple/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme-ios.css">
+<script src="../../assets/theme.js"></script>
+<script src="../../assets/meadow.js" defer></script>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="TJDAX">
+<meta property="og:url" content="https://tjdax.github.io/site/ai-lab/apple/">
+<meta property="og:title" content="apple — closed falling-block model">
+<meta property="og:description" content="First model trained by tjdax. Closed at generation 10211 after 1 hour 14 minutes. Elo 970.4, record 8 / 525 / 8149.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="apple — closed falling-block model">
+<meta name="twitter:description" content="First model trained by tjdax. Closed at generation 10211. Elo 970.4 against a heuristic anchored at 1000.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "apple, a closed falling-block value network",
+  "datePublished": "2026-10-10",
+  "author": { "@type": "Person", "name": "tjdax" },
+  "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" },
+  "description": "Measured close-out of apple, the first falling-block model trained by tjdax."
+}
+</script>
+</head>
+<body>
+
+<div class="page">
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://tjdax.github.io/site/">TJDAX</a>
+    <nav>
+      <a href="https://tjdax.github.io/site/catcut/">CatCut</a>
+      <a href="https://tjdax.github.io/site/ai-governance/">AI governance</a>
+      <a href="https://tjdax.github.io/site/ai-lab/" aria-current="page">AI lab</a>
+      <a href="https://tjdax.github.io/site/solutions/">Solutions</a>
+      <a href="https://tjdax.github.io/site/apps/">Apps</a>
+      <a href="https://tjdax.github.io/site/webapps/">Web apps</a>
+      <a href="https://tjdax.github.io/site/#about">About</a>
+      <a href="https://tjdax.github.io/site/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero hero-tool">
+    <p class="crumb"><a href="https://tjdax.github.io/site/">TJDAX</a> / <a href="https://tjdax.github.io/site/ai-lab/">AI lab</a> / apple</p>
+    <h1>apple</h1>
+    <p>apple is a value-network agent for a guideline falling-block puzzle. tjdax trained it. This is the first model from that run. Development closed on 10 October 2026, and training is not running.</p>
+  </div>
+
+  <div class="wrap">
+    <section>
+      <h2>Close of development</h2>
+      <p>The checkpoint that closed the run was written at 16:17:49 local time on 10 October 2026. Recorded training time on that file is 4,413 seconds, which is 1 hour 14 minutes, including an earlier session from the same day that was resumed from disk. The process was then stopped. Generation 10,212 had started and was not saved.</p>
+      <p>tjdax ended the project there. More generations were not run. Public open-source weights for this kind of puzzle already exist, and this network was not trained to replace them. The useful record is the measurement below, not another night of the same loop.</p>
+    </section>
+
+    <section>
+      <h2>What the hour produced</h2>
+      <p>The run stood up a complete training loop and kept a checkpoint after every generation.</p>
+      <ul class="gov-principles">
+        <li><strong>Rules engine.</strong> A Rust engine for the guideline falling-block rules: seven pieces, hold, rotation kicks, line clears, attack, and incoming garbage. The same engine supplied the legal placements to the learner.</li>
+        <li><strong>Network.</strong> A value network trained from scratch with NumPy and Adam. It has 306 observation inputs, one hidden layer of 64 ReLU units, and one output that predicts remaining attack. PyTorch was not used. The optimizer state was stored with the weights, so a reboot continued the same update rather than resetting Adam.</li>
+        <li><strong>Self-play.</strong> Eight worker processes, one game each per generation, then one value update on the main process. The core cap was 8 of 16 logical CPUs, and the process priority was below normal so the machine stayed usable.</li>
+        <li><strong>Move choice.</strong> Search looks one ply ahead, over every legal placement. The score adds attack sent and 0.35 times lines cleared, adds 0.4 times a z-scored value estimate, and subtracts a penalty for holes, stack height, and topping out.</li>
+        <li><strong>Ladder.</strong> One duel per generation against a fixed greedy heuristic. Both sides receive the same piece sequence. The piece limit is 40. A win counts as 1 only when the heuristic tops out and apple does not. A loss counts as 0 when apple tops out. If both survive the limit, the game is a draw and counts as 0.5.</li>
+        <li><strong>Elo.</strong> The heuristic is anchored at 1000. Each evaluation updates apple with K = 24.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Final checkpoint</h2>
+      <ul class="gov-principles">
+        <li><strong>Generation.</strong> 10,211 completed. 10,212 was in progress and was discarded.</li>
+        <li><strong>Recorded time.</strong> 1 hour 14 minutes.</li>
+        <li><strong>Self-play games.</strong> 81,696, including games restored when training resumed.</li>
+        <li><strong>Afterstate samples.</strong> 2,776,545 positions used to train the value output.</li>
+        <li><strong>Value updates.</strong> 8,682.</li>
+        <li><strong>Workers.</strong> 8.</li>
+        <li><strong>Network shape.</strong> 306 × 64 × 1.</li>
+        <li><strong>Best attack per piece.</strong> 0.250, the highest generation in the run. Attack per piece is attack sent divided by pieces placed.</li>
+        <li><strong>Attack per piece at generation 10,211.</strong> 0.163. Later generations did not lock in a level above the early peak.</li>
+        <li><strong>Elo.</strong> 970.4. The heuristic stays at 1000, so apple finished slightly behind that opponent.</li>
+        <li><strong>Evaluations.</strong> 8,682.</li>
+        <li><strong>Wins / losses / draws.</strong> 8 / 525 / 8,149.</li>
+        <li><strong>Mean score.</strong> 0.4702. A win is 1, a draw is 0.5, and a loss is 0, averaged from the first evaluation.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How to read that score</h2>
+      <p>Almost every ladder game was a draw. 8,149 of 8,682 evaluations ended with both sides still alive after 40 pieces, so neither player proved it could kill the other inside the limit. Draws sit on 0.5 and barely move an Elo that is already near 1000. The decided games are the informative ones: apple won 8 and lost 525. When someone topped out, it was usually apple.</p>
+      <p>The mean score of 0.4702 is that lifetime average. It stays near one half because of the draws, and it sits under one half because of the losses. It is a poor gauge of a single generation. Elo is the running rating, and attack per piece is the self-play attack of the latest generation. Neither one was climbing through the close of the run.</p>
+      <p>Survival inside self-play was usually 1, which means the eight games of a generation reached the piece limit without topping out. That is endurance under a short cap, not a win on the ladder. The T-spin rate in late generations was usually 0.</p>
+    </section>
+
+    <section>
+      <h2>Marks during the run</h2>
+      <ul class="gov-principles">
+        <li><strong>Generation 0.</strong> Training started.</li>
+        <li><strong>Generation 8.</strong> The first T-spin clear appeared in self-play.</li>
+        <li><strong>Generation 596.</strong> One generation reached 0.20 attack per piece.</li>
+        <li><strong>Generation 672.</strong> The first win against the heuristic.</li>
+      </ul>
+      <p>The marks that were defined and not reached are 0.50 attack per piece and 1.00 attack per piece. The best generation stopped at 0.250.</p>
+    </section>
+
+    <section>
+      <h2>What the result is</h2>
+      <p>apple is evidence that tjdax could train a small value network on the lab engine, resume it after a restart, and write down the ladder score. It is not evidence that the network plays better than the heuristic it was measured against, and it is not a claim about the open-source weights that already exist for this puzzle. Those weights are the reason this training stopped. The numbers on this page are the whole result.</p>
+      <p><a href="https://tjdax.github.io/site/ai-lab/">Back to the AI lab</a></p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 TJDAX</span>
+    <span class="foot-links"><a href="https://tjdax.github.io/site/catcut/">CatCut</a><a href="https://tjdax.github.io/site/ai-governance/">AI governance</a><a href="https://tjdax.github.io/site/ai-lab/">AI lab</a><a href="https://tjdax.github.io/site/solutions/">Solutions</a><a href="https://tjdax.github.io/site/apps/">Apps</a><a href="https://tjdax.github.io/site/webapps/">Web apps</a><a href="https://tjdax.github.io/site/#about">About</a><a href="https://tjdax.github.io/site/#contact">Contact</a></span>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>
