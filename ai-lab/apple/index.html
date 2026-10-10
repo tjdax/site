@@ -66,7 +66,7 @@
   <div class="wrap">
     <section>
       <h2>Close of development</h2>
-      <p>The checkpoint that closed the run was written at 16:17:49 local time on 10 October 2026. Recorded training time on that file is 4,413 seconds, which is 1 hour 14 minutes, including an earlier session from the same day that was resumed from disk. The process was then stopped. Generation 10,212 had started and was not saved.</p>
+      <p>The checkpoint that closed the run was written at 16:17:49 local time on 10 October 2026. Recorded training time in that file is 4,413.2 seconds, which is 1 hour 13 minutes 33 seconds, including earlier time carried from a resume the same day. The process was then stopped. Generation 10,212 had started and was not saved.</p>
       <p>tjdax ended the project there. More generations were not run. Public open-source weights for this kind of puzzle already exist, and this network was not trained to replace them. The useful record is the measurement below, not another night of the same loop.</p>
     </section>
 
@@ -87,7 +87,7 @@
       <h2>Final checkpoint</h2>
       <ul class="gov-principles">
         <li><strong>Generation.</strong> 10,211 completed. 10,212 was in progress and was discarded.</li>
-        <li><strong>Recorded time.</strong> 1 hour 14 minutes.</li>
+        <li><strong>Recorded time.</strong> 4,413.2 seconds, or 1 hour 13 minutes 33 seconds.</li>
         <li><strong>Self-play games.</strong> 81,696, including games restored when training resumed.</li>
         <li><strong>Afterstate samples.</strong> 2,776,545 positions used to train the value output.</li>
         <li><strong>Value updates.</strong> 8,682.</li>
@@ -118,6 +118,18 @@
         <li><strong>Generation 672.</strong> The first win against the heuristic.</li>
       </ul>
       <p>The marks that were defined and not reached are 0.50 attack per piece and 1.00 attack per piece. The best generation stopped at 0.250.</p>
+    </section>
+
+    <section id="evidence">
+      <h2>Evidence</h2>
+      <p>The two files below are the checkpoint as it was when training stopped. The manifest repeats the totals and the arithmetic, so the page can be checked without trusting the prose.</p>
+      <ul class="gov-principles">
+        <li><strong>Record.</strong> <a href="evidence/live.json">live.json</a>, 63,927 bytes. SHA-256 <code>ccde4576c2700809a2a6591c7c5b000bbb17a4597a080b06be126f82414dcaec</code>. The history array keeps the last 400 generations, 9,812 through 10,211. Totals and milestones are for the run.</li>
+        <li><strong>Weights.</strong> <a href="evidence/az-weights.npz">az-weights.npz</a>, 239,012 bytes. SHA-256 <code>f218094346d6f4aa215890f7f0bfc7caa671c38c529f7da143689430ff301ddb</code>. Arrays inside: <code>w</code>, <code>step</code>, and the Adam moments and variances <code>mom_w1</code>, <code>mom_b1</code>, <code>mom_w2</code>, <code>mom_b2</code>, <code>var_w1</code>, <code>var_b1</code>, <code>var_w2</code>, <code>var_b2</code>.</li>
+        <li><strong>Manifest.</strong> <a href="evidence/manifest.json">manifest.json</a>.</li>
+        <li><strong>Check the record.</strong> 8 + 525 + 8,149 = 8,682 evaluations. 8 + 8,149 × 0.5 = 4,082.5. 4,082.5 / 8,682 = 0.47022345, stored as 0.4702. (10,211 + 1) × 8 = 81,696 games.</li>
+        <li><strong>What the file does not show.</strong> Generation 10,211 means 10,212 generation indexes if counting from 0. Scored duels are 8,682. The other 1,530 indexes have no stored duel. Elo and the win, loss, and draw counts are the 8,682 scored duels only.</li>
+      </ul>
     </section>
 
     <section>

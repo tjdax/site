@@ -1,0 +1,76 @@
+{
+  "model": "apple",
+  "trainer": "tjdax",
+  "closed": "2026-10-10T16:17:49+08:00",
+  "source": "checkpoint written by the training process at stop",
+  "files": {
+    "az-weights.npz": {
+      "sha256": "f218094346d6f4aa215890f7f0bfc7caa671c38c529f7da143689430ff301ddb",
+      "bytes": 239012,
+      "arrays": [
+        "w",
+        "step",
+        "mom_w1",
+        "mom_b1",
+        "mom_w2",
+        "mom_b2",
+        "var_w1",
+        "var_b1",
+        "var_w2",
+        "var_b2"
+      ]
+    },
+    "live.json": {
+      "sha256": "ccde4576c2700809a2a6591c7c5b000bbb17a4597a080b06be126f82414dcaec",
+      "bytes": 63927,
+      "note": "Dashboard history in this file keeps the last 400 generations, from 9812 through 10211. Totals and milestones cover the run described below."
+    }
+  },
+  "checkpoint": {
+    "generation": 10211,
+    "elapsedSec": 4413.2,
+    "elapsed": "1 hour 13 minutes 33.2 seconds, including earlier resumed time stored in the file",
+    "processStartedField": "2026-10-10T15:15:40",
+    "checkpoint": "2026-10-10 16:17:49",
+    "games": 81696,
+    "samples": 2776545,
+    "trainSteps": 8682,
+    "evals": 8682,
+    "workers": 8,
+    "network": "306x64x1",
+    "bestApp": 0.25,
+    "lastApp": 0.1625,
+    "elo": 970.4,
+    "heuristicElo": 1000,
+    "wins": 8,
+    "losses": 525,
+    "draws": 8149,
+    "winSum": 4082.5,
+    "meanScore": 0.4702
+  },
+  "checks": [
+    "8 + 525 + 8149 = 8682 evaluations",
+    "8 + 8149 * 0.5 = 4082.5",
+    "4082.5 / 8682 = 0.47022345, stored as 0.4702",
+    "(10211 + 1) * 8 = 81696 games",
+    "10212 generations minus 8682 scored duels = 1530 generation indexes with no stored duel. Elo and the win/loss/draw record are over the 8682 scored duels only."
+  ],
+  "milestones": [
+    {
+      "gen": 0,
+      "text": "training started"
+    },
+    {
+      "gen": 8,
+      "text": "first T-spin in self-play"
+    },
+    {
+      "gen": 596,
+      "text": "attack per piece reached 0.20"
+    },
+    {
+      "gen": 672,
+      "text": "first win against the heuristic"
+    }
+  ]
+}
