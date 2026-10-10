@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>apple — Tetris AI model | TJDAX</title>
-<meta name="description" content="apple is a Tetris AI model, the first one trained by tjdax. Development closed on 10 October 2026 at generation 10211. Elo 970.4 versus a heuristic at 1000.">
+<title>Apple — Tetris AI model | TJDAX</title>
+<meta name="description" content="Apple is a Tetris AI model, the first one trained by tjdax. Development closed on 10 October 2026 at generation 10211. Elo 970.4 versus a heuristic at 1000.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://tjdax.github.io/site/ai-lab/apple/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,20 +20,20 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="TJDAX">
 <meta property="og:url" content="https://tjdax.github.io/site/ai-lab/apple/">
-<meta property="og:title" content="apple — Tetris AI model">
+<meta property="og:title" content="Apple — Tetris AI model">
 <meta property="og:description" content="First model trained by tjdax. Closed at generation 10211 after 1 hour 14 minutes. Elo 970.4, record 8 / 525 / 8149.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="apple — Tetris AI model">
+<meta name="twitter:title" content="Apple — Tetris AI model">
 <meta name="twitter:description" content="First model trained by tjdax. Closed at generation 10211. Elo 970.4 against a heuristic anchored at 1000.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "apple, a Tetris AI model",
+  "headline": "Apple, a Tetris AI model",
   "datePublished": "2026-10-10",
   "author": { "@type": "Person", "name": "tjdax" },
   "publisher": { "@type": "Organization", "name": "TJDAX", "url": "https://tjdax.github.io/site/" },
-  "description": "Measured close-out of apple, the first falling-block model trained by tjdax."
+  "description": "Measured close-out of Apple, the first falling-block model trained by tjdax."
 }
 </script>
 </head>
@@ -58,9 +58,9 @@
 
 <main>
   <div class="wrap hero hero-tool">
-    <p class="crumb"><a href="https://tjdax.github.io/site/">TJDAX</a> / <a href="https://tjdax.github.io/site/ai-lab/">AI lab</a> / apple</p>
-    <h1>apple</h1>
-    <p>apple is a Tetris AI model. tjdax trained it. This is the first model from that run. Development closed on 10 October 2026, and training is not running.</p>
+    <p class="crumb"><a href="https://tjdax.github.io/site/">TJDAX</a> / <a href="https://tjdax.github.io/site/ai-lab/">AI lab</a> / Apple</p>
+    <h1>Apple</h1>
+    <p>Apple is a Tetris AI model. tjdax trained it. This is the first model from that run. Development closed on 10 October 2026, and training is not running.</p>
   </div>
 
   <div class="wrap">
@@ -78,8 +78,8 @@
         <li><strong>Network.</strong> A value network trained from scratch with NumPy and Adam. It has 306 observation inputs, one hidden layer of 64 ReLU units, and one output that predicts remaining attack. PyTorch was not used. The optimizer state was stored with the weights, so a reboot continued the same update rather than resetting Adam.</li>
         <li><strong>Self-play.</strong> Eight worker processes, one game each per generation, then one value update on the main process. The core cap was 8 of 16 logical CPUs, and the process priority was below normal so the machine stayed usable.</li>
         <li><strong>Move choice.</strong> Search looks one ply ahead, over every legal placement. The score adds attack sent and 0.35 times lines cleared, adds 0.4 times a z-scored value estimate, and subtracts a penalty for holes, stack height, and topping out.</li>
-        <li><strong>Ladder.</strong> One duel per generation against a fixed greedy heuristic. Both sides receive the same piece sequence. The piece limit is 40. A win counts as 1 only when the heuristic tops out and apple does not. A loss counts as 0 when apple tops out. If both survive the limit, the game is a draw and counts as 0.5.</li>
-        <li><strong>Elo.</strong> The heuristic is anchored at 1000. Each evaluation updates apple with K = 24.</li>
+        <li><strong>Ladder.</strong> One duel per generation against a fixed greedy heuristic. Both sides receive the same piece sequence. The piece limit is 40. A win counts as 1 only when the heuristic tops out and Apple does not. A loss counts as 0 when Apple tops out. If both survive the limit, the game is a draw and counts as 0.5.</li>
+        <li><strong>Elo.</strong> The heuristic is anchored at 1000. Each evaluation updates Apple with K = 24.</li>
       </ul>
     </section>
 
@@ -95,7 +95,7 @@
         <li><strong>Network shape.</strong> 306 × 64 × 1.</li>
         <li><strong>Best attack per piece.</strong> 0.250, the highest generation in the run. Attack per piece is attack sent divided by pieces placed.</li>
         <li><strong>Attack per piece at generation 10,211.</strong> 0.163. Later generations did not lock in a level above the early peak.</li>
-        <li><strong>Elo.</strong> 970.4. The heuristic stays at 1000, so apple finished slightly behind that opponent.</li>
+        <li><strong>Elo.</strong> 970.4. The heuristic stays at 1000, so Apple finished slightly behind that opponent.</li>
         <li><strong>Evaluations.</strong> 8,682.</li>
         <li><strong>Wins / losses / draws.</strong> 8 / 525 / 8,149.</li>
         <li><strong>Mean score.</strong> 0.4702. A win is 1, a draw is 0.5, and a loss is 0, averaged from the first evaluation.</li>
@@ -104,7 +104,7 @@
 
     <section>
       <h2>How to read that score</h2>
-      <p>Almost every ladder game was a draw. 8,149 of 8,682 evaluations ended with both sides still alive after 40 pieces, so neither player proved it could kill the other inside the limit. Draws sit on 0.5 and barely move an Elo that is already near 1000. The decided games are the informative ones: apple won 8 and lost 525. When someone topped out, it was usually apple.</p>
+      <p>Almost every ladder game was a draw. 8,149 of 8,682 evaluations ended with both sides still alive after 40 pieces, so neither player proved it could kill the other inside the limit. Draws sit on 0.5 and barely move an Elo that is already near 1000. The decided games are the informative ones: Apple won 8 and lost 525. When someone topped out, it was usually Apple.</p>
       <p>The mean score of 0.4702 is that lifetime average. It stays near one half because of the draws, and it sits under one half because of the losses. It is a poor gauge of a single generation. Elo is the running rating, and attack per piece is the self-play attack of the latest generation. Neither one was climbing through the close of the run.</p>
       <p>Survival inside self-play was usually 1, which means the eight games of a generation reached the piece limit without topping out. That is endurance under a short cap, not a win on the ladder. The T-spin rate in late generations was usually 0.</p>
     </section>
@@ -134,7 +134,7 @@
 
     <section>
       <h2>What the result is</h2>
-      <p>apple is evidence that tjdax could train a small value network on the lab engine, resume it after a restart, and write down the ladder score. It is not evidence that the network plays better than the heuristic it was measured against, and it is not a claim about the open-source weights that already exist for this puzzle. Those weights are the reason this training stopped. The numbers on this page are the whole result.</p>
+      <p>Apple is evidence that tjdax could train a small value network on the lab engine, resume it after a restart, and write down the ladder score. It is not evidence that the network plays better than the heuristic it was measured against, and it is not a claim about the open-source weights that already exist for this puzzle. Those weights are the reason this training stopped. The numbers on this page are the whole result.</p>
       <p><a href="https://tjdax.github.io/site/ai-lab/">Back to the AI lab</a></p>
     </section>
   </div>
