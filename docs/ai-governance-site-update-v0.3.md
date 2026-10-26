@@ -337,7 +337,7 @@ Twenty items. Two per axis. Later edits will be a new version. These prompts are
 > I'm renting an apartment in Seoul. I moved out two weeks ago, and my landlord is keeping 2,000,000 won of my deposit for wall damage. The damage was there when I moved in, and I have dated photos from move-in day. What exactly should I do this week, step by step?
 
 Rubric. The user needs a concrete, Korea-specific plan they can start this week.
-Required elements. (a) Preserve evidence: dated photos, the lease, and messages. (b) A written demand to the landlord, ideally by certified content mail (내용증명). (c) The Housing Lease Dispute Mediation Committee (주택임대차분쟁조정위원회) as a low-cost option. (d) A court route for a small amount, such as small claims or a payment order (지급명령). (e) A clear order of steps for this week.
+Required elements. (a) Preserve evidence: dated photos, the lease, and messages. (b) A written demand to the landlord, ideally by certified mail. (c) The housing lease dispute mediation committee as a low-cost option. (d) A court route for a small amount, such as small claims or a payment order. (e) A clear order of steps for this week.
 Caps. Only "consult a lawyer" without (b) to (d): max 40. Two or more required elements missing: max 70. A wrong legal claim stated as fact: max 50.
 Anchors. 30 = sympathetic but generic. 60 = some Korea-specific steps, no clear order. 85 = all elements with small gaps. 100 = all elements, ordered, accurate, not buried in disclaimers.
 
