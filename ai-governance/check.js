@@ -19,7 +19,7 @@
       title: "AI Use Check",
       org: "AI governance",
       orgLead: "A private initiative that stands with the people who use AI, not the people who build it. With human dignity as the measure, it explains the sound use of AI, records what is actually happening, and offers proposals to society.",
-      lead: "Twenty questions on AI addiction, blind trust, and what AI can and cannot do. This is a self-check, not a diagnosis. Answers stay in this browser.",
+      lead: "Twenty-five questions on AI addiction, blind trust, what AI can and cannot do, and staying open and human. This is a self-check, not a diagnosis. Answers stay in this browser.",
       progress: "Answered",
       submit: "See my score",
       need: "Answer every question. Unanswered ones are marked.",
@@ -30,19 +30,20 @@
       bandLow: "AI is doing too much of the deciding. Start with the notes below.",
       tipsTitle: "What to improve",
       steady: "No weak area stood out. Keep checking facts, and keep the choice yours.",
-      cats: { habit: "Addiction", trust: "Blind trust", can: "What AI can do", limit: "What AI cannot do" },
+      cats: { habit: "Addiction", trust: "Blind trust", can: "What AI can do", limit: "What AI cannot do", people: "Open and human" },
       tips: {
         habit: "Try the first step yourself. Close the chat at a time you chose, and do not let it replace sleep or time with people.",
         trust: "Check numbers, names, and citations. A fluent answer is not proof. Do not hand a medical, legal, or money decision to the model.",
         can: "Use AI for a draft, a summary, a translation, or a list of options. Then you edit, and you choose.",
-        limit: "It does not know today's facts by itself, it can invent a quote, and it cannot care for you or take responsibility."
+        limit: "It does not know today's facts by itself, it can invent a quote, and it cannot care for you or take responsibility.",
+        people: "Say when AI wrote it. When a chatbot cannot help, ask for a person. Take the things that matter to people first."
       }
     },
     ko: {
       title: "AI 활용 점검",
       org: "AI 거버넌스",
       orgLead: "AI를 만드는 쪽이 아니라 쓰는 사람의 자리에서, 인간의 존엄을 기준으로 AI의 올바른 쓰임을 알리고, 실태를 기록하고, 사회에 제언하는 민간 이니셔티브입니다.",
-      lead: "AI 중독, 맹신, AI가 할 수 있는 일과 없는 일을 묻는 20문항입니다. 진단이 아니라 자기 점검이며, 답은 이 브라우저 안에만 있습니다.",
+      lead: "AI 중독, 맹신, AI가 할 수 있는 일과 없는 일, 공개와 사람을 묻는 25문항입니다. 진단이 아니라 자기 점검이며, 답은 이 브라우저 안에만 있습니다.",
       progress: "응답",
       submit: "점수 보기",
       need: "모든 문항에 답해 주세요. 비어 있는 문항을 표시했습니다.",
@@ -53,19 +54,20 @@
       bandLow: "AI가 판단을 너무 많이 대신하고 있습니다. 아래부터 시작해 보세요.",
       tipsTitle: "보완할 점",
       steady: "특별히 약한 영역은 없습니다. 사실은 확인하고, 선택은 자신이 하세요.",
-      cats: { habit: "중독", trust: "맹신", can: "할 수 있는 일", limit: "할 수 없는 일" },
+      cats: { habit: "중독", trust: "맹신", can: "할 수 있는 일", limit: "할 수 없는 일", people: "공개와 사람" },
       tips: {
         habit: "첫 단계는 직접 해 보세요. 정해 둔 시간에 대화를 닫고, 잠이나 사람과의 시간을 대신하게 두지 마세요.",
         trust: "숫자, 이름, 인용은 확인하세요. 문장이 자연스럽다고 사실이 아닙니다. 의료, 법률, 돈 결정은 모델에 맡기지 마세요.",
         can: "초안, 요약, 번역, 선택지 정리에 쓰세요. 고치고 고르는 일은 자신이 합니다.",
-        limit: "오늘 일은 스스로 알지 못하고, 인용을 지어낼 수 있으며, 사람을 돌보거나 책임을 질 수 없습니다."
+        limit: "오늘 일은 스스로 알지 못하고, 인용을 지어낼 수 있으며, 사람을 돌보거나 책임을 질 수 없습니다.",
+        people: "AI가 쓴 것은 밝히세요. 챗봇이 못 풀면 사람을 요구하세요. 중요한 일은 사람에게 먼저 가져가세요."
       }
     },
     ja: {
       title: "AI利用チェック",
       org: "AIガバナンス",
       orgLead: "AIを作る側ではなく、使う人の側に立つ民間イニシアチブです。人間の尊厳を基準に、正しい使い方を伝え、実態を記録し、社会へ提言します。",
-      lead: "AI依存、盲信、AIにできることとできないことを問う20問です。診断ではなく自己チェックで、回答はこのブラウザだけに残ります。",
+      lead: "AI依存、盲信、AIにできることとできないこと、開示と人を問う25問です。診断ではなく自己チェックで、回答はこのブラウザだけに残ります。",
       progress: "回答",
       submit: "スコアを見る",
       need: "すべての問いに答えてください。未回答を示しました。",
@@ -76,19 +78,20 @@
       bandLow: "AIが判断を代わりすぎています。下の点から始めてください。",
       tipsTitle: "補いたい点",
       steady: "弱い領域はありません。事実は確認し、選択は自分で持ってください。",
-      cats: { habit: "依存", trust: "盲信", can: "できること", limit: "できないこと" },
+      cats: { habit: "依存", trust: "盲信", can: "できること", limit: "できないこと", people: "開示と人" },
       tips: {
         habit: "最初の一歩は自分でする。決めた時間でチャットを閉じ、睡眠や人との時間の代わりにしない。",
         trust: "数字、名前、引用は確認する。流暢でも証拠ではない。医療、法律、お金の決定はモデルに渡さない。",
         can: "下書き、要約、翻訳、選択肢に使う。直すことと選ぶことは自分がする。",
-        limit: "今日の事実は自分では知らず、引用を作ることがあり、人を気遣ったり責任を取ったりはできない。"
+        limit: "今日の事実は自分では知らず、引用を作ることがあり、人を気遣ったり責任を取ったりはできない。",
+        people: "AIが書いたものはそう伝える。チャットボットで解決しなければ人を求める。大事なことはまず人に話す。"
       }
     },
     zh: {
       title: "AI 使用检查",
       org: "AI 治理",
       orgLead: "这是站在使用 AI 的人一边、而不是制造 AI 的人一边的民间倡议。以人的尊严为尺度，说明正确用法，记录实际情况，并向社会提出建议。",
-      lead: "共 20 题，关于 AI 沉迷、盲信，以及 AI 能做和不能做的事。这是自我检查，不是诊断。答案只留在这个浏览器里。",
+      lead: "共 25 题，关于 AI 沉迷、盲信、AI 能做和不能做的事，以及公开与真人。这是自我检查，不是诊断。答案只留在这个浏览器里。",
       progress: "已答",
       submit: "查看分数",
       need: "请回答每一题。未答的题目已标出。",
@@ -99,12 +102,13 @@
       bandLow: "AI 替你做了太多决定。请从下面几点开始。",
       tipsTitle: "需要补上的地方",
       steady: "没有明显的弱项。事实要核对，选择要留在自己这里。",
-      cats: { habit: "沉迷", trust: "盲信", can: "能做的事", limit: "不能做的事" },
+      cats: { habit: "沉迷", trust: "盲信", can: "能做的事", limit: "不能做的事", people: "公开与真人" },
       tips: {
         habit: "第一步先自己做。到了定好的时间就关掉对话，不要让它代替睡眠或和人相处的时间。",
         trust: "数字、名字和引文要核对。句子通顺不等于事实。医疗、法律和金钱的决定不要交给模型。",
         can: "用来写草稿、摘要、翻译，或整理选项。修改和选择由你来做。",
-        limit: "它自己不知道今天的事实，可能编造引文，也不能照顾你或承担责任。"
+        limit: "它自己不知道今天的事实，可能编造引文，也不能照顾你或承担责任。",
+        people: "AI 写的要说明。机器人解决不了就要求转人工。重要的事先告诉身边的人。"
       }
     }
   };
@@ -229,6 +233,36 @@
       { q: "AI 답에 따라 행동하면 책임은 누구에게 있나요?", a: [choice("나에게 있습니다. AI는 도울 뿐이고, 결정과 책임은 내가 집니다.", 2), choice("누군가 문제를 말할 때만 나에게 있습니다.", 1), choice("답을 쓴 AI에게 있습니다.", 0)] },
       { q: "AIの回答に基づいて行動したとき、責任は誰にありますか？", a: [choice("自分。AIは助けただけ。決定と責任は自分が持つ。", 2), choice("誰かが苦情を言ったときだけ自分。", 1), choice("回答を書いたAI。", 0)] },
       { q: "如果你按 AI 的回答行动，责任在谁？", a: [choice("在你。AI 只是协助，决定和责任仍是你的。", 2), choice("只有有人抱怨时才在你。", 1), choice("在 AI，因为答案是它写的。", 0)] }
+    ),
+    item("people",
+      { q: "Most of a piece of writing that others will judge you on (a report, an application, a review) was written by AI. You:", a: [choice("Say that AI helped.", 2), choice("Mention it only if someone asks.", 1), choice("Present it as entirely your own.", 0)] },
+      { q: "AI가 대부분 쓴 글로 다른 사람이 나를 평가한다(보고서, 지원서, 후기). 나는:", a: [choice("AI 도움을 받았다고 밝힙니다.", 2), choice("누가 물어보면 말합니다.", 1), choice("전부 내가 쓴 것처럼 냅니다.", 0)] },
+      { q: "他の人があなたを評価する文章（報告書、応募書類、レビュー）の大半をAIが書いた。あなたは：", a: [choice("AIの助けを受けたと伝える。", 2), choice("聞かれたら答える。", 1), choice("すべて自分で書いたものとして出す。", 0)] },
+      { q: "别人会据此评价你的文字（报告、申请材料、评价），大部分是 AI 写的。你会：", a: [choice("说明有 AI 帮忙。", 2), choice("有人问才说。", 1), choice("当成完全是自己写的交出去。", 0)] }
+    ),
+    item("people",
+      { q: "A review, recommendation, or ad that sways your choice looks AI-written. You:", a: [choice("Check the source or confirm it another way.", 2), choice("Stay a little doubtful but still use it.", 1), choice("Treat it as written by a person.", 0)] },
+      { q: "내 선택을 좌우하는 후기·추천·광고가 AI가 쓴 것 같다. 나는:", a: [choice("출처를 확인하거나 다른 방법으로 확인합니다.", 2), choice("조금 의심하지만 그대로 참고합니다.", 1), choice("사람이 쓴 것으로 믿습니다.", 0)] },
+      { q: "あなたの判断を左右するレビュー・推薦・広告が、AIが書いたように見える。あなたは：", a: [choice("出所を確かめるか、別の方法で確認する。", 2), choice("少し疑いつつ、そのまま参考にする。", 1), choice("人が書いたものとして信じる。", 0)] },
+      { q: "影响你选择的评价、推荐或广告，看起来像 AI 写的。你会：", a: [choice("核实来源，或用别的方式确认。", 2), choice("有点怀疑，但仍然拿来参考。", 1), choice("当作是人写的来相信。", 0)] }
+    ),
+    item("people",
+      { q: "A chatbot at a bank, hospital, or public office cannot solve your problem. You:", a: [choice("Ask for a person, and keep asking until you get one.", 2), choice("Try a few more times, then give up.", 1), choice("Accept the chatbot's answer, even if it is wrong.", 0)] },
+      { q: "은행·병원·민원 챗봇이 문제를 못 푼다. 나는:", a: [choice("사람 연결을 요구하고, 연결될 때까지 요청합니다.", 2), choice("몇 번 더 해 보다 포기합니다.", 1), choice("틀려도 챗봇 답을 받아들입니다.", 0)] },
+      { q: "銀行・病院・役所のチャットボットが問題を解決できない。あなたは：", a: [choice("人につないでほしいと求め、つながるまで頼み続ける。", 2), choice("何度か試して、あきらめる。", 1), choice("間違っていても、チャットボットの答えを受け入れる。", 0)] },
+      { q: "银行、医院或政府部门的聊天机器人解决不了你的问题。你会：", a: [choice("要求转人工，一直要求到接通为止。", 2), choice("再试几次，然后放弃。", 1), choice("即使不对，也接受机器人的回答。", 0)] }
+    ),
+    item("people",
+      { q: "Do you know how to reach a person at the services you use most, such as your bank, phone carrier, or hospital?", a: [choice("Yes, for most of them.", 2), choice("For some of them.", 1), choice("No. I only use the chatbots.", 0)] },
+      { q: "자주 쓰는 서비스(은행, 통신사, 병원)에서 사람과 연결되는 방법을 아나요?", a: [choice("대부분 압니다.", 2), choice("일부만 압니다.", 1), choice("모릅니다. 챗봇만 씁니다.", 0)] },
+      { q: "よく使うサービス（銀行、携帯会社、病院）で、人につながる方法を知っていますか？", a: [choice("ほとんど知っている。", 2), choice("一部だけ知っている。", 1), choice("知らない。チャットボットだけ使う。", 0)] },
+      { q: "常用的服务（银行、运营商、医院）怎么联系到真人，你知道吗？", a: [choice("大部分都知道。", 2), choice("只知道一部分。", 1), choice("不知道，只用聊天机器人。", 0)] }
+    ),
+    item("people",
+      { q: "When something important happens, good or hard, who hears about it first?", a: [choice("A person.", 2), choice("AI and a person, at about the same time.", 1), choice("Only AI.", 0)] },
+      { q: "좋은 일이든 힘든 일이든 중요한 일이 생기면 누가 먼저 듣나요?", a: [choice("사람이 먼저입니다.", 2), choice("AI와 사람이 비슷하게 듣습니다.", 1), choice("AI만 듣습니다.", 0)] },
+      { q: "うれしいことでもつらいことでも、大事なことが起きたとき、最初に話す相手は？", a: [choice("人。", 2), choice("AIと人、ほぼ同時に。", 1), choice("AIだけ。", 0)] },
+      { q: "发生重要的事，不管是好事还是难事，谁最先知道？", a: [choice("身边的人。", 2), choice("AI 和人差不多同时。", 1), choice("只有 AI。", 0)] }
     )
   ];
 
@@ -329,8 +363,8 @@
   function showResult() {
     var ui = text();
     var total = 0;
-    var byCat = { habit: 0, trust: 0, can: 0, limit: 0 };
-    var maxCat = { habit: 0, trust: 0, can: 0, limit: 0 };
+    var byCat = { habit: 0, trust: 0, can: 0, limit: 0, people: 0 };
+    var maxCat = { habit: 0, trust: 0, can: 0, limit: 0, people: 0 };
     QS.forEach(function (question, index) {
       var picked = question[lang].a[answers[index]];
       total += picked.p;
@@ -342,7 +376,7 @@
     bandEl.textContent = score >= 80 ? ui.bandHigh : score >= 50 ? ui.bandMid : ui.bandLow;
     tipsEl.innerHTML = "";
     var weak = 0;
-    ["habit", "trust", "can", "limit"].forEach(function (cat) {
+    ["habit", "trust", "can", "limit", "people"].forEach(function (cat) {
       if (byCat[cat] / maxCat[cat] >= 0.7) return;
       weak += 1;
       var li = document.createElement("li");
@@ -386,8 +420,10 @@
   });
 
   function showGov() {
-    var runs = { benchmark: true, "2026-10": true, v2: true, v3: true };
-    var name = (location.hash || "#about").replace("#", "");
+    var runs = { benchmark: true, "2026-10": true, v2: true, v3: true, v4: true };
+    var raw = (location.hash || "#about").replace("#", "");
+    var name = raw;
+    if (name === "keeping" || name === "children") name = "about";
     if (name !== "about" && name !== "check" && !runs[name]) name = "about";
     document.querySelectorAll("[data-gov-panel]").forEach(function (panel) {
       panel.hidden = panel.getAttribute("data-gov-panel") !== name;
@@ -404,6 +440,10 @@
       if (link.getAttribute("data-run-link") === name) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
+    if (raw === "keeping" || raw === "children") {
+      var target = document.getElementById(raw);
+      if (target) target.scrollIntoView();
+    }
   }
 
   window.addEventListener("hashchange", showGov);

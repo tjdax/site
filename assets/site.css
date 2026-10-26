@@ -263,6 +263,7 @@ button.btn{cursor:pointer;line-height:1.2}
 .gov-panel h3{margin:18px 0 8px;font-family:"Fredoka","Nunito",sans-serif;font-size:18px;font-weight:700;color:var(--ink)}
 .gov-principles{margin:0;padding-left:1.2em;max-width:42em}
 .gov-principles li{margin:0 0 10px}
+.gov-principles .fine{margin:2px 0 0}
 .bench-runs{margin-top:-8px}
 .bench-item{margin:0 0 14px;padding:12px 14px;border:3px solid var(--ink);border-radius:12px;background:#fff}
 .bench-item h4{margin:0 0 6px;font-size:16px}
