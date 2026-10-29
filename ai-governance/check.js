@@ -423,7 +423,10 @@
     var runs = { benchmark: true, "2026-10": true, v2: true, v3: true, v4: true };
     var raw = (location.hash || "#about").replace("#", "");
     var name = raw;
-    if (name === "keeping" || name === "children") name = "about";
+    var aboutBits = { keeping: true, children: true, vision: true, purpose: true, principles: true };
+    var benchBits = { sets: true, "held-out": true, robustness: true, baseline: true, "service-check": true };
+    if (aboutBits[name]) name = "about";
+    if (benchBits[name]) name = "benchmark";
     if (name !== "about" && name !== "check" && !runs[name]) name = "about";
     document.querySelectorAll("[data-gov-panel]").forEach(function (panel) {
       panel.hidden = panel.getAttribute("data-gov-panel") !== name;
@@ -440,7 +443,7 @@
       if (link.getAttribute("data-run-link") === name) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
-    if (raw === "keeping" || raw === "children") {
+    if (aboutBits[raw] || benchBits[raw]) {
       var target = document.getElementById(raw);
       if (target) target.scrollIntoView();
     }
