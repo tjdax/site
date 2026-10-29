@@ -267,6 +267,12 @@ button.btn{cursor:pointer;line-height:1.2}
 .gov-principles .fine{margin:2px 0 0}
 .bench-runs{margin-top:-8px}
 .bench-item{margin:0 0 14px;padding:12px 14px;border:3px solid var(--ink);border-radius:12px;background:#fff}
+.gov-panel pre{
+  box-sizing:border-box;display:block;margin:0 0 14px;max-width:100%;padding:14px 16px;
+  overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;
+  border:3px solid var(--ink);border-radius:12px;background:#fff;
+  font:13px/1.55 ui-monospace,"Cascadia Code",Consolas,monospace;
+}
 .bench-item h4{margin:0 0 6px;font-size:16px}
 .bench-item p{margin:0 0 8px}
 .bench-item p:last-child{margin-bottom:0}
@@ -291,7 +297,7 @@ button.btn{cursor:pointer;line-height:1.2}
 .bench-radar .muse,.bench-bars .muse{stroke:#e67700;fill:#f08c00}
 .bench-radar .grok,.bench-bars .grok{stroke:#862e9c;fill:#9c36b5}
 .bench-bars rect{stroke:none}
-.bench-table-wrap{overflow-x:auto;margin:0 0 14px;max-width:42em}
+.bench-table-wrap{overflow-x:auto;margin:0 0 14px;max-width:100%}
 .bench-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:3px solid var(--ink);border-radius:12px}
 .bench-table caption{caption-side:bottom;padding-top:6px;text-align:left;color:var(--muted);font-size:13px}
 .bench-table th,.bench-table td{padding:8px 10px;border-bottom:1px solid #e6e6e6;text-align:right}
