@@ -424,7 +424,7 @@
     var raw = (location.hash || "#about").replace("#", "");
     var name = raw;
     var aboutBits = { keeping: true, children: true, vision: true, purpose: true, principles: true };
-    var benchBits = { sets: true, "held-out": true, robustness: true, baseline: true, "service-check": true };
+    var benchBits = { sets: true, "held-out": true, robustness: true, baseline: true };
     if (aboutBits[name]) name = "about";
     if (benchBits[name]) name = "benchmark";
     if (name !== "about" && name !== "check" && !runs[name]) name = "about";
