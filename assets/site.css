@@ -106,6 +106,7 @@ section{
   border:3px solid var(--ink);border-radius:18px;box-shadow:var(--shadow);
   scroll-margin-top:84px;
 }
+h2[id],h3[id]{scroll-margin-top:84px}
 h2{
   display:inline-block;margin:0 0 14px;
   font-family:"Fredoka", "Nunito", sans-serif;
@@ -296,6 +297,8 @@ button.btn{cursor:pointer;line-height:1.2}
 .bench-table th,.bench-table td{padding:8px 10px;border-bottom:1px solid #e6e6e6;text-align:right}
 .bench-table th[scope="row"],.bench-table thead th:first-child{text-align:left}
 .bench-table thead th{font-family:"Fredoka","Nunito",sans-serif}
+.bench-table.checklist{min-width:920px}
+.bench-table.checklist th,.bench-table.checklist td{text-align:left;vertical-align:top}
 .tool-row{display:flex;flex-wrap:wrap;gap:14px;align-items:end;margin-top:14px}
 .tool-row .field.grow{flex:1 1 220px}
 .field{display:grid;gap:6px;font-family:"Fredoka", "Nunito", sans-serif;font-weight:500;font-size:15px;color:var(--ink)}

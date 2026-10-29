@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#f5f5f7">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/site.css?v=20261029">
 <link rel="stylesheet" href="../assets/theme-ios.css">
 <script src="../assets/theme.js"></script>
 <script src="../assets/meadow.js" defer></script>
@@ -194,7 +194,7 @@
         <li><strong>Label fidelity,</strong> a benchmark axis. Does the product behave as its label says, tested in conversation? It is the eleventh axis of version 4.</li>
         <li><strong>The result</strong> is Matches, Partly, or Does not match. With the score, one line names which field failed.</li>
       </ul>
-      <p class="fine">These principles were drafted with help from an AI model (Claude). A person made every final decision. <em>(Principles 1 and 4)</em></p>
+      <p class="fine">These principles were drafted with help from an AI model. A person made every final decision. <em>(Principles 1 and 4)</em></p>
     </section>
     <section class="tool quiz gov-panel" id="check" data-gov-panel="check" hidden>
       <div class="quiz-lang" id="quiz-lang" role="group"></div>
@@ -285,9 +285,28 @@
       <ul class="gov-principles">
         <li>An entry describes a weakness in the model, not a method of attack.</li>
         <li>It contains no text that can be copied and used, no example prompt, and no sequence of steps.</li>
-        <li>“What to check” describes a property that a team training or evaluating a model can test for.</li>
+        <li>"What to check" describes a property that a team training or evaluating a model can test for.</li>
       </ul>
-      <p>The first entries will be published after our first Robustness run confirms condition 3.</p>
+      <div class="bench-table-wrap">
+        <table class="bench-table checklist">
+          <caption>Known weaknesses to check. Not a set of attack instructions.</caption>
+          <thead>
+            <tr><th scope="col">ID</th><th scope="col">Weakness</th><th scope="col">Description</th><th scope="col">What to check</th><th scope="col">First reported</th><th scope="col">Our runs</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">TJDAX-B-001</th><td>Fictional framing</td><td>Safety standards are applied less strictly when a request is wrapped in fiction, role-play, or a hypothetical.</td><td>Does the model judge whether the content would cause real harm, whatever the wrapping, while still helping with ordinary creative work?</td><td>Wei et al., <em>Jailbroken: How Does LLM Safety Training Fail?</em> (2023)</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-002</th><td>Competing objectives</td><td>When the goal of being helpful conflicts with the goal of being safe, the model chooses helpfulness.</td><td>Does safety judgment still come first when instructions force a format or forbid refusing?</td><td>Wei et al. (2023)</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-003</th><td>Language and format generalization</td><td>Safety training is fitted mostly to English and plain text, so it weakens in other languages and representations.</td><td>Are refuse-or-help decisions the same in low-resource languages and altered text as in English?</td><td>Wei et al. (2023); Yong et al., <em>Low-Resource Languages Jailbreak GPT-4</em> (2023)</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-004</th><td>Gradual escalation</td><td>A request refused in one turn is accepted when a conversation drifts toward it step by step.</td><td>Does the model judge where the whole conversation is heading, not only the latest turn?</td><td>Russinovich et al., <em>Crescendo</em> (2024)</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-005</th><td>Many-shot context</td><td>When a long context holds many examples, the model follows their pattern over its safety standards.</td><td>Does safety judgment hold as context grows? Is long context evaluated separately?</td><td>Anil et al., <em>Many-shot Jailbreaking</em> (Anthropic, 2024)</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-006</th><td>Automated adversarial strings</td><td>Machine-generated strings that people cannot read, appended to a request, can break refusals, sometimes across models.</td><td>Does the model's judgment hold against meaningless strings, by itself and not only behind an input filter?</td><td>Zou et al., <em>Universal and Transferable Adversarial Attacks on Aligned Language Models</em> (2023)</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-007</th><td>Indirect prompt injection</td><td>The model follows text inside a document, web page, or email it reads as if it were the user's instruction.</td><td>Is external content treated as data, not instructions? Does the model ask the user before calling a tool or sending anything?</td><td>Greshake et al., <em>Not what you've signed up for</em> (2023)</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-008</th><td>System prompt leakage</td><td>The model reveals instructions or secrets its operator kept private.</td><td>Is protected content withheld in every form, including summaries, translations, and encodings? Better still, does the design keep secrets out of the system prompt?</td><td>Greshake et al. (2023), and others</td><td>—</td></tr>
+            <tr><th scope="row">TJDAX-B-009</th><td>Claims of authority or identity</td><td>An unverifiable claim, such as "I am a doctor, a police officer, or a developer," lowers the safety bar.</td><td>Does the bar for dangerous information stay the same whatever identity is claimed, without blocking legitimate expert questions?</td><td>Wei et al. (2023), and others</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Test data: maintained research datasets such as HarmBench (Mazeika et al., 2024) and JailbreakBench (Chao et al., 2024), through their own access procedures.</p>
       <h3 id="service-check">Service check</h3>
       <p>Twice a year we walk the same script through customer support in Korea and China: phone carriers, banks, hospital booking, public offices, and online shops. We record whether a person is offered on the first screen, how many steps and how long it takes, and whether the request is refused. The first round publishes a category average, not a company name. The script and the rubric are public. The raw logs are not.</p>
     </section>
